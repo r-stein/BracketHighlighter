@@ -1,143 +1,132 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Customization - BracketHighlighter Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  <link href="../css/inlinehilite.css" rel="stylesheet">
+
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script>
+  <script src="../js/inlinehilite.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> BracketHighlighter Documentation</a>
         
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      <ul class="current">
+    
         
+            <li class="toctree-l1 ">
+                <a class="" href="..">Home</a>
+                
+            </li>
         
-        <link rel="shortcut icon" href="../img/favicon.ico">
 
-	<title>Customization - BracketHighlighter Documentation</title>
-
-        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
-        <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
-        <link rel="stylesheet" href="../css/highlight.css">
-
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-        <![endif]-->
-
+    
         
-    </head>
+            <li class="toctree-l1 ">
+                <a class="" href="../usage/">User Guide</a>
+                
+            </li>
+        
 
-    <body>
-
-        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-
-        <!-- Collapsed navigation -->
-        <div class="navbar-header">
-            
-            <!-- Expander button -->
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            
-
-            <!-- Main title -->
-            <a class="navbar-brand" href="..">BracketHighlighter Documentation</a>
-        </div>
-
-        <!-- Expanded navigation -->
-        <div class="navbar-collapse collapse">
-            
-                <!-- Main navigation -->
-                <ul class="nav navbar-nav">
+    
+        
+            <li class="toctree-l1 current">
+                <a class="current" href="./">Customization</a>
                 
-                
-                    <li >
-                        <a href="..">Home</a>
-                    </li>
-                
-                
-                
-                    <li >
-                        <a href="../usage/">User Guide</a>
-                    </li>
-                
-                
-                
-                    <li class="active">
-                        <a href="./">Customization</a>
-                    </li>
-                
-                
-                </ul>
-            
-
-            
-            <!-- Search, Navigation and Repo links -->
-            <ul class="nav navbar-nav navbar-right">
-                
-                
-                <li >
-                    <a rel="next" href="../usage/">
-                        <i class="fa fa-arrow-left"></i> Previous
-                    </a>
-                </li>
-                <li class="disabled">
-                    <a rel="prev" >
-                        Next <i class="fa fa-arrow-right"></i>
-                    </a>
-                </li>
-                
-                
-                <li>
-                    <a href="https://github.com/facelessuser/BracketHighlighter">
+                    <ul>
+                    
+                        <li class="toctree-l3"><a href="#customizing-brackethighlighter">Customizing BracketHighlighter</a></li>
                         
-                            <i class="fa fa-github"></i>
+                            <li><a class="toctree-l4" href="#configuring-brackets">Configuring Brackets</a></li>
                         
-                        GitHub
-                    </a>
-                </li>
+                            <li><a class="toctree-l4" href="#configuring-highlight-style">Configuring Highlight Style</a></li>
+                        
+                    
+                        <li class="toctree-l3"><a href="#bracket-plugin-api">Bracket Plugin API</a></li>
+                        
+                            <li><a class="toctree-l4" href="#definition-plugins">'Definition' Plugins</a></li>
+                        
+                            <li><a class="toctree-l4" href="#run-instance-plugins">'Run Instance' Plugins</a></li>
+                        
+                    
+                    </ul>
                 
-            </ul>
-            
-        </div>
-    </div>
+            </li>
+        
+
+    
+</ul>
+
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">BracketHighlighter Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+    <li>Customization</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="https://github.com/facelessuser/BracketHighlighter" class="icon icon-github"> Edit on GitHub</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
 </div>
-
-        <div class="container">
-            
-                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
-    <ul class="nav bs-sidenav">
-    
-        <li class="main active"><a href="#customizing-brackethighlighter">Customizing BracketHighlighter</a></li>
-        
-            <li><a href="#configuring-brackets">Configuring Brackets</a></li>
-        
-            <li><a href="#configuring-highlight-style">Configuring Highlight Style</a></li>
-        
-    
-        <li class="main "><a href="#bracket-plugin-api">Bracket Plugin API</a></li>
-        
-            <li><a href="#definition-plugins">'Definition' Plugins</a></li>
-        
-            <li><a href="#run-instance-plugins">'Run Instance' Plugins</a></li>
-        
-    
-    </ul>
-</div></div>
-                <div class="col-md-9" role="main">
-
-<h1 id="customizing-brackethighlighter">Customizing BracketHighlighter</h1>
-<p>BH is extremely flexible and can be customized and extended to fit a user's needs.  The first step is to create a <code>bh_core.sublime-settings</code> in your <code>User</code> folder.</p>
+          <div role="main">
+            <div class="section">
+              <h1 id="customizing-brackethighlighter">Customizing BracketHighlighter</h1>
+<p>BH is extremely flexible and can be customized and extended to fit a user&rsquo;s needs.  The first step is to create a <code class="inlinehilite language-text">bh_core.sublime-settings</code> in your <code class="inlinehilite language-text">User</code> folder.</p>
 <h2 id="configuring-brackets">Configuring Brackets</h2>
-<p>BH has been written to allow users to define any brackets they would like to have highlighted.  There are two kinds of brackets you can define: <code>scope_brackets</code> (search file for scope regions and then use regex to test for opening and closing brackets) and <code>brackets</code> (use regex to find opening and closing brackets).  <code>bracket</code> type should usually be the preferred type.  <code>scope_brackets</code> are usually used for brackets whose opening and closing are the same and not distinguishable form one another by regex; scope brackets must be contained in a continuous scope region like string for quotes etc.</p>
+<p>BH has been written to allow users to define any brackets they would like to have highlighted.  There are two kinds of brackets you can define: <code class="inlinehilite language-text">scope_brackets</code> (search file for scope regions and then use regex to test for opening and closing brackets) and <code class="inlinehilite language-text">brackets</code> (use regex to find opening and closing brackets).  <code class="inlinehilite language-text">bracket</code> type should usually be the preferred type.  <code class="inlinehilite language-text">scope_brackets</code> are usually used for brackets whose opening and closing are the same and not distinguishable form one another by regex; scope brackets must be contained in a continuous scope region like string for quotes etc.</p>
 <p>Brackets can be modified or even added without copying the entire bracket rule lists to the user settings.  See <a href="#bracket-rule-management">Bracket Rule Management</a> for more info.</p>
 <h3 id="configuring-brackets-rules">Configuring Brackets Rules</h3>
-<p>Brackets are defined under <code>brackets</code> in <code>bh_core.sublime-settings</code>.</p>
+<p>Brackets are defined under <code class="inlinehilite language-text">brackets</code> in <code class="inlinehilite language-text">bh_core.sublime-settings</code>.</p>
 <p>Brackets can be modified or even added without copying the entire bracket rule lists to the user settings.  See <a href="#bracket-rule-management">Bracket Rule Management</a> for more info.</p>
 <p>Angle and Curly bracket will be used as an example (not all options may be shown in these examples):</p>
-<pre><code class="javascript">        {
+<p><pre><code class="javascript">        {
             &quot;name&quot;: &quot;angle&quot;,
             &quot;open&quot;: &quot;(&lt;)&quot;,
             &quot;close&quot;: &quot;(&gt;)&quot;,
@@ -162,70 +151,25 @@
             &quot;enabled&quot;: true
         },
 </code></pre>
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name</td>
-<td>The name of the bracket (should be unique)</td>
-</tr>
-<tr>
-<td>open</td>
-<td>Defines the opening bracket (one and only one capturing group must be present)</td>
-</tr>
-<tr>
-<td>close</td>
-<td>Defines the closing bracket (one and only one capturing group must be present)</td>
-</tr>
-<tr>
-<td>style</td>
-<td>Name of style definition to be used to highlight the brackets.  See <code>Configuring Bracket Styles</code> for more info.</td>
-</tr>
-<tr>
-<td>scope_exclude</td>
-<td>Scopes where the opening and closing brackets should be ignored.</td>
-</tr>
-<tr>
-<td>language_filter</td>
-<td>This works in conjunction with <code>language_list</code>.  It specifies whether <code>language_list</code> is a <code>blacklist</code> or <code>whitelist</code>.</td>
-</tr>
-<tr>
-<td>language_list</td>
-<td>An array of tmLanguage file names that should be avoided or included for highlighting.  Looks to <code>language_filter</code> to determine if avoidance or inclusion is used.</td>
-</tr>
-<tr>
-<td>enabled</td>
-<td>Disable or enable rule.</td>
-</tr>
-<tr>
-<td>scope_exclude_exceptions&nbsp;(optional)</td>
-<td>Used to ignore excluding of sub scopes such as in the curly example above where <code>string</code> is excluded, but not <code>string.other.math.block.environment.latex</code>.</td>
-</tr>
-<tr>
-<td>plugin_library&nbsp;(optional)</td>
-<td>Defines plugin to use for determining matches (see Bracket Plugin API for more info on matching plugins).</td>
-</tr>
-<tr>
-<td>find_in_sub_search&nbsp;(optional)</td>
-<td>This rule should be included when doing sub bracket matching in <code>scope_brackets</code> (like finding round brackets between quotes etc.).  The setting must be as string and can be either (true</td>
-</tr>
-<tr>
-<td>ignore_string_escape&nbsp;(optional)</td>
-<td>Do not ignore sub brackets found in strings and regex when escaped, but use internal escape logic to determine if the brackets should be ignored based on whether regex or string escape mode is set.</td>
-</tr>
-</tbody>
-</table>
+| Parameter | Description |
+|-----------|-------------|
+| name | The name of the bracket (should be unique) |
+| open | Defines the opening bracket (one and only one capturing group must be present) |
+| close | Defines the closing bracket (one and only one capturing group must be present) |
+| style | Name of style definition to be used to highlight the brackets.  See <code class="inlinehilite language-text">Configuring Bracket Styles</code> for more info. |
+| scope_exclude | Scopes where the opening and closing brackets should be ignored. |
+| language_filter | This works in conjunction with <code class="inlinehilite language-text">language_list</code>.  It specifies whether <code class="inlinehilite language-text">language_list</code> is a <code class="inlinehilite language-text">blacklist</code> or <code class="inlinehilite language-text">whitelist</code>. |
+| language_list | An array of tmLanguage file names that should be avoided or included for highlighting.  Looks to <code class="inlinehilite language-text">language_filter</code> to determine if avoidance or inclusion is used. |
+| enabled | Disable or enable rule. |
+| scope_exclude_exceptions&nbsp;(optional) | Used to ignore excluding of sub scopes such as in the curly example above where <code class="inlinehilite language-text">string</code> is excluded, but not <code class="inlinehilite language-text">string.other.math.block.environment.latex</code>. |
+| plugin_library&nbsp;(optional) | Defines plugin to use for determining matches (see Bracket Plugin API for more info on matching plugins). |
+| find_in_sub_search&nbsp;(optional) | This rule should be included when doing sub bracket matching in <code class="inlinehilite language-text">scope_brackets</code> (like finding round brackets between quotes etc.).  The setting must be as string and can be either (true|false|only); only means this bracket is only matched as a sub bracket of a <code class="inlinehilite language-text">scope_bracket</code>. |
+| ignore_string_escape&nbsp;(optional) | Do not ignore sub brackets found in strings and regex when escaped, but use internal escape logic to determine if the brackets should be ignored based on whether regex or string escape mode is set. |</p>
 <h3 id="configuring-scope-brackets-rules">Configuring Scope Brackets Rules</h3>
-<p>Scope Brackets are defined under <code>scope_brackets</code> in <code>bh_core.sublime-settings</code>.</p>
+<p>Scope Brackets are defined under <code class="inlinehilite language-text">scope_brackets</code> in <code class="inlinehilite language-text">bh_core.sublime-settings</code>.</p>
 <p>Brackets can be modified or even added without copying the entire bracket rule lists to the user settings.  See <a href="#bracket-rule-management">Bracket Rule Management</a> for more info.</p>
 <p>Python Single Quote bracket will be used as an example (not all options are shown in this example):</p>
-<pre><code class="javascript">        {
+<p><pre><code class="javascript">        {
             &quot;name&quot;: &quot;py_single_quote&quot;,
             &quot;open&quot;: &quot;u?r?((?:'')?')&quot;,
             &quot;close&quot;: &quot;((?:'')?')&quot;,
@@ -237,60 +181,21 @@
             &quot;enabled&quot;: true
         },
 </code></pre>
-
-<table>
-<thead>
-<tr>
-<th>Parameters</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name</td>
-<td>The name of the bracket (should be unique).</td>
-</tr>
-<tr>
-<td>open</td>
-<td>Defines the opening bracket (one and only one capturing group must be present).</td>
-</tr>
-<tr>
-<td>close</td>
-<td>Defines the closing bracket (one and only one capturing group must be present).</td>
-</tr>
-<tr>
-<td>style</td>
-<td>Name of style definition to be used to highlight the brackets.  See <code>Configuring Bracket Styles</code> for more info.</td>
-</tr>
-<tr>
-<td>scopes</td>
-<td>Scope that should be searched to find the opening and closing brackets.</td>
-</tr>
-<tr>
-<td>language_filter</td>
-<td>This works in conjunction with <code>language_list</code>.  It specifies whether <code>language_list</code> is a <code>blacklist</code> or <code>whitelist</code>.</td>
-</tr>
-<tr>
-<td>language_list</td>
-<td>An array of tmLanguage file names that should be avoided or included for highlighting.  Looks to <code>language_filter</code> to determine if avoidance or inclusion is used.</td>
-</tr>
-<tr>
-<td>sub_bracket_search</td>
-<td>Should this scope bracket also search for sub brackets (like curly brackets in strings etc.).</td>
-</tr>
-<tr>
-<td>enabled</td>
-<td>Disable or enable rule.</td>
-</tr>
-<tr>
-<td>plugin_library&nbsp;(optional)</td>
-<td>Defines plugin to use for determining matches (see Bracket Plugin API for more info on matching plugins).</td>
-</tr>
-</tbody>
-</table>
+| Parameters | Description |
+|------------|-------------|
+| name | The name of the bracket (should be unique). |
+| open | Defines the opening bracket (one and only one capturing group must be present). |
+| close | Defines the closing bracket (one and only one capturing group must be present). |
+| style | Name of style definition to be used to highlight the brackets.  See <code class="inlinehilite language-text">Configuring Bracket Styles</code> for more info. |
+| scopes | Scope that should be searched to find the opening and closing brackets. |
+| language_filter | This works in conjunction with <code class="inlinehilite language-text">language_list</code>.  It specifies whether <code class="inlinehilite language-text">language_list</code> is a <code class="inlinehilite language-text">blacklist</code> or <code class="inlinehilite language-text">whitelist</code>. |
+| language_list | An array of tmLanguage file names that should be avoided or included for highlighting.  Looks to <code class="inlinehilite language-text">language_filter</code> to determine if avoidance or inclusion is used. |
+| sub_bracket_search | Should this scope bracket also search for sub brackets (like curly brackets in strings etc.). |
+| enabled | Disable or enable rule. |
+| plugin_library&nbsp;(optional) | Defines plugin to use for determining matches (see Bracket Plugin API for more info on matching plugins). |</p>
 <h3 id="bracket-rule-management">Bracket Rule Management</h3>
-<p>In the past, BracketHighlighter required a user to copy the entire bracket list to the user <code>bh_core.sublime-settings</code> file.  This was a cumbersome requirement that also punished a user because if they did this, they wouldn't automatically get updates to the rules as all the rules were now overridden by the user's settings file.</p>
-<p>BracketHighlighter now let's you add or modify existing rules without overriding the entire ruleset or even the entire target rule.  Let's say you have a custom language you want to have on your machine. Now, you can simply add it to one of the two settings arrays: "user_scope_brackets" and "user_brackets":</p>
+<p>In the past, BracketHighlighter required a user to copy the entire bracket list to the user <code class="inlinehilite language-text">bh_core.sublime-settings</code> file.  This was a cumbersome requirement that also punished a user because if they did this, they wouldn&rsquo;t automatically get updates to the rules as all the rules were now overridden by the user&rsquo;s settings file.</p>
+<p>BracketHighlighter now let&rsquo;s you add or modify existing rules without overriding the entire ruleset or even the entire target rule.  Let&rsquo;s say you have a custom language you want to have on your machine. Now, you can simply add it to one of the two settings arrays: &ldquo;user_scope_brackets&rdquo; and &ldquo;user_brackets&rdquo;:</p>
 <pre><code class="js">    &quot;user_scope_brackets&quot;: [],
     &quot;user_brackets&quot;: [
         {
@@ -307,7 +212,7 @@
     ],
 </code></pre>
 
-<p>Let's say you want to modify an existing rule, maybe just tweak the language list, all you have to do is use the same name and the item you want to change. Only that attribute will be overridden:</p>
+<p>Let&rsquo;s say you want to modify an existing rule, maybe just tweak the language list, all you have to do is use the same name and the item you want to change. Only that attribute will be overridden:</p>
 <pre><code class="js">    &quot;user_brackets&quot;: [
         // Angle
         {
@@ -323,8 +228,8 @@
     ],
 </code></pre>
 
-<p>Let's say you want to insert a new rule between two rules. You can turn on debug mode and call the <code>BracketHighlighter: (Debug) Filter Rules by Key</code> then select position to see the current rule order and their postion index.  To turn on Debug mode, just add <code>"debug_enable": true</code> to your user settings file.</p>
-<p>Example of <code>BracketHighlighter: (Debug) Filter Rules by Key</code> output:</p>
+<p>Let&rsquo;s say you want to insert a new rule between two rules. You can turn on debug mode and call the <code class="inlinehilite language-text">BracketHighlighter: (Debug) Filter Rules by Key</code> then select position to see the current rule order and their postion index.  To turn on Debug mode, just add <code class="inlinehilite language-text">&quot;debug_enable&quot;: true</code> to your user settings file.</p>
+<p>Example of <code class="inlinehilite language-text">BracketHighlighter: (Debug) Filter Rules by Key</code> output:</p>
 <pre><code class="js">[
     [
         {&quot;name&quot;: &quot;curly&quot;, &quot;position&quot;: 0},
@@ -358,7 +263,7 @@
 ]
 </code></pre>
 
-<p>Then you can specify the position you want to insert at using the <code>position</code> key:</p>
+<p>Then you can specify the position you want to insert at using the <code class="inlinehilite language-text">position</code> key:</p>
 <pre><code class="js">    &quot;user_scope_brackets&quot;: [],
     &quot;user_brackets&quot;: [
         {
@@ -394,9 +299,9 @@
 
 <p>This will allow you to make changes, but still receive new updated rules.</p>
 <h2 id="configuring-highlight-style">Configuring Highlight Style</h2>
-<p>Each bracket definition (described in <code>Configuring Scope Brackets</code> and <code>Configuring Brackets</code>) has a <code>style</code> setting that you give a style definition to.  Style definitions are defined under <code>bracket_styles</code> in <code>bh_core.sublime-settings</code>.</p>
-<p>There are two special style definitions whose names are reserved: <code>default</code> and <code>unmatched</code>, but you can configure them.  All other custom style definitions follow the same pattern (see <code>curly</code> below and compare to the special style defintions; format is the same)  All custom styles follow this pattern.  See description below:</p>
-<pre><code class="javascript">        // &quot;default&quot; style defines attributes that
+<p>Each bracket definition (described in <code class="inlinehilite language-text">Configuring Scope Brackets</code> and <code class="inlinehilite language-text">Configuring Brackets</code>) has a <code class="inlinehilite language-text">style</code> setting that you give a style definition to.  Style definitions are defined under <code class="inlinehilite language-text">bracket_styles</code> in <code class="inlinehilite language-text">bh_core.sublime-settings</code>.</p>
+<p>There are two special style definitions whose names are reserved: <code class="inlinehilite language-text">default</code> and <code class="inlinehilite language-text">unmatched</code>, but you can configure them.  All other custom style definitions follow the same pattern (see <code class="inlinehilite language-text">curly</code> below and compare to the special style defintions; format is the same)  All custom styles follow this pattern.  See description below:</p>
+<p><pre><code class="javascript">        // &quot;default&quot; style defines attributes that
         // will be used for any style that does not
         // explicitly define that attribute.  So if
         // a style does not define a color, it will
@@ -428,36 +333,15 @@
             &quot;style&quot;: &quot;outline&quot;
         },
 </code></pre>
-
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>icon</td>
-<td>Icon to show in gutter. Available options are: <code>angle</code>, <code>round</code>, <code>curly</code>, <code>square</code>, <code>tag</code>, <code>star</code>, <code>dot</code>, <code>bookmark</code>, <code>question</code>, <code>quote</code>, <code>double_quote</code>, <code>single_quote</code>, <code>single_quote_offset</code>, <code>double_quote_offset</code>, <code>none</code>.</td>
-</tr>
-<tr>
-<td>color</td>
-<td>Scope to define color.</td>
-</tr>
-<tr>
-<td>style</td>
-<td>Higlight style.  Available options are: <code>solid</code>, <code>outline</code>, <code>underline</code>, <code>none</code>.  ST3 has additional styles: <code>thin_underline</code>, <code>squiggly</code>, <code>stippled</code>.</td>
-</tr>
-<tr>
-<td>endpoint</td>
-<td>Boolean to highlight just the beginning and end of bracket. This is useful for things like tags where it may be distracting highlighting the entire tag.</td>
-</tr>
-</tbody>
-</table>
-<p>As shown in the example above, if an option is omitted, it will use the setting in <code>default</code>.  So <code>curly</code>, in this example, defines <code>icon</code>, but will use <code>default</code> for the <code>color</code> and <code>style</code>.</p>
-<p>To customize the color for <code>curly</code> you can create your own custom scope.</p>
-<p>Add this to your color scheme:</p>
+|Parameter | Description |
+|----------|-------------|
+| icon | Icon to show in gutter. Available options are: <code class="inlinehilite language-text">angle</code>, <code class="inlinehilite language-text">round</code>, <code class="inlinehilite language-text">curly</code>, <code class="inlinehilite language-text">square</code>, <code class="inlinehilite language-text">tag</code>, <code class="inlinehilite language-text">star</code>, <code class="inlinehilite language-text">dot</code>, <code class="inlinehilite language-text">bookmark</code>, <code class="inlinehilite language-text">question</code>, <code class="inlinehilite language-text">quote</code>, <code class="inlinehilite language-text">double_quote</code>, <code class="inlinehilite language-text">single_quote</code>, <code class="inlinehilite language-text">single_quote_offset</code>, <code class="inlinehilite language-text">double_quote_offset</code>, <code class="inlinehilite language-text">none</code>. |
+| color | Scope to define color. |
+| style | Higlight style.  Available options are: <code class="inlinehilite language-text">solid</code>, <code class="inlinehilite language-text">outline</code>, <code class="inlinehilite language-text">underline</code>, <code class="inlinehilite language-text">none</code>.  ST3 has additional styles: <code class="inlinehilite language-text">thin_underline</code>, <code class="inlinehilite language-text">squiggly</code>, <code class="inlinehilite language-text">stippled</code>. |
+| endpoint | Boolean to highlight just the beginning and end of bracket. This is useful for things like tags where it may be distracting highlighting the entire tag. |</p>
+<p>As shown in the example above, if an option is omitted, it will use the setting in <code class="inlinehilite language-text">default</code>.  So <code class="inlinehilite language-text">curly</code>, in this example, defines <code class="inlinehilite language-text">icon</code>, but will use <code class="inlinehilite language-text">default</code> for the <code class="inlinehilite language-text">color</code> and <code class="inlinehilite language-text">style</code>.</p>
+<p>To customize the color for <code class="inlinehilite language-text">curly</code> you can create your own custom scope.</p>
+<p>Add this to your color scheme:
 <pre><code class="xml">        &lt;dict&gt;
             &lt;key&gt;name&lt;/key&gt;
             &lt;string&gt;Bracket Curly&lt;/string&gt;
@@ -469,19 +353,17 @@
                 &lt;string&gt;#CC99CC&lt;/string&gt;
             &lt;/dict&gt;
         &lt;/dict&gt;
-</code></pre>
-
-<p>And then use the scope:</p>
+</code></pre></p>
+<p>And then use the scope:
 <pre><code class="javascript">        &quot;curly&quot;: {
             &quot;icon&quot;: &quot;curly_bracket&quot;
             &quot;color&quot;: &quot;brackethighlighter.curly&quot;,
             // &quot;style&quot;: &quot;underline&quot;
         },
-</code></pre>
-
+</code></pre></p>
 <h3 id="my-personal-configurations">My personal configurations</h3>
 <p>If you are curious about my personal configuration, here it is. The color scheme I use is from my <a href="https://github.com/facelessuser/Aprosopo">Aprosopo theme</a>. </p>
-<p>Note: If a scope is not defined, it won't change the color. For instance, below I assign the hash rule for C/C++ preprocessors conditionals to <code>brackethighlighter.c_define</code>, but I don't have <code>brackethighlighter.c_define</code> in my theme <code>&lt;dict&gt;</code>. So it will look like the default color, white.</p>
+<p>Note: If a scope is not defined, it won&rsquo;t change the color. For instance, below I assign the hash rule for C/C++ preprocessors conditionals to <code class="inlinehilite language-text">brackethighlighter.c_define</code>, but I don&rsquo;t have <code class="inlinehilite language-text">brackethighlighter.c_define</code> in my theme <code class="inlinehilite language-text">&lt;dict&gt;</code>. So it will look like the default color, white.</p>
 <p><strong>My personal conf: bh_core.sublime-settings</strong></p>
 <pre><code class="javascript">// Define region highlight styles
 &quot;bracket_styles&quot;: {
@@ -641,9 +523,9 @@
 </code></pre>
 
 <h1 id="bracket-plugin-api">Bracket Plugin API</h1>
-<p>There are two kinds of plugins that can be written <code>definition</code> plugins (plugins attached to bracket definitions via the <code>plugin_library</code> option) or <code>run instance</code> plugins (plugins that are that are fed in the BracketHighligher via the command parameter <code>plugin</code>).</p>
-<p>Bracket plugins use <code>BracketRegions</code>. <code>BracketRegions</code> are simple objects containing a begin pt and end pt of a bracket.</p>
-<p>BracketRegion input parameters <code>BracketRegion(begin_pt, end_pt)</code>:</p>
+<p>There are two kinds of plugins that can be written <code class="inlinehilite language-text">definition</code> plugins (plugins attached to bracket definitions via the <code class="inlinehilite language-text">plugin_library</code> option) or <code class="inlinehilite language-text">run instance</code> plugins (plugins that are that are fed in the BracketHighligher via the command parameter <code class="inlinehilite language-text">plugin</code>).</p>
+<p>Bracket plugins use <code class="inlinehilite language-text">BracketRegions</code>. <code class="inlinehilite language-text">BracketRegions</code> are simple objects containing a begin pt and end pt of a bracket.</p>
+<p>BracketRegion input parameters <code class="inlinehilite language-text">BracketRegion(begin_pt, end_pt)</code>:</p>
 <table>
 <thead>
 <tr>
@@ -704,11 +586,11 @@
 </tr>
 </tbody>
 </table>
-<h2 id="definition-plugins">'Definition' Plugins</h2>
-<p>These are plugins that are attached to the bracket definition and aid in processing the brackets.  These kinds of plugins have three methods you can provide: <code>post_match</code>, <code>compare</code>, and/or <code>validate</code>.</p>
+<h2 id="definition-plugins">&lsquo;Definition&rsquo; Plugins</h2>
+<p>These are plugins that are attached to the bracket definition and aid in processing the brackets.  These kinds of plugins have three methods you can provide: <code class="inlinehilite language-text">post_match</code>, <code class="inlinehilite language-text">compare</code>, and/or <code class="inlinehilite language-text">validate</code>.</p>
 <h3 id="validate">validate</h3>
-<p><code>validate</code> before comparing it to its corresponding openning or closing side.  This is used to determine perfrom additional validation on a found bracket.  For example, lets say you have a bracket that is case senstive.  BH uses a case insenstive search.  With validate, you can ensure the orginally found bracket matches the desired case.</p>
-<p>The <code>validate</code> method receives the following parameters:</p>
+<p><code class="inlinehilite language-text">validate</code> before comparing it to its corresponding openning or closing side.  This is used to determine perfrom additional validation on a found bracket.  For example, lets say you have a bracket that is case senstive.  BH uses a case insenstive search.  With validate, you can ensure the orginally found bracket matches the desired case.</p>
+<p>The <code class="inlinehilite language-text">validate</code> method receives the following parameters:</p>
 <table>
 <thead>
 <tr>
@@ -750,7 +632,7 @@
 </tr>
 </tbody>
 </table>
-<p>Example: Should match closing tag <code>end</code> but not match <code>End</code></p>
+<p>Example: Should match closing tag <code class="inlinehilite language-text">end</code> but not match <code class="inlinehilite language-text">End</code></p>
 <pre><code class="erlang">case Foo of
     Guard1 -&gt; ok;
     Guard2 -&gt; End
@@ -765,8 +647,8 @@ end
 </code></pre>
 
 <h3 id="compare">compare</h3>
-<p><code>compare</code> is run when comparing the opening bracket with closing brackets.  This allows you to provide logic to accept or reject the pairing of an opening bracket with a closing bracket.  You should not change the text in the view during this operation.</p>
-<p>The <code>compare</code> method receives the following paramters:</p>
+<p><code class="inlinehilite language-text">compare</code> is run when comparing the opening bracket with closing brackets.  This allows you to provide logic to accept or reject the pairing of an opening bracket with a closing bracket.  You should not change the text in the view during this operation.</p>
+<p>The <code class="inlinehilite language-text">compare</code> method receives the following paramters:</p>
 <table>
 <thead>
 <tr>
@@ -808,14 +690,13 @@ end
 </tr>
 </tbody>
 </table>
-<p>Example (from phphekywords.py):</p>
+<p>Example (from phphekywords.py):
 <pre><code class="python">def compare(name, first, second, bfr):
     return &quot;end&quot; + bfr[first.begin:first.end].lower() == bfr[second.begin:second.end].lower()
-</code></pre>
-
+</code></pre></p>
 <h3 id="post_match">post_match</h3>
-<p><code>post_match</code> is run after the brackets have been matched.  You can do things like alter the highlighting region and change the bracket_style if needed. You should not change the text in the view during this operation.</p>
-<p>The <code>post_match</code> method receives the following parameters:</p>
+<p><code class="inlinehilite language-text">post_match</code> is run after the brackets have been matched.  You can do things like alter the highlighting region and change the bracket_style if needed. You should not change the text in the view during this operation.</p>
+<p>The <code class="inlinehilite language-text">post_match</code> method receives the following parameters:</p>
 <table>
 <thead>
 <tr>
@@ -877,7 +758,7 @@ end
 </tr>
 </tbody>
 </table>
-<p>Example (from rubykeywords.py):</p>
+<p>Example (from rubykeywords.py):
 <pre><code class="python">import re
 
 
@@ -890,9 +771,8 @@ def post_match(view, name, style, first, second, center, bfr, threshold):
             if m:
                 first = first.move(first.begin + m.end(1), first.end)
     return first, second, style
-</code></pre>
-
-<p>Example (snippet from tags.py)</p>
+</code></pre></p>
+<p>Example (snippet from tags.py)
 <pre><code class="python">def post_match(view, name, style, first, second, center, bfr, threshold):
     left, right = first, second
     threshold = [0, len(bfr)] if threshold is None else threshold
@@ -908,11 +788,10 @@ def post_match(view, name, style, first, second, center, bfr, threshold):
             bracket_style = tag_style
 
     return left, right, bracket_style
-</code></pre>
-
+</code></pre></p>
 <h3 id="highlighting">highlighting</h3>
-<p><code>highlighting</code> is the last hook that gets run.  This is at a point when BH no longer cares about what the <em>actual</em> bracket region is, so it is safe to modify it for highlighting purposes.  The view really shouldn't be modified here.</p>
-<p>The <code>highlighting</code> method receives the following parameters:</p>
+<p><code class="inlinehilite language-text">highlighting</code> is the last hook that gets run.  This is at a point when BH no longer cares about what the <em>actual</em> bracket region is, so it is safe to modify it for highlighting purposes.  The view really shouldn&rsquo;t be modified here.</p>
+<p>The <code class="inlinehilite language-text">highlighting</code> method receives the following parameters:</p>
 <table>
 <thead>
 <tr>
@@ -935,11 +814,11 @@ def post_match(view, name, style, first, second, center, bfr, threshold):
 </tr>
 <tr>
 <td>left</td>
-<td>A bracket region for the opening bracket (could be <code>None</code>).</td>
+<td>A bracket region for the opening bracket (could be <code class="inlinehilite language-text">None</code>).</td>
 </tr>
 <tr>
 <td>right</td>
-<td>A bracket region for the closing bracket (could be <code>None</code>).</td>
+<td>A bracket region for the closing bracket (could be <code class="inlinehilite language-text">None</code>).</td>
 </tr>
 </tbody>
 </table>
@@ -978,9 +857,9 @@ def post_match(view, name, style, first, second, center, bfr, threshold):
     return left, right
 </code></pre>
 
-<h2 id="run-instance-plugins">'Run Instance' Plugins</h2>
-<p><code>Run instance</code> plugins are fed into the command executing a BracketHighlighter match via the <code>plugin</code> parameter.</p>
-<p>Example of run instance plugin getting called:</p>
+<h2 id="run-instance-plugins">&lsquo;Run Instance&rsquo; Plugins</h2>
+<p><code class="inlinehilite language-text">Run instance</code> plugins are fed into the command executing a BracketHighlighter match via the <code class="inlinehilite language-text">plugin</code> parameter.</p>
+<p>Example of run instance plugin getting called:
 <pre><code class="javascript">// Go to left bracket
     {
         &quot;caption&quot;: &quot;BracketHighlighter: Jump to Left Bracket&quot;,
@@ -996,9 +875,8 @@ def post_match(view, name, style, first, second, center, bfr, threshold):
             }
         }
     },
-</code></pre>
-
-<p>The <code>plugin</code> paramter is a dictionary that contains 3 parameters to define what plugin should get run, with what arguments, and on what bracket definition.</p>
+</code></pre></p>
+<p>The <code class="inlinehilite language-text">plugin</code> paramter is a dictionary that contains 3 parameters to define what plugin should get run, with what arguments, and on what bracket definition.</p>
 <table>
 <thead>
 <tr>
@@ -1009,11 +887,11 @@ def post_match(view, name, style, first, second, center, bfr, threshold):
 <tbody>
 <tr>
 <td>type</td>
-<td>An array containing the bracket definition names that the plugin should be run on.  Use <code>__all__</code> for all bracket definitions.</td>
+<td>An array containing the bracket definition names that the plugin should be run on.  Use <code class="inlinehilite language-text">__all__</code> for all bracket definitions.</td>
 </tr>
 <tr>
 <td>command</td>
-<td>The plugin to run.  For internal plugins, they are referenced by <code>bh_modules.&lt;plugin name&gt;</code>.  For custom plugins, you should use the folder path relative to <code>Packages</code>.  So if I had a plugin called <code>myplugin.py</code> in my <code>User</code> folder, I would use <code>User.myplugin</code>.</td>
+<td>The plugin to run.  For internal plugins, they are referenced by <code class="inlinehilite language-text">bh_modules.&lt;plugin name&gt;</code>.  For custom plugins, you should use the folder path relative to <code class="inlinehilite language-text">Packages</code>.  So if I had a plugin called <code class="inlinehilite language-text">myplugin.py</code> in my <code class="inlinehilite language-text">User</code> folder, I would use <code class="inlinehilite language-text">User.myplugin</code>.</td>
 </tr>
 <tr>
 <td>args</td>
@@ -1021,7 +899,7 @@ def post_match(view, name, style, first, second, center, bfr, threshold):
 </tr>
 </tbody>
 </table>
-<p>You create <code>run instance</code> plugins by deriving a class from the <code>BracketPluginCommand</code> class.  Then you provide a method called <code>plugin</code> that returns the class.</p>
+<p>You create <code class="inlinehilite language-text">run instance</code> plugins by deriving a class from the <code class="inlinehilite language-text">BracketPluginCommand</code> class.  Then you provide a method called <code class="inlinehilite language-text">plugin</code> that returns the class.</p>
 <p>BracketPluginCommand attributes:</p>
 <table>
 <thead>
@@ -1033,7 +911,7 @@ def post_match(view, name, style, first, second, center, bfr, threshold):
 <tbody>
 <tr>
 <td>view</td>
-<td>The sublime view containing the bracket (don't change this).</td>
+<td>The sublime view containing the bracket (don&rsquo;t change this).</td>
 </tr>
 <tr>
 <td>left</td>
@@ -1060,11 +938,11 @@ def post_match(view, name, style, first, second, center, bfr, threshold):
 <tbody>
 <tr>
 <td><strong>run</strong>(edit,&nbsp;name,&nbsp;&lt;args&gt;)</td>
-<td>Runs the plugin. <code>edit</code> is a sublime edit object. <code>name</code> is the bracket definition being evaluated.</td>
+<td>Runs the plugin. <code class="inlinehilite language-text">edit</code> is a sublime edit object. <code class="inlinehilite language-text">name</code> is the bracket definition being evaluated.</td>
 </tr>
 </tbody>
 </table>
-<p>Example (from foldbracket.py):</p>
+<p>Example (from foldbracket.py):
 <pre><code class="python">import BracketHighlighter.bh_plugin as bh_plugin
 import sublime
 
@@ -1081,26 +959,50 @@ class FoldBrackets(bh_plugin.BracketPluginCommand):
 
 def plugin():
     return FoldBrackets
-</code></pre></div>
-            
+</code></pre></p>
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="../usage/" class="btn btn-neutral" title="User Guide"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    <!-- Copyright etc -->
+    </p>
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
         </div>
+      </div>
 
-        <footer class="col-md-12">
-            <hr>
-            
-            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
-        </footer>
+    </section>
 
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
         
+            <a href="https://github.com/facelessuser/BracketHighlighter" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+        
+      <span><a href="../usage/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      <span style="margin-left: 15px"><a href="" style="color: #fcfcfc">Next &raquo;</a></span>
+    </span>
+</div>
 
-        <script src="../js/jquery-1.10.2.min.js"></script>
-        <script src="../js/bootstrap-3.0.3.min.js"></script>
-        <script src="../js/highlight.pack.js"></script>
-        <script src="../js/base.js"></script>
-
-        <!--
-        MkDocs version  : 0.12.1
-        Docs Build Date : 2015-04-20 01:43:42.776077
-        -->
-    </body>
+<!--
+MkDocs version  : 0.12.1
+Docs Build Date : 2015-04-20 07:27:17.733896
+-->
+</body>
 </html>
