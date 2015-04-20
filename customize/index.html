@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+
+	<title>Customization - BracketHighlighter Documentation</title>
+
+        <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="../css/highlight.css">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+            <a class="navbar-brand" href="..">BracketHighlighter Documentation</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="..">Home</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../usage/">User Guide</a>
+                    </li>
+                
+                
+                
+                    <li class="active">
+                        <a href="./">Customization</a>
+                    </li>
+                
+                
+                </ul>
+            
+
+            
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                
+                
+                <li >
+                    <a rel="next" href="../usage/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li class="disabled">
+                    <a rel="prev" >
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                
+                <li>
+                    <a href="https://github.com/facelessuser/BracketHighlighter">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+            
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            
+                <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+    
+        <li class="main active"><a href="#customizing-brackethighlighter">Customizing BracketHighlighter</a></li>
+        
+            <li><a href="#configuring-brackets">Configuring Brackets</a></li>
+        
+            <li><a href="#configuring-highlight-style">Configuring Highlight Style</a></li>
+        
+    
+        <li class="main "><a href="#bracket-plugin-api">Bracket Plugin API</a></li>
+        
+            <li><a href="#definition-plugins">'Definition' Plugins</a></li>
+        
+            <li><a href="#run-instance-plugins">'Run Instance' Plugins</a></li>
+        
+    
+    </ul>
+</div></div>
+                <div class="col-md-9" role="main">
+
+<h1 id="customizing-brackethighlighter">Customizing BracketHighlighter</h1>
+<p>BH is extremely flexible and can be customized and extended to fit a user's needs.  The first step is to create a <code>bh_core.sublime-settings</code> in your <code>User</code> folder.</p>
+<h2 id="configuring-brackets">Configuring Brackets</h2>
+<p>BH has been written to allow users to define any brackets they would like to have highlighted.  There are two kinds of brackets you can define: <code>scope_brackets</code> (search file for scope regions and then use regex to test for opening and closing brackets) and <code>brackets</code> (use regex to find opening and closing brackets).  <code>bracket</code> type should usually be the preferred type.  <code>scope_brackets</code> are usually used for brackets whose opening and closing are the same and not distinguishable form one another by regex; scope brackets must be contained in a continuous scope region like string for quotes etc.</p>
+<p>Brackets can be modified or even added without copying the entire bracket rule lists to the user settings.  See <a href="#bracket-rule-management">Bracket Rule Management</a> for more info.</p>
+<h3 id="configuring-brackets-rules">Configuring Brackets Rules</h3>
+<p>Brackets are defined under <code>brackets</code> in <code>bh_core.sublime-settings</code>.</p>
+<p>Brackets can be modified or even added without copying the entire bracket rule lists to the user settings.  See <a href="#bracket-rule-management">Bracket Rule Management</a> for more info.</p>
+<p>Angle and Curly bracket will be used as an example (not all options may be shown in these examples):</p>
+<pre><code class="javascript">        {
+            &quot;name&quot;: &quot;angle&quot;,
+            &quot;open&quot;: &quot;(&lt;)&quot;,
+            &quot;close&quot;: &quot;(&gt;)&quot;,
+            &quot;style&quot;: &quot;angle&quot;,
+            &quot;scope_exclude&quot;: [&quot;string&quot;, &quot;comment&quot;, &quot;keyword.operator&quot;],
+            &quot;language_filter&quot;: &quot;whitelist&quot;,
+            &quot;language_list&quot;: [&quot;HTML&quot;, &quot;HTML 5&quot;, &quot;XML&quot;, &quot;PHP&quot;, &quot;HTML+CFML&quot;, &quot;ColdFusion&quot;, &quot;ColdFusionCFC&quot;],
+            &quot;plugin_library&quot;: &quot;bh_modules.tags&quot;,
+            &quot;enabled&quot;: true
+        },
+        {
+            &quot;name&quot;: &quot;curly&quot;,
+            &quot;open&quot;: &quot;(\\{)&quot;,
+            &quot;close&quot;: &quot;(\\})&quot;,
+            &quot;style&quot;: &quot;curly&quot;,
+            &quot;scope_exclude&quot;: [&quot;string&quot;, &quot;comment&quot;],
+            &quot;scope_exclude_exceptions&quot;: [&quot;string.other.math.block.environment.latex&quot;],
+            &quot;language_filter&quot;: &quot;blacklist&quot;,
+            &quot;language_list&quot;: [&quot;Plain text&quot;],
+            &quot;find_in_sub_search&quot;: &quot;true&quot;,
+            &quot;ignore_string_escape&quot;: true,
+            &quot;enabled&quot;: true
+        },
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>The name of the bracket (should be unique)</td>
+</tr>
+<tr>
+<td>open</td>
+<td>Defines the opening bracket (one and only one capturing group must be present)</td>
+</tr>
+<tr>
+<td>close</td>
+<td>Defines the closing bracket (one and only one capturing group must be present)</td>
+</tr>
+<tr>
+<td>style</td>
+<td>Name of style definition to be used to highlight the brackets.  See <code>Configuring Bracket Styles</code> for more info.</td>
+</tr>
+<tr>
+<td>scope_exclude</td>
+<td>Scopes where the opening and closing brackets should be ignored.</td>
+</tr>
+<tr>
+<td>language_filter</td>
+<td>This works in conjunction with <code>language_list</code>.  It specifies whether <code>language_list</code> is a <code>blacklist</code> or <code>whitelist</code>.</td>
+</tr>
+<tr>
+<td>language_list</td>
+<td>An array of tmLanguage file names that should be avoided or included for highlighting.  Looks to <code>language_filter</code> to determine if avoidance or inclusion is used.</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td>Disable or enable rule.</td>
+</tr>
+<tr>
+<td>scope_exclude_exceptions&nbsp;(optional)</td>
+<td>Used to ignore excluding of sub scopes such as in the curly example above where <code>string</code> is excluded, but not <code>string.other.math.block.environment.latex</code>.</td>
+</tr>
+<tr>
+<td>plugin_library&nbsp;(optional)</td>
+<td>Defines plugin to use for determining matches (see Bracket Plugin API for more info on matching plugins).</td>
+</tr>
+<tr>
+<td>find_in_sub_search&nbsp;(optional)</td>
+<td>This rule should be included when doing sub bracket matching in <code>scope_brackets</code> (like finding round brackets between quotes etc.).  The setting must be as string and can be either (true</td>
+</tr>
+<tr>
+<td>ignore_string_escape&nbsp;(optional)</td>
+<td>Do not ignore sub brackets found in strings and regex when escaped, but use internal escape logic to determine if the brackets should be ignored based on whether regex or string escape mode is set.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="configuring-scope-brackets-rules">Configuring Scope Brackets Rules</h3>
+<p>Scope Brackets are defined under <code>scope_brackets</code> in <code>bh_core.sublime-settings</code>.</p>
+<p>Brackets can be modified or even added without copying the entire bracket rule lists to the user settings.  See <a href="#bracket-rule-management">Bracket Rule Management</a> for more info.</p>
+<p>Python Single Quote bracket will be used as an example (not all options are shown in this example):</p>
+<pre><code class="javascript">        {
+            &quot;name&quot;: &quot;py_single_quote&quot;,
+            &quot;open&quot;: &quot;u?r?((?:'')?')&quot;,
+            &quot;close&quot;: &quot;((?:'')?')&quot;,
+            &quot;style&quot;: &quot;single_quote&quot;,
+            &quot;scopes&quot;: [&quot;string&quot;],
+            &quot;language_filter&quot;: &quot;whitelist&quot;,
+            &quot;language_list&quot;: [&quot;Python&quot;],
+            &quot;sub_bracket_search&quot;: &quot;true&quot;,
+            &quot;enabled&quot;: true
+        },
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>The name of the bracket (should be unique).</td>
+</tr>
+<tr>
+<td>open</td>
+<td>Defines the opening bracket (one and only one capturing group must be present).</td>
+</tr>
+<tr>
+<td>close</td>
+<td>Defines the closing bracket (one and only one capturing group must be present).</td>
+</tr>
+<tr>
+<td>style</td>
+<td>Name of style definition to be used to highlight the brackets.  See <code>Configuring Bracket Styles</code> for more info.</td>
+</tr>
+<tr>
+<td>scopes</td>
+<td>Scope that should be searched to find the opening and closing brackets.</td>
+</tr>
+<tr>
+<td>language_filter</td>
+<td>This works in conjunction with <code>language_list</code>.  It specifies whether <code>language_list</code> is a <code>blacklist</code> or <code>whitelist</code>.</td>
+</tr>
+<tr>
+<td>language_list</td>
+<td>An array of tmLanguage file names that should be avoided or included for highlighting.  Looks to <code>language_filter</code> to determine if avoidance or inclusion is used.</td>
+</tr>
+<tr>
+<td>sub_bracket_search</td>
+<td>Should this scope bracket also search for sub brackets (like curly brackets in strings etc.).</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td>Disable or enable rule.</td>
+</tr>
+<tr>
+<td>plugin_library&nbsp;(optional)</td>
+<td>Defines plugin to use for determining matches (see Bracket Plugin API for more info on matching plugins).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="bracket-rule-management">Bracket Rule Management</h3>
+<p>In the past, BracketHighlighter required a user to copy the entire bracket list to the user <code>bh_core.sublime-settings</code> file.  This was a cumbersome requirement that also punished a user because if they did this, they wouldn't automatically get updates to the rules as all the rules were now overridden by the user's settings file.</p>
+<p>BracketHighlighter now let's you add or modify existing rules without overriding the entire ruleset or even the entire target rule.  Let's say you have a custom language you want to have on your machine. Now, you can simply add it to one of the two settings arrays: "user_scope_brackets" and "user_brackets":</p>
+<pre><code class="js">    &quot;user_scope_brackets&quot;: [],
+    &quot;user_brackets&quot;: [
+        {
+            &quot;name&quot;: &quot;mylang&quot;,
+            &quot;open&quot;: &quot;^\\s*\\b(if|subr|bytemap|enum|command|for|while|macro|do)\\b&quot;,
+            &quot;close&quot;: &quot;\\b(e(?:if|subr|bytemap|enum|command|for|while|macro)|until)\\b&quot;,
+            &quot;style&quot;: &quot;default&quot;,
+            &quot;scope_exclude&quot;: [&quot;string&quot;, &quot;comment&quot;],
+            &quot;plugin_library&quot;: &quot;User.bh_modules.mylangkeywords&quot;,
+            &quot;language_filter&quot;: &quot;whitelist&quot;,
+            &quot;language_list&quot;: [&quot;mylang&quot;],
+            &quot;enabled&quot;: true
+        }
+    ],
+</code></pre>
+
+<p>Let's say you want to modify an existing rule, maybe just tweak the language list, all you have to do is use the same name and the item you want to change. Only that attribute will be overridden:</p>
+<pre><code class="js">    &quot;user_brackets&quot;: [
+        // Angle
+        {
+            &quot;name&quot;: &quot;angle&quot;,
+            &quot;language_list&quot;: [
+                &quot;HTML&quot;, &quot;HTML 5&quot;, &quot;XML&quot;, &quot;PHP&quot;, &quot;HTML (Rails)&quot;,
+                &quot;HTML (Jinja Templates)&quot;, &quot;HTML (Twig)&quot;, &quot;HTML+CFML&quot;,
+                &quot;ColdFusion&quot;, &quot;ColdFusionCFC&quot;, &quot;laravel-blade&quot;,
+                &quot;Handlebars&quot;, &quot;AngularJS&quot;,
+                &quot;SomeNewLanguage&quot; // &lt;--- New language
+            ]
+        }
+    ],
+</code></pre>
+
+<p>Let's say you want to insert a new rule between two rules. You can turn on debug mode and call the <code>BracketHighlighter: (Debug) Filter Rules by Key</code> then select position to see the current rule order and their postion index.  To turn on Debug mode, just add <code>"debug_enable": true</code> to your user settings file.</p>
+<p>Example of <code>BracketHighlighter: (Debug) Filter Rules by Key</code> output:</p>
+<pre><code class="js">[
+    [
+        {&quot;name&quot;: &quot;curly&quot;, &quot;position&quot;: 0},
+        {&quot;name&quot;: &quot;round&quot;, &quot;position&quot;: 1},
+        {&quot;name&quot;: &quot;square&quot;, &quot;position&quot;: 2},
+        {&quot;name&quot;: &quot;html&quot;, &quot;position&quot;: 3},
+        {&quot;name&quot;: &quot;cfml&quot;, &quot;position&quot;: 4},
+        {&quot;name&quot;: &quot;php_angle&quot;, &quot;position&quot;: 5},
+        {&quot;name&quot;: &quot;angle&quot;, &quot;position&quot;: 6},
+        {&quot;name&quot;: &quot;cssedit_groups&quot;, &quot;position&quot;: 7},
+        {&quot;name&quot;: &quot;ruby_embedded_html&quot;, &quot;position&quot;: 8},
+        {&quot;name&quot;: &quot;ruby&quot;, &quot;position&quot;: 9},
+        {&quot;name&quot;: &quot;c_compile_switch&quot;, &quot;position&quot;: 10},
+        {&quot;name&quot;: &quot;php_keywords&quot;, &quot;position&quot;: 11},
+        {&quot;name&quot;: &quot;erlang&quot;, &quot;position&quot;: 12},
+        {&quot;name&quot;: &quot;bash&quot;, &quot;position&quot;: 13},
+        {&quot;name&quot;: &quot;fish&quot;, &quot;position&quot;: 14},
+        {&quot;name&quot;: &quot;mylang&quot;, &quot;position&quot;: 15}
+    ],
+    [
+        {&quot;name&quot;: &quot;py_single_quote&quot;, &quot;position&quot;: 0},
+        {&quot;name&quot;: &quot;py_double_quote&quot;, &quot;position&quot;: 1},
+        {&quot;name&quot;: &quot;single_quote&quot;, &quot;position&quot;: 2},
+        {&quot;name&quot;: &quot;double_quote&quot;, &quot;position&quot;: 3},
+        {&quot;name&quot;: &quot;jsregex&quot;, &quot;position&quot;: 4},
+        {&quot;name&quot;: &quot;perlregex&quot;, &quot;position&quot;: 5},
+        {&quot;name&quot;: &quot;rubyregex&quot;, &quot;position&quot;: 6},
+        {&quot;name&quot;: &quot;mditalic&quot;, &quot;position&quot;: 7},
+        {&quot;name&quot;: &quot;mdbold&quot;, &quot;position&quot;: 8}
+    ]
+]
+</code></pre>
+
+<p>Then you can specify the position you want to insert at using the <code>position</code> key:</p>
+<pre><code class="js">    &quot;user_scope_brackets&quot;: [],
+    &quot;user_brackets&quot;: [
+        {
+            &quot;name&quot;: &quot;mylang&quot;,
+            &quot;position&quot;: 4, // &lt;-- New position
+            &quot;open&quot;: &quot;^\\s*\\b(if|subr|bytemap|enum|command|for|while|macro|do)\\b&quot;,
+            &quot;close&quot;: &quot;\\b(e(?:if|subr|bytemap|enum|command|for|while|macro)|until)\\b&quot;,
+            &quot;style&quot;: &quot;default&quot;,
+            &quot;scope_exclude&quot;: [&quot;string&quot;, &quot;comment&quot;],
+            &quot;plugin_library&quot;: &quot;User.bh_modules.mylangkeywords&quot;,
+            &quot;language_filter&quot;: &quot;whitelist&quot;,
+            &quot;language_list&quot;: [&quot;mylang&quot;],
+            &quot;enabled&quot;: true
+        }
+    ],
+</code></pre>
+
+<p>And if you run the debug command again, you will see that the position has changed:</p>
+<pre><code class="js">        {&quot;name&quot;: &quot;curly&quot;, &quot;position&quot;: 0},
+        {&quot;name&quot;: &quot;round&quot;, &quot;position&quot;: 1},
+        {&quot;name&quot;: &quot;square&quot;, &quot;position&quot;: 2},
+        {&quot;name&quot;: &quot;html&quot;, &quot;position&quot;: 3},
+        {&quot;name&quot;: &quot;trex&quot;, &quot;position&quot;: 4}, // &lt;-- New position
+        {&quot;name&quot;: &quot;cfml&quot;, &quot;position&quot;: 5},
+        {&quot;name&quot;: &quot;php_angle&quot;, &quot;position&quot;: 6},
+</code></pre>
+
+<p>This can be used to adjust the position of default rules from your user settings as well as shown by overrides above.</p>
+<p>So, unless you are forking BH to pull request a change to the default rules, you can now modify the rules all in these two settings without copying or touching the default rules:</p>
+<pre><code class="js">    &quot;user_scope_brackets&quot;: [],
+    &quot;user_brackets&quot;: [],
+</code></pre>
+
+<p>This will allow you to make changes, but still receive new updated rules.</p>
+<h2 id="configuring-highlight-style">Configuring Highlight Style</h2>
+<p>Each bracket definition (described in <code>Configuring Scope Brackets</code> and <code>Configuring Brackets</code>) has a <code>style</code> setting that you give a style definition to.  Style definitions are defined under <code>bracket_styles</code> in <code>bh_core.sublime-settings</code>.</p>
+<p>There are two special style definitions whose names are reserved: <code>default</code> and <code>unmatched</code>, but you can configure them.  All other custom style definitions follow the same pattern (see <code>curly</code> below and compare to the special style defintions; format is the same)  All custom styles follow this pattern.  See description below:</p>
+<pre><code class="javascript">        // &quot;default&quot; style defines attributes that
+        // will be used for any style that does not
+        // explicitly define that attribute.  So if
+        // a style does not define a color, it will
+        // use the color from the &quot;default&quot; style.
+        &quot;default&quot;: {
+            &quot;icon&quot;: &quot;dot&quot;,
+            &quot;color&quot;: &quot;brackethighlighter.default&quot;,
+            &quot;style&quot;: &quot;underline&quot;
+        },
+
+        // This particular style is used to highlight
+        // unmatched bracket pairs.  It is a special
+        // style.
+        &quot;unmatched&quot;: {
+            &quot;icon&quot;: &quot;question&quot;,
+            // &quot;color&quot;: &quot;brackethighlighter.unmatched&quot;,
+            &quot;style&quot;: &quot;outline&quot;
+        },
+        // User defined region styles
+        &quot;curly&quot;: {
+            &quot;icon&quot;: &quot;curly_bracket&quot;
+            // &quot;color&quot;: &quot;brackethighlighter.curly&quot;,
+            // &quot;style&quot;: &quot;underline&quot;
+        },
+        &quot;tag&quot;: {
+            &quot;icon&quot;: &quot;tag&quot;,
+            // &quot;endpoints&quot;: true,
+            // &quot;color&quot;: &quot;brackethighlighter.tag&quot;,
+            &quot;style&quot;: &quot;outline&quot;
+        },
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>icon</td>
+<td>Icon to show in gutter. Available options are: <code>angle</code>, <code>round</code>, <code>curly</code>, <code>square</code>, <code>tag</code>, <code>star</code>, <code>dot</code>, <code>bookmark</code>, <code>question</code>, <code>quote</code>, <code>double_quote</code>, <code>single_quote</code>, <code>single_quote_offset</code>, <code>double_quote_offset</code>, <code>none</code>.</td>
+</tr>
+<tr>
+<td>color</td>
+<td>Scope to define color.</td>
+</tr>
+<tr>
+<td>style</td>
+<td>Higlight style.  Available options are: <code>solid</code>, <code>outline</code>, <code>underline</code>, <code>none</code>.  ST3 has additional styles: <code>thin_underline</code>, <code>squiggly</code>, <code>stippled</code>.</td>
+</tr>
+<tr>
+<td>endpoint</td>
+<td>Boolean to highlight just the beginning and end of bracket. This is useful for things like tags where it may be distracting highlighting the entire tag.</td>
+</tr>
+</tbody>
+</table>
+<p>As shown in the example above, if an option is omitted, it will use the setting in <code>default</code>.  So <code>curly</code>, in this example, defines <code>icon</code>, but will use <code>default</code> for the <code>color</code> and <code>style</code>.</p>
+<p>To customize the color for <code>curly</code> you can create your own custom scope.</p>
+<p>Add this to your color scheme:</p>
+<pre><code class="xml">        &lt;dict&gt;
+            &lt;key&gt;name&lt;/key&gt;
+            &lt;string&gt;Bracket Curly&lt;/string&gt;
+            &lt;key&gt;scope&lt;/key&gt;
+            &lt;string&gt;brackethighlighter.curly&lt;/string&gt;
+            &lt;key&gt;settings&lt;/key&gt;
+            &lt;dict&gt;
+                &lt;key&gt;foreground&lt;/key&gt;
+                &lt;string&gt;#CC99CC&lt;/string&gt;
+            &lt;/dict&gt;
+        &lt;/dict&gt;
+</code></pre>
+
+<p>And then use the scope:</p>
+<pre><code class="javascript">        &quot;curly&quot;: {
+            &quot;icon&quot;: &quot;curly_bracket&quot;
+            &quot;color&quot;: &quot;brackethighlighter.curly&quot;,
+            // &quot;style&quot;: &quot;underline&quot;
+        },
+</code></pre>
+
+<h3 id="my-personal-configurations">My personal configurations</h3>
+<p>If you are curious about my personal configuration, here it is. The color scheme I use is from my <a href="https://github.com/facelessuser/Aprosopo">Aprosopo theme</a>. </p>
+<p>Note: If a scope is not defined, it won't change the color. For instance, below I assign the hash rule for C/C++ preprocessors conditionals to <code>brackethighlighter.c_define</code>, but I don't have <code>brackethighlighter.c_define</code> in my theme <code>&lt;dict&gt;</code>. So it will look like the default color, white.</p>
+<p><strong>My personal conf: bh_core.sublime-settings</strong></p>
+<pre><code class="javascript">// Define region highlight styles
+&quot;bracket_styles&quot;: {
+    // &quot;default&quot; and &quot;unmatched&quot; styles are special
+    // styles. If they are not defined here,
+    // they will be generated internally with
+    // internal defaults.
+
+    // &quot;default&quot; style defines attributes that
+    // will be used for any style that does not
+    // explicitly define that attribute.  So if
+    // a style does not define a color, it will
+    // use the color from the &quot;default&quot; style.
+    &quot;default&quot;: {
+        &quot;icon&quot;: &quot;dot&quot;,
+        // BH1's original default color for reference
+        // &quot;color&quot;: &quot;entity.name.class&quot;,
+        &quot;color&quot;: &quot;brackethighlighter.default&quot;,
+        &quot;style&quot;: &quot;underline&quot;
+    },
+
+    // This particular style is used to highlight
+    // unmatched bracekt pairs.  It is a special
+    // style.
+    &quot;unmatched&quot;: {
+        &quot;icon&quot;: &quot;question&quot;,
+        &quot;color&quot;: &quot;brackethighlighter.unmatched&quot;,
+        &quot;style&quot;: &quot;outline&quot;
+    },
+    // User defined region styles
+    &quot;curly&quot;: {
+        &quot;icon&quot;: &quot;curly_bracket&quot;,
+        &quot;color&quot;: &quot;brackethighlighter.curly&quot;
+        // &quot;style&quot;: &quot;underline&quot;
+    },
+    &quot;round&quot;: {
+        &quot;icon&quot;: &quot;round_bracket&quot;,
+        &quot;color&quot;: &quot;brackethighlighter.round&quot;
+        // &quot;style&quot;: &quot;underline&quot;
+    },
+    &quot;square&quot;: {
+        &quot;icon&quot;: &quot;square_bracket&quot;,
+        &quot;color&quot;: &quot;brackethighlighter.square&quot;
+        // &quot;style&quot;: &quot;underline&quot;
+    },
+    &quot;angle&quot;: {
+        &quot;icon&quot;: &quot;angle_bracket&quot;,
+        &quot;color&quot;: &quot;brackethighlighter.angle&quot;
+        // &quot;style&quot;: &quot;underline&quot;
+    },
+    &quot;tag&quot;: {
+        &quot;icon&quot;: &quot;tag&quot;,
+        &quot;color&quot;: &quot;brackethighlighter.tag&quot;,
+        // &quot;style&quot;: &quot;underline&quot;
+    },
+    &quot;c_define&quot;: {
+        &quot;icon&quot;: &quot;hash&quot;,
+        &quot;color&quot;: &quot;brackethighlighter.c_define&quot;
+        // &quot;style&quot;: &quot;underline&quot;
+    },
+    &quot;single_quote&quot;: {
+        &quot;icon&quot;: &quot;single_quote&quot;,
+        &quot;color&quot;: &quot;brackethighlighter.quote&quot;
+        // &quot;style&quot;: &quot;underline&quot;
+    },
+    &quot;double_quote&quot;: {
+        &quot;icon&quot;: &quot;double_quote&quot;,
+        &quot;color&quot;: &quot;brackethighlighter.quote&quot;
+        // &quot;style&quot;: &quot;underline&quot;
+    },
+    &quot;regex&quot;: {
+        &quot;icon&quot;: &quot;star&quot;,
+        &quot;color&quot;: &quot;brackethighlighter.quote&quot;
+        // &quot;style&quot;: &quot;underline&quot;
+    }
+}
+</code></pre>
+
+<p><strong>My personal conf: [Default Theme].tmTheme</strong></p>
+<pre><code class="xml">&lt;dict&gt;
+    &lt;key&gt;name&lt;/key&gt;
+    &lt;string&gt;Bracket Tag&lt;/string&gt;
+    &lt;key&gt;scope&lt;/key&gt;
+    &lt;string&gt;brackethighlighter.tag&lt;/string&gt;
+    &lt;key&gt;settings&lt;/key&gt;
+    &lt;dict&gt;
+        &lt;key&gt;foreground&lt;/key&gt;
+        &lt;string&gt;#66CCCC&lt;/string&gt;
+    &lt;/dict&gt;
+&lt;/dict&gt;
+&lt;dict&gt;
+    &lt;key&gt;name&lt;/key&gt;
+    &lt;string&gt;Bracket Curly&lt;/string&gt;
+    &lt;key&gt;scope&lt;/key&gt;
+    &lt;string&gt;brackethighlighter.curly&lt;/string&gt;
+    &lt;key&gt;settings&lt;/key&gt;
+    &lt;dict&gt;
+        &lt;key&gt;foreground&lt;/key&gt;
+        &lt;string&gt;#CC99CC&lt;/string&gt;
+    &lt;/dict&gt;
+&lt;/dict&gt;
+&lt;dict&gt;
+    &lt;key&gt;name&lt;/key&gt;
+    &lt;string&gt;Bracket Round&lt;/string&gt;
+    &lt;key&gt;scope&lt;/key&gt;
+    &lt;string&gt;brackethighlighter.round&lt;/string&gt;
+    &lt;key&gt;settings&lt;/key&gt;
+    &lt;dict&gt;
+        &lt;key&gt;foreground&lt;/key&gt;
+        &lt;string&gt;#FFCC66&lt;/string&gt;
+    &lt;/dict&gt;
+&lt;/dict&gt;
+&lt;dict&gt;
+    &lt;key&gt;name&lt;/key&gt;
+    &lt;string&gt;Bracket Square&lt;/string&gt;
+    &lt;key&gt;scope&lt;/key&gt;
+    &lt;string&gt;brackethighlighter.square&lt;/string&gt;
+    &lt;key&gt;settings&lt;/key&gt;
+    &lt;dict&gt;
+        &lt;key&gt;foreground&lt;/key&gt;
+        &lt;string&gt;#6699CC&lt;/string&gt;
+    &lt;/dict&gt;
+&lt;/dict&gt;
+&lt;dict&gt;
+    &lt;key&gt;name&lt;/key&gt;
+    &lt;string&gt;Bracket Angle&lt;/string&gt;
+    &lt;key&gt;scope&lt;/key&gt;
+    &lt;string&gt;brackethighlighter.angle&lt;/string&gt;
+    &lt;key&gt;settings&lt;/key&gt;
+    &lt;dict&gt;
+        &lt;key&gt;foreground&lt;/key&gt;
+        &lt;string&gt;#F99157&lt;/string&gt;
+    &lt;/dict&gt;
+&lt;/dict&gt;
+&lt;dict&gt;
+    &lt;key&gt;name&lt;/key&gt;
+    &lt;string&gt;Bracket Quote&lt;/string&gt;
+    &lt;key&gt;scope&lt;/key&gt;
+    &lt;string&gt;brackethighlighter.quote&lt;/string&gt;
+    &lt;key&gt;settings&lt;/key&gt;
+    &lt;dict&gt;
+        &lt;key&gt;foreground&lt;/key&gt;
+        &lt;string&gt;#99CC99&lt;/string&gt;
+    &lt;/dict&gt;
+&lt;/dict&gt;
+&lt;dict&gt;
+    &lt;key&gt;name&lt;/key&gt;
+    &lt;string&gt;Bracket Unmatched&lt;/string&gt;
+    &lt;key&gt;scope&lt;/key&gt;
+    &lt;string&gt;brackethighlighter.unmatched&lt;/string&gt;
+    &lt;key&gt;settings&lt;/key&gt;
+    &lt;dict&gt;
+        &lt;key&gt;foreground&lt;/key&gt;
+        &lt;string&gt;#F2777A&lt;/string&gt;
+    &lt;/dict&gt;
+&lt;/dict&gt;
+</code></pre>
+
+<h1 id="bracket-plugin-api">Bracket Plugin API</h1>
+<p>There are two kinds of plugins that can be written <code>definition</code> plugins (plugins attached to bracket definitions via the <code>plugin_library</code> option) or <code>run instance</code> plugins (plugins that are that are fed in the BracketHighligher via the command parameter <code>plugin</code>).</p>
+<p>Bracket plugins use <code>BracketRegions</code>. <code>BracketRegions</code> are simple objects containing a begin pt and end pt of a bracket.</p>
+<p>BracketRegion input parameters <code>BracketRegion(begin_pt, end_pt)</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>begin_pt</td>
+<td>Starting point.</td>
+</tr>
+<tr>
+<td>end_pt</td>
+<td>Ending point.</td>
+</tr>
+</tbody>
+</table>
+<p>BracketRegion attributes:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>begin</td>
+<td>The start pt of the BracketRegion.</td>
+</tr>
+<tr>
+<td>end</td>
+<td>The end pt of the BracketRegion.</td>
+</tr>
+</tbody>
+</table>
+<p>BracketRegion methods:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Descriptions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>size</strong>()</td>
+<td>Returns size of region.</td>
+</tr>
+<tr>
+<td><strong>move</strong>(begin_pt,&nbsp;end_pt)</td>
+<td>Returns a new BracketRegion object with the points moved as specified by the parameters.</td>
+</tr>
+<tr>
+<td><strong>toregion</strong>()</td>
+<td>Returns a sublime Region() object.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="definition-plugins">'Definition' Plugins</h2>
+<p>These are plugins that are attached to the bracket definition and aid in processing the brackets.  These kinds of plugins have three methods you can provide: <code>post_match</code>, <code>compare</code>, and/or <code>validate</code>.</p>
+<h3 id="validate">validate</h3>
+<p><code>validate</code> before comparing it to its corresponding openning or closing side.  This is used to determine perfrom additional validation on a found bracket.  For example, lets say you have a bracket that is case senstive.  BH uses a case insenstive search.  With validate, you can ensure the orginally found bracket matches the desired case.</p>
+<p>The <code>validate</code> method receives the following parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>The name of the bracket definition being evaluated.</td>
+</tr>
+<tr>
+<td>bracket</td>
+<td>The bracket region being validated.</td>
+</tr>
+<tr>
+<td>bracket_side</td>
+<td>Opening (0) or closing (1) bracket.</td>
+</tr>
+<tr>
+<td>bfr</td>
+<td>The file buffer.</td>
+</tr>
+</tbody>
+</table>
+<p>Returns:</p>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boolean</td>
+<td>indicates whether the validation succeeded (True) or failed (False).</td>
+</tr>
+</tbody>
+</table>
+<p>Example: Should match closing tag <code>end</code> but not match <code>End</code></p>
+<pre><code class="erlang">case Foo of
+    Guard1 -&gt; ok;
+    Guard2 -&gt; End
+end
+</code></pre>
+
+<p>Example (from erlangcase.py):</p>
+<pre><code class="python">def validate(name, bracket, bracket_side, bfr):
+    text = bfr[bracket.begin:bracket.end]
+    return text.lower() == text
+
+</code></pre>
+
+<h3 id="compare">compare</h3>
+<p><code>compare</code> is run when comparing the opening bracket with closing brackets.  This allows you to provide logic to accept or reject the pairing of an opening bracket with a closing bracket.  You should not change the text in the view during this operation.</p>
+<p>The <code>compare</code> method receives the following paramters:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>The name of the bracket definition being evaluated.</td>
+</tr>
+<tr>
+<td>first</td>
+<td>A bracket region for the opening bracket.</td>
+</tr>
+<tr>
+<td>second</td>
+<td>A bracket region for the closing bracket.</td>
+</tr>
+<tr>
+<td>bfr</td>
+<td>The file buffer.</td>
+</tr>
+</tbody>
+</table>
+<p>Returns:</p>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boolean</td>
+<td>Indicating whether the the comparison yields a suitable match.</td>
+</tr>
+</tbody>
+</table>
+<p>Example (from phphekywords.py):</p>
+<pre><code class="python">def compare(name, first, second, bfr):
+    return &quot;end&quot; + bfr[first.begin:first.end].lower() == bfr[second.begin:second.end].lower()
+</code></pre>
+
+<h3 id="post_match">post_match</h3>
+<p><code>post_match</code> is run after the brackets have been matched.  You can do things like alter the highlighting region and change the bracket_style if needed. You should not change the text in the view during this operation.</p>
+<p>The <code>post_match</code> method receives the following parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>The name of the bracket definition being evaluated.</td>
+</tr>
+<tr>
+<td>style</td>
+<td>The style definition name that is to be used to highlight the region.</td>
+</tr>
+<tr>
+<td>first</td>
+<td>A bracket region for the opening bracket.</td>
+</tr>
+<tr>
+<td>second</td>
+<td>A bracket region for the closing bracket.</td>
+</tr>
+<tr>
+<td>center</td>
+<td>Position (pt) of cursor (in retrospect, probably not the most intuitive name; not sure why I named it this).</td>
+</tr>
+<tr>
+<td>bfr</td>
+<td>The file buffer.</td>
+</tr>
+<tr>
+<td>threshold</td>
+<td>The calculated search window of the buffer that is being searched.</td>
+</tr>
+</tbody>
+</table>
+<p>Returns:</p>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BracketRegion</td>
+<td>Opening bracket region.</td>
+</tr>
+<tr>
+<td>BracketRegion</td>
+<td>Closing bracket region.</td>
+</tr>
+<tr>
+<td>style</td>
+<td>The name of the style definition to use.</td>
+</tr>
+</tbody>
+</table>
+<p>Example (from rubykeywords.py):</p>
+<pre><code class="python">import re
+
+
+def post_match(view, name, style, first, second, center, bfr, threshold):
+    if first is not None:
+        # Strip whitespace from the beginning of first bracket
+        open_bracket = bfr[first.begin:first.end]
+        if open_bracket != &quot;do&quot;:
+            m = re.match(r&quot;^(\s*\b)[\w\W]*&quot;, open_bracket)
+            if m:
+                first = first.move(first.begin + m.end(1), first.end)
+    return first, second, style
+</code></pre>
+
+<p>Example (snippet from tags.py)</p>
+<pre><code class="python">def post_match(view, name, style, first, second, center, bfr, threshold):
+    left, right = first, second
+    threshold = [0, len(bfr)] if threshold is None else threshold
+    tag_settings = sublime.load_settings(&quot;bh_core.sublime-settings&quot;)
+    tag_mode = get_tag_mode(view, tag_settings.get(&quot;tag_mode&quot;, {}))
+    tag_style = tag_settings.get(&quot;tag_style&quot;, &quot;angle&quot;)
+    bracket_style = style
+
+    if first is not None and tag_mode is not None:
+        matcher = TagMatch(view, bfr, threshold, first, second, center, tag_mode)
+        left, right = matcher.match()
+        if not matcher.no_tag:
+            bracket_style = tag_style
+
+    return left, right, bracket_style
+</code></pre>
+
+<h3 id="highlighting">highlighting</h3>
+<p><code>highlighting</code> is the last hook that gets run.  This is at a point when BH no longer cares about what the <em>actual</em> bracket region is, so it is safe to modify it for highlighting purposes.  The view really shouldn't be modified here.</p>
+<p>The <code>highlighting</code> method receives the following parameters:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>view</td>
+<td>The current view containing brackets.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>The name of the bracket definition being evaluated.</td>
+</tr>
+<tr>
+<td>style</td>
+<td>The style definition name that is to be used to highlight the region.</td>
+</tr>
+<tr>
+<td>left</td>
+<td>A bracket region for the opening bracket (could be <code>None</code>).</td>
+</tr>
+<tr>
+<td>right</td>
+<td>A bracket region for the closing bracket (could be <code>None</code>).</td>
+</tr>
+</tbody>
+</table>
+<p>Returns:</p>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BracketRegion</td>
+<td>Opening bracket region.</td>
+</tr>
+<tr>
+<td>BracketRegion</td>
+<td>Closing bracket region.</td>
+</tr>
+</tbody>
+</table>
+<p>Example (snippet from tags.py)</p>
+<pre><code class="python">def highlighting(view, name, style, left, right):
+    &quot;&quot;&quot;
+    Highlight only the tag name.
+    &quot;&quot;&quot;
+    if style == &quot;tag&quot;:
+        tag_name = '[\w\:\.\-]+'
+        if left is not None:
+            region = view.find(tag_name, left.begin)
+            left = left.move(region.begin(), region.end())
+        if right is not None:
+            region = view.find(tag_name, right.begin)
+            right = right.move(region.begin(), region.end())
+    return left, right
+</code></pre>
+
+<h2 id="run-instance-plugins">'Run Instance' Plugins</h2>
+<p><code>Run instance</code> plugins are fed into the command executing a BracketHighlighter match via the <code>plugin</code> parameter.</p>
+<p>Example of run instance plugin getting called:</p>
+<pre><code class="javascript">// Go to left bracket
+    {
+        &quot;caption&quot;: &quot;BracketHighlighter: Jump to Left Bracket&quot;,
+        &quot;command&quot;: &quot;bh_key&quot;,
+        &quot;args&quot;:
+        {
+            &quot;lines&quot; : true,
+            &quot;plugin&quot;:
+            {
+                &quot;type&quot;: [&quot;__all__&quot;],
+                &quot;command&quot;: &quot;bh_modules.bracketselect&quot;,
+                &quot;args&quot;: {&quot;select&quot;: &quot;left&quot;}
+            }
+        }
+    },
+</code></pre>
+
+<p>The <code>plugin</code> paramter is a dictionary that contains 3 parameters to define what plugin should get run, with what arguments, and on what bracket definition.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>type</td>
+<td>An array containing the bracket definition names that the plugin should be run on.  Use <code>__all__</code> for all bracket definitions.</td>
+</tr>
+<tr>
+<td>command</td>
+<td>The plugin to run.  For internal plugins, they are referenced by <code>bh_modules.&lt;plugin name&gt;</code>.  For custom plugins, you should use the folder path relative to <code>Packages</code>.  So if I had a plugin called <code>myplugin.py</code> in my <code>User</code> folder, I would use <code>User.myplugin</code>.</td>
+</tr>
+<tr>
+<td>args</td>
+<td>A dictionary containing the arguments to feed into the plugin.</td>
+</tr>
+</tbody>
+</table>
+<p>You create <code>run instance</code> plugins by deriving a class from the <code>BracketPluginCommand</code> class.  Then you provide a method called <code>plugin</code> that returns the class.</p>
+<p>BracketPluginCommand attributes:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>view</td>
+<td>The sublime view containing the bracket (don't change this).</td>
+</tr>
+<tr>
+<td>left</td>
+<td>A bracket region for the opening bracket (can be changed).</td>
+</tr>
+<tr>
+<td>right</td>
+<td>A bracket region for the closing bracket (can be changed).</td>
+</tr>
+<tr>
+<td>selection</td>
+<td>An array containing the selection that triggered the match (can be changed).</td>
+</tr>
+</tbody>
+</table>
+<p>BracketPluginCommand methods:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>run</strong>(edit,&nbsp;name,&nbsp;&lt;args&gt;)</td>
+<td>Runs the plugin. <code>edit</code> is a sublime edit object. <code>name</code> is the bracket definition being evaluated.</td>
+</tr>
+</tbody>
+</table>
+<p>Example (from foldbracket.py):</p>
+<pre><code class="python">import BracketHighlighter.bh_plugin as bh_plugin
+import sublime
+
+
+class FoldBrackets(bh_plugin.BracketPluginCommand):
+    def run(self, edit, name):
+        content = sublime.Region(self.left.end, self.right.begin)
+        new_content = [content]
+        if content.size() &gt; 0:
+            if self.view.fold(content) == False:
+                new_content = self.view.unfold(content)
+        self.selection = new_content
+
+
+def plugin():
+    return FoldBrackets
+</code></pre></div>
+            
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+            <p>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+
+        
+
+        <script src="../js/jquery-1.10.2.min.js"></script>
+        <script src="../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../js/highlight.pack.js"></script>
+        <script src="../js/base.js"></script>
+
+        <!--
+        MkDocs version  : 0.12.1
+        Docs Build Date : 2015-04-20 01:43:42.776077
+        -->
+    </body>
+</html>
