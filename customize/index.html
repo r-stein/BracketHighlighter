@@ -16,13 +16,13 @@
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
   <link rel="stylesheet" href="../css/highlight.css">
-  <link href="../css/inlinehilite.css" rel="stylesheet">
+  <link href="../css/theme_custom.css" rel="stylesheet">
 
   <script src="../js/jquery-2.1.1.min.js"></script>
   <script src="../js/modernizr-2.8.3.min.js"></script>
   <script type="text/javascript" src="../js/highlight.pack.js"></script>
   <script src="../js/theme.js"></script>
-  <script src="../js/inlinehilite.js"></script> 
+  <script src="../js/theme_custom.js"></script> 
 
   
 </head>
@@ -126,7 +126,7 @@
 <p>Brackets are defined under <code class="inlinehilite language-text">brackets</code> in <code class="inlinehilite language-text">bh_core.sublime-settings</code>.</p>
 <p>Brackets can be modified or even added without copying the entire bracket rule lists to the user settings.  See <a href="#bracket-rule-management">Bracket Rule Management</a> for more info.</p>
 <p>Angle and Curly bracket will be used as an example (not all options may be shown in these examples):</p>
-<p><pre><code class="javascript">        {
+<pre><code class="javascript">        {
             &quot;name&quot;: &quot;angle&quot;,
             &quot;open&quot;: &quot;(&lt;)&quot;,
             &quot;close&quot;: &quot;(&gt;)&quot;,
@@ -151,25 +151,70 @@
             &quot;enabled&quot;: true
         },
 </code></pre>
-| Parameter | Description |
-|-----------|-------------|
-| name | The name of the bracket (should be unique) |
-| open | Defines the opening bracket (one and only one capturing group must be present) |
-| close | Defines the closing bracket (one and only one capturing group must be present) |
-| style | Name of style definition to be used to highlight the brackets.  See <code class="inlinehilite language-text">Configuring Bracket Styles</code> for more info. |
-| scope_exclude | Scopes where the opening and closing brackets should be ignored. |
-| language_filter | This works in conjunction with <code class="inlinehilite language-text">language_list</code>.  It specifies whether <code class="inlinehilite language-text">language_list</code> is a <code class="inlinehilite language-text">blacklist</code> or <code class="inlinehilite language-text">whitelist</code>. |
-| language_list | An array of tmLanguage file names that should be avoided or included for highlighting.  Looks to <code class="inlinehilite language-text">language_filter</code> to determine if avoidance or inclusion is used. |
-| enabled | Disable or enable rule. |
-| scope_exclude_exceptions&nbsp;(optional) | Used to ignore excluding of sub scopes such as in the curly example above where <code class="inlinehilite language-text">string</code> is excluded, but not <code class="inlinehilite language-text">string.other.math.block.environment.latex</code>. |
-| plugin_library&nbsp;(optional) | Defines plugin to use for determining matches (see Bracket Plugin API for more info on matching plugins). |
-| find_in_sub_search&nbsp;(optional) | This rule should be included when doing sub bracket matching in <code class="inlinehilite language-text">scope_brackets</code> (like finding round brackets between quotes etc.).  The setting must be as string and can be either (true|false|only); only means this bracket is only matched as a sub bracket of a <code class="inlinehilite language-text">scope_bracket</code>. |
-| ignore_string_escape&nbsp;(optional) | Do not ignore sub brackets found in strings and regex when escaped, but use internal escape logic to determine if the brackets should be ignored based on whether regex or string escape mode is set. |</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>The name of the bracket (should be unique)</td>
+</tr>
+<tr>
+<td>open</td>
+<td>Defines the opening bracket (one and only one capturing group must be present)</td>
+</tr>
+<tr>
+<td>close</td>
+<td>Defines the closing bracket (one and only one capturing group must be present)</td>
+</tr>
+<tr>
+<td>style</td>
+<td>Name of style definition to be used to highlight the brackets.  See <code class="inlinehilite language-text">Configuring Bracket Styles</code> for more info.</td>
+</tr>
+<tr>
+<td>scope_exclude</td>
+<td>Scopes where the opening and closing brackets should be ignored.</td>
+</tr>
+<tr>
+<td>language_filter</td>
+<td>This works in conjunction with <code class="inlinehilite language-text">language_list</code>.  It specifies whether <code class="inlinehilite language-text">language_list</code> is a <code class="inlinehilite language-text">blacklist</code> or <code class="inlinehilite language-text">whitelist</code>.</td>
+</tr>
+<tr>
+<td>language_list</td>
+<td>An array of tmLanguage file names that should be avoided or included for highlighting.  Looks to <code class="inlinehilite language-text">language_filter</code> to determine if avoidance or inclusion is used.</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td>Disable or enable rule.</td>
+</tr>
+<tr>
+<td>scope_exclude_exceptions&nbsp;(optional)</td>
+<td>Used to ignore excluding of sub scopes such as in the curly example above where <code class="inlinehilite language-text">string</code> is excluded, but not <code class="inlinehilite language-text">string.other.math.block.environment.latex</code>.</td>
+</tr>
+<tr>
+<td>plugin_library&nbsp;(optional)</td>
+<td>Defines plugin to use for determining matches (see Bracket Plugin API for more info on matching plugins).</td>
+</tr>
+<tr>
+<td>find_in_sub_search&nbsp;(optional)</td>
+<td>This rule should be included when doing sub bracket matching in <code class="inlinehilite language-text">scope_brackets</code> (like finding round brackets between quotes etc.).  The setting must be as string and can be either (true</td>
+</tr>
+<tr>
+<td>ignore_string_escape&nbsp;(optional)</td>
+<td>Do not ignore sub brackets found in strings and regex when escaped, but use internal escape logic to determine if the brackets should be ignored based on whether regex or string escape mode is set.</td>
+</tr>
+</tbody>
+</table>
 <h3 id="configuring-scope-brackets-rules">Configuring Scope Brackets Rules</h3>
 <p>Scope Brackets are defined under <code class="inlinehilite language-text">scope_brackets</code> in <code class="inlinehilite language-text">bh_core.sublime-settings</code>.</p>
 <p>Brackets can be modified or even added without copying the entire bracket rule lists to the user settings.  See <a href="#bracket-rule-management">Bracket Rule Management</a> for more info.</p>
 <p>Python Single Quote bracket will be used as an example (not all options are shown in this example):</p>
-<p><pre><code class="javascript">        {
+<pre><code class="javascript">        {
             &quot;name&quot;: &quot;py_single_quote&quot;,
             &quot;open&quot;: &quot;u?r?((?:'')?')&quot;,
             &quot;close&quot;: &quot;((?:'')?')&quot;,
@@ -181,18 +226,57 @@
             &quot;enabled&quot;: true
         },
 </code></pre>
-| Parameters | Description |
-|------------|-------------|
-| name | The name of the bracket (should be unique). |
-| open | Defines the opening bracket (one and only one capturing group must be present). |
-| close | Defines the closing bracket (one and only one capturing group must be present). |
-| style | Name of style definition to be used to highlight the brackets.  See <code class="inlinehilite language-text">Configuring Bracket Styles</code> for more info. |
-| scopes | Scope that should be searched to find the opening and closing brackets. |
-| language_filter | This works in conjunction with <code class="inlinehilite language-text">language_list</code>.  It specifies whether <code class="inlinehilite language-text">language_list</code> is a <code class="inlinehilite language-text">blacklist</code> or <code class="inlinehilite language-text">whitelist</code>. |
-| language_list | An array of tmLanguage file names that should be avoided or included for highlighting.  Looks to <code class="inlinehilite language-text">language_filter</code> to determine if avoidance or inclusion is used. |
-| sub_bracket_search | Should this scope bracket also search for sub brackets (like curly brackets in strings etc.). |
-| enabled | Disable or enable rule. |
-| plugin_library&nbsp;(optional) | Defines plugin to use for determining matches (see Bracket Plugin API for more info on matching plugins). |</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameters</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>The name of the bracket (should be unique).</td>
+</tr>
+<tr>
+<td>open</td>
+<td>Defines the opening bracket (one and only one capturing group must be present).</td>
+</tr>
+<tr>
+<td>close</td>
+<td>Defines the closing bracket (one and only one capturing group must be present).</td>
+</tr>
+<tr>
+<td>style</td>
+<td>Name of style definition to be used to highlight the brackets.  See <code class="inlinehilite language-text">Configuring Bracket Styles</code> for more info.</td>
+</tr>
+<tr>
+<td>scopes</td>
+<td>Scope that should be searched to find the opening and closing brackets.</td>
+</tr>
+<tr>
+<td>language_filter</td>
+<td>This works in conjunction with <code class="inlinehilite language-text">language_list</code>.  It specifies whether <code class="inlinehilite language-text">language_list</code> is a <code class="inlinehilite language-text">blacklist</code> or <code class="inlinehilite language-text">whitelist</code>.</td>
+</tr>
+<tr>
+<td>language_list</td>
+<td>An array of tmLanguage file names that should be avoided or included for highlighting.  Looks to <code class="inlinehilite language-text">language_filter</code> to determine if avoidance or inclusion is used.</td>
+</tr>
+<tr>
+<td>sub_bracket_search</td>
+<td>Should this scope bracket also search for sub brackets (like curly brackets in strings etc.).</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td>Disable or enable rule.</td>
+</tr>
+<tr>
+<td>plugin_library&nbsp;(optional)</td>
+<td>Defines plugin to use for determining matches (see Bracket Plugin API for more info on matching plugins).</td>
+</tr>
+</tbody>
+</table>
 <h3 id="bracket-rule-management">Bracket Rule Management</h3>
 <p>In the past, BracketHighlighter required a user to copy the entire bracket list to the user <code class="inlinehilite language-text">bh_core.sublime-settings</code> file.  This was a cumbersome requirement that also punished a user because if they did this, they wouldn&rsquo;t automatically get updates to the rules as all the rules were now overridden by the user&rsquo;s settings file.</p>
 <p>BracketHighlighter now let&rsquo;s you add or modify existing rules without overriding the entire ruleset or even the entire target rule.  Let&rsquo;s say you have a custom language you want to have on your machine. Now, you can simply add it to one of the two settings arrays: &ldquo;user_scope_brackets&rdquo; and &ldquo;user_brackets&rdquo;:</p>
@@ -301,7 +385,7 @@
 <h2 id="configuring-highlight-style">Configuring Highlight Style</h2>
 <p>Each bracket definition (described in <code class="inlinehilite language-text">Configuring Scope Brackets</code> and <code class="inlinehilite language-text">Configuring Brackets</code>) has a <code class="inlinehilite language-text">style</code> setting that you give a style definition to.  Style definitions are defined under <code class="inlinehilite language-text">bracket_styles</code> in <code class="inlinehilite language-text">bh_core.sublime-settings</code>.</p>
 <p>There are two special style definitions whose names are reserved: <code class="inlinehilite language-text">default</code> and <code class="inlinehilite language-text">unmatched</code>, but you can configure them.  All other custom style definitions follow the same pattern (see <code class="inlinehilite language-text">curly</code> below and compare to the special style defintions; format is the same)  All custom styles follow this pattern.  See description below:</p>
-<p><pre><code class="javascript">        // &quot;default&quot; style defines attributes that
+<pre><code class="javascript">        // &quot;default&quot; style defines attributes that
         // will be used for any style that does not
         // explicitly define that attribute.  So if
         // a style does not define a color, it will
@@ -333,15 +417,36 @@
             &quot;style&quot;: &quot;outline&quot;
         },
 </code></pre>
-|Parameter | Description |
-|----------|-------------|
-| icon | Icon to show in gutter. Available options are: <code class="inlinehilite language-text">angle</code>, <code class="inlinehilite language-text">round</code>, <code class="inlinehilite language-text">curly</code>, <code class="inlinehilite language-text">square</code>, <code class="inlinehilite language-text">tag</code>, <code class="inlinehilite language-text">star</code>, <code class="inlinehilite language-text">dot</code>, <code class="inlinehilite language-text">bookmark</code>, <code class="inlinehilite language-text">question</code>, <code class="inlinehilite language-text">quote</code>, <code class="inlinehilite language-text">double_quote</code>, <code class="inlinehilite language-text">single_quote</code>, <code class="inlinehilite language-text">single_quote_offset</code>, <code class="inlinehilite language-text">double_quote_offset</code>, <code class="inlinehilite language-text">none</code>. |
-| color | Scope to define color. |
-| style | Higlight style.  Available options are: <code class="inlinehilite language-text">solid</code>, <code class="inlinehilite language-text">outline</code>, <code class="inlinehilite language-text">underline</code>, <code class="inlinehilite language-text">none</code>.  ST3 has additional styles: <code class="inlinehilite language-text">thin_underline</code>, <code class="inlinehilite language-text">squiggly</code>, <code class="inlinehilite language-text">stippled</code>. |
-| endpoint | Boolean to highlight just the beginning and end of bracket. This is useful for things like tags where it may be distracting highlighting the entire tag. |</p>
+
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>icon</td>
+<td>Icon to show in gutter. Available options are: <code class="inlinehilite language-text">angle</code>, <code class="inlinehilite language-text">round</code>, <code class="inlinehilite language-text">curly</code>, <code class="inlinehilite language-text">square</code>, <code class="inlinehilite language-text">tag</code>, <code class="inlinehilite language-text">star</code>, <code class="inlinehilite language-text">dot</code>, <code class="inlinehilite language-text">bookmark</code>, <code class="inlinehilite language-text">question</code>, <code class="inlinehilite language-text">quote</code>, <code class="inlinehilite language-text">double_quote</code>, <code class="inlinehilite language-text">single_quote</code>, <code class="inlinehilite language-text">single_quote_offset</code>, <code class="inlinehilite language-text">double_quote_offset</code>, <code class="inlinehilite language-text">none</code>.</td>
+</tr>
+<tr>
+<td>color</td>
+<td>Scope to define color.</td>
+</tr>
+<tr>
+<td>style</td>
+<td>Higlight style.  Available options are: <code class="inlinehilite language-text">solid</code>, <code class="inlinehilite language-text">outline</code>, <code class="inlinehilite language-text">underline</code>, <code class="inlinehilite language-text">none</code>.  ST3 has additional styles: <code class="inlinehilite language-text">thin_underline</code>, <code class="inlinehilite language-text">squiggly</code>, <code class="inlinehilite language-text">stippled</code>.</td>
+</tr>
+<tr>
+<td>endpoint</td>
+<td>Boolean to highlight just the beginning and end of bracket. This is useful for things like tags where it may be distracting highlighting the entire tag.</td>
+</tr>
+</tbody>
+</table>
 <p>As shown in the example above, if an option is omitted, it will use the setting in <code class="inlinehilite language-text">default</code>.  So <code class="inlinehilite language-text">curly</code>, in this example, defines <code class="inlinehilite language-text">icon</code>, but will use <code class="inlinehilite language-text">default</code> for the <code class="inlinehilite language-text">color</code> and <code class="inlinehilite language-text">style</code>.</p>
 <p>To customize the color for <code class="inlinehilite language-text">curly</code> you can create your own custom scope.</p>
-<p>Add this to your color scheme:
+<p>Add this to your color scheme:<br />
 <pre><code class="xml">        &lt;dict&gt;
             &lt;key&gt;name&lt;/key&gt;
             &lt;string&gt;Bracket Curly&lt;/string&gt;
@@ -354,7 +459,7 @@
             &lt;/dict&gt;
         &lt;/dict&gt;
 </code></pre></p>
-<p>And then use the scope:
+<p>And then use the scope:<br />
 <pre><code class="javascript">        &quot;curly&quot;: {
             &quot;icon&quot;: &quot;curly_bracket&quot;
             &quot;color&quot;: &quot;brackethighlighter.curly&quot;,
@@ -690,7 +795,7 @@ end
 </tr>
 </tbody>
 </table>
-<p>Example (from phphekywords.py):
+<p>Example (from phphekywords.py):<br />
 <pre><code class="python">def compare(name, first, second, bfr):
     return &quot;end&quot; + bfr[first.begin:first.end].lower() == bfr[second.begin:second.end].lower()
 </code></pre></p>
@@ -758,7 +863,7 @@ end
 </tr>
 </tbody>
 </table>
-<p>Example (from rubykeywords.py):
+<p>Example (from rubykeywords.py):<br />
 <pre><code class="python">import re
 
 
@@ -772,7 +877,7 @@ def post_match(view, name, style, first, second, center, bfr, threshold):
                 first = first.move(first.begin + m.end(1), first.end)
     return first, second, style
 </code></pre></p>
-<p>Example (snippet from tags.py)
+<p>Example (snippet from tags.py)<br />
 <pre><code class="python">def post_match(view, name, style, first, second, center, bfr, threshold):
     left, right = first, second
     threshold = [0, len(bfr)] if threshold is None else threshold
@@ -859,7 +964,7 @@ def post_match(view, name, style, first, second, center, bfr, threshold):
 
 <h2 id="run-instance-plugins">&lsquo;Run Instance&rsquo; Plugins</h2>
 <p><code class="inlinehilite language-text">Run instance</code> plugins are fed into the command executing a BracketHighlighter match via the <code class="inlinehilite language-text">plugin</code> parameter.</p>
-<p>Example of run instance plugin getting called:
+<p>Example of run instance plugin getting called:<br />
 <pre><code class="javascript">// Go to left bracket
     {
         &quot;caption&quot;: &quot;BracketHighlighter: Jump to Left Bracket&quot;,
@@ -942,7 +1047,7 @@ def post_match(view, name, style, first, second, center, bfr, threshold):
 </tr>
 </tbody>
 </table>
-<p>Example (from foldbracket.py):
+<p>Example (from foldbracket.py):<br />
 <pre><code class="python">import BracketHighlighter.bh_plugin as bh_plugin
 import sublime
 
@@ -1002,7 +1107,7 @@ def plugin():
 
 <!--
 MkDocs version  : 0.12.1
-Docs Build Date : 2015-04-20 07:29:49.242198
+Docs Build Date : 2015-04-21 01:19:25.572209
 -->
 </body>
 </html>
