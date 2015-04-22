@@ -15,14 +15,12 @@
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_custom.css" type="text/css" />
   <link rel="stylesheet" href="../css/highlight.css">
-  <link href="../css/theme_custom.css" rel="stylesheet">
 
   <script src="../js/jquery-2.1.1.min.js"></script>
   <script src="../js/modernizr-2.8.3.min.js"></script>
-  <script type="text/javascript" src="../js/highlight.pack.js"></script>
-  <script src="../js/theme.js"></script>
-  <script src="../js/theme_custom.js"></script> 
+  <script src="../js/theme.js"></script> 
 
   
 </head>
@@ -117,40 +115,43 @@
 </div>
           <div role="main">
             <div class="section">
-              <h1 id="customizing-brackethighlighter">Customizing BracketHighlighter</h1>
-<p>BH is extremely flexible and can be customized and extended to fit a user&rsquo;s needs.  The first step is to create a <code class="inlinehilite language-text">bh_core.sublime-settings</code> in your <code class="inlinehilite language-text">User</code> folder.</p>
-<h2 id="configuring-brackets">Configuring Brackets</h2>
-<p>BH has been written to allow users to define any brackets they would like to have highlighted.  There are two kinds of brackets you can define: <code class="inlinehilite language-text">scope_brackets</code> (search file for scope regions and then use regex to test for opening and closing brackets) and <code class="inlinehilite language-text">brackets</code> (use regex to find opening and closing brackets).  <code class="inlinehilite language-text">bracket</code> type should usually be the preferred type.  <code class="inlinehilite language-text">scope_brackets</code> are usually used for brackets whose opening and closing are the same and not distinguishable form one another by regex; scope brackets must be contained in a continuous scope region like string for quotes etc.</p>
+              <h1 id="customizing-brackethighlighter"><a name="user-content-customizing-brackethighlighter" href="#customizing-brackethighlighter" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Customizing BracketHighlighter</h1>
+<p>BH is extremely flexible and can be customized and extended to fit a user&rsquo;s needs.  The first step is to create a <code>bh_core.sublime-settings</code> in your <code>User</code> folder.</p>
+<h2 id="configuring-brackets"><a name="user-content-configuring-brackets" href="#configuring-brackets" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Configuring Brackets</h2>
+<p>BH has been written to allow users to define any brackets they would like to have highlighted.  There are two kinds of brackets you can define: <code>scope_brackets</code> (search file for scope regions and then use regex to test for opening and closing brackets) and <code>brackets</code> (use regex to find opening and closing brackets).  <code>bracket</code> type should usually be the preferred type.  <code>scope_brackets</code> are usually used for brackets whose opening and closing are the same and not distinguishable form one another by regex; scope brackets must be contained in a continuous scope region like string for quotes etc.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <p>Brackets can be modified or even added without copying the entire bracket rule lists to the user settings.  See <a href="#bracket-rule-management">Bracket Rule Management</a> for more info.</p>
-<h3 id="configuring-brackets-rules">Configuring Brackets Rules</h3>
-<p>Brackets are defined under <code class="inlinehilite language-text">brackets</code> in <code class="inlinehilite language-text">bh_core.sublime-settings</code>.</p>
-<p>Brackets can be modified or even added without copying the entire bracket rule lists to the user settings.  See <a href="#bracket-rule-management">Bracket Rule Management</a> for more info.</p>
+</div>
+<h3 id="configuring-brackets-rules"><a name="user-content-configuring-brackets-rules" href="#configuring-brackets-rules" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Configuring Brackets Rules</h3>
+<p>Brackets are defined under <code>brackets</code> in <code>bh_core.sublime-settings</code>.</p>
 <p>Angle and Curly bracket will be used as an example (not all options may be shown in these examples):</p>
-<pre><code class="javascript">        {
-            &quot;name&quot;: &quot;angle&quot;,
-            &quot;open&quot;: &quot;(&lt;)&quot;,
-            &quot;close&quot;: &quot;(&gt;)&quot;,
-            &quot;style&quot;: &quot;angle&quot;,
-            &quot;scope_exclude&quot;: [&quot;string&quot;, &quot;comment&quot;, &quot;keyword.operator&quot;],
-            &quot;language_filter&quot;: &quot;whitelist&quot;,
-            &quot;language_list&quot;: [&quot;HTML&quot;, &quot;HTML 5&quot;, &quot;XML&quot;, &quot;PHP&quot;, &quot;HTML+CFML&quot;, &quot;ColdFusion&quot;, &quot;ColdFusionCFC&quot;],
-            &quot;plugin_library&quot;: &quot;bh_modules.tags&quot;,
-            &quot;enabled&quot;: true
-        },
-        {
-            &quot;name&quot;: &quot;curly&quot;,
-            &quot;open&quot;: &quot;(\\{)&quot;,
-            &quot;close&quot;: &quot;(\\})&quot;,
-            &quot;style&quot;: &quot;curly&quot;,
-            &quot;scope_exclude&quot;: [&quot;string&quot;, &quot;comment&quot;],
-            &quot;scope_exclude_exceptions&quot;: [&quot;string.other.math.block.environment.latex&quot;],
-            &quot;language_filter&quot;: &quot;blacklist&quot;,
-            &quot;language_list&quot;: [&quot;Plain text&quot;],
-            &quot;find_in_sub_search&quot;: &quot;true&quot;,
-            &quot;ignore_string_escape&quot;: true,
-            &quot;enabled&quot;: true
-        },
-</code></pre>
+<div class="codehilite"><pre>        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;angle&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;open&quot;</span><span class="o">:</span> <span class="s2">&quot;(&lt;)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;close&quot;</span><span class="o">:</span> <span class="s2">&quot;(&gt;)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="s2">&quot;angle&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;scope_exclude&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;comment&quot;</span><span class="p">,</span> <span class="s2">&quot;keyword.operator&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;language_filter&quot;</span><span class="o">:</span> <span class="s2">&quot;whitelist&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;language_list&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;HTML&quot;</span><span class="p">,</span> <span class="s2">&quot;HTML 5&quot;</span><span class="p">,</span> <span class="s2">&quot;XML&quot;</span><span class="p">,</span> <span class="s2">&quot;PHP&quot;</span><span class="p">,</span> <span class="s2">&quot;HTML+CFML&quot;</span><span class="p">,</span> <span class="s2">&quot;ColdFusion&quot;</span><span class="p">,</span> <span class="s2">&quot;ColdFusionCFC&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;plugin_library&quot;</span><span class="o">:</span> <span class="s2">&quot;bh_modules.tags&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;curly&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;open&quot;</span><span class="o">:</span> <span class="s2">&quot;(\\{)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;close&quot;</span><span class="o">:</span> <span class="s2">&quot;(\\})&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="s2">&quot;curly&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;scope_exclude&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;comment&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;scope_exclude_exceptions&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;string.other.math.block.environment.latex&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;language_filter&quot;</span><span class="o">:</span> <span class="s2">&quot;blacklist&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;language_list&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;Plain text&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;find_in_sub_search&quot;</span><span class="o">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ignore_string_escape&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+</pre></div>
+
 
 <table>
 <thead>
@@ -174,7 +175,7 @@
 </tr>
 <tr>
 <td>style</td>
-<td>Name of style definition to be used to highlight the brackets.  See <code class="inlinehilite language-text">Configuring Bracket Styles</code> for more info.</td>
+<td>Name of style definition to be used to highlight the brackets.  See <code>Configuring Bracket Styles</code> for more info.</td>
 </tr>
 <tr>
 <td>scope_exclude</td>
@@ -182,11 +183,11 @@
 </tr>
 <tr>
 <td>language_filter</td>
-<td>This works in conjunction with <code class="inlinehilite language-text">language_list</code>.  It specifies whether <code class="inlinehilite language-text">language_list</code> is a <code class="inlinehilite language-text">blacklist</code> or <code class="inlinehilite language-text">whitelist</code>.</td>
+<td>This works in conjunction with <code>language_list</code>.  It specifies whether <code>language_list</code> is a <code>blacklist</code> or <code>whitelist</code>.</td>
 </tr>
 <tr>
 <td>language_list</td>
-<td>An array of tmLanguage file names that should be avoided or included for highlighting.  Looks to <code class="inlinehilite language-text">language_filter</code> to determine if avoidance or inclusion is used.</td>
+<td>An array of tmLanguage file names that should be avoided or included for highlighting.  Looks to <code>language_filter</code> to determine if avoidance or inclusion is used.</td>
 </tr>
 <tr>
 <td>enabled</td>
@@ -194,7 +195,7 @@
 </tr>
 <tr>
 <td>scope_exclude_exceptions&nbsp;(optional)</td>
-<td>Used to ignore excluding of sub scopes such as in the curly example above where <code class="inlinehilite language-text">string</code> is excluded, but not <code class="inlinehilite language-text">string.other.math.block.environment.latex</code>.</td>
+<td>Used to ignore excluding of sub scopes such as in the curly example above where <code>string</code> is excluded, but not <code>string.other.math.block.environment.latex</code>.</td>
 </tr>
 <tr>
 <td>plugin_library&nbsp;(optional)</td>
@@ -202,7 +203,7 @@
 </tr>
 <tr>
 <td>find_in_sub_search&nbsp;(optional)</td>
-<td>This rule should be included when doing sub bracket matching in <code class="inlinehilite language-text">scope_brackets</code> (like finding round brackets between quotes etc.).  The setting must be as string and can be either (true</td>
+<td>This rule should be included when doing sub bracket matching in <code>scope_brackets</code> (like finding round brackets between quotes etc.).  The setting must be as string and can be either (true</td>
 </tr>
 <tr>
 <td>ignore_string_escape&nbsp;(optional)</td>
@@ -210,22 +211,22 @@
 </tr>
 </tbody>
 </table>
-<h3 id="configuring-scope-brackets-rules">Configuring Scope Brackets Rules</h3>
-<p>Scope Brackets are defined under <code class="inlinehilite language-text">scope_brackets</code> in <code class="inlinehilite language-text">bh_core.sublime-settings</code>.</p>
-<p>Brackets can be modified or even added without copying the entire bracket rule lists to the user settings.  See <a href="#bracket-rule-management">Bracket Rule Management</a> for more info.</p>
+<h3 id="configuring-scope-brackets-rules"><a name="user-content-configuring-scope-brackets-rules" href="#configuring-scope-brackets-rules" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Configuring Scope Brackets Rules</h3>
+<p>Scope Brackets are defined under <code>scope_brackets</code> in <code>bh_core.sublime-settings</code>.</p>
 <p>Python Single Quote bracket will be used as an example (not all options are shown in this example):</p>
-<pre><code class="javascript">        {
-            &quot;name&quot;: &quot;py_single_quote&quot;,
-            &quot;open&quot;: &quot;u?r?((?:'')?')&quot;,
-            &quot;close&quot;: &quot;((?:'')?')&quot;,
-            &quot;style&quot;: &quot;single_quote&quot;,
-            &quot;scopes&quot;: [&quot;string&quot;],
-            &quot;language_filter&quot;: &quot;whitelist&quot;,
-            &quot;language_list&quot;: [&quot;Python&quot;],
-            &quot;sub_bracket_search&quot;: &quot;true&quot;,
-            &quot;enabled&quot;: true
-        },
-</code></pre>
+<div class="codehilite"><pre>        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;py_single_quote&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;open&quot;</span><span class="o">:</span> <span class="s2">&quot;u?r?((?:&#39;&#39;)?&#39;)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;close&quot;</span><span class="o">:</span> <span class="s2">&quot;((?:&#39;&#39;)?&#39;)&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="s2">&quot;single_quote&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;scopes&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;language_filter&quot;</span><span class="o">:</span> <span class="s2">&quot;whitelist&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;language_list&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;Python&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;sub_bracket_search&quot;</span><span class="o">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">},</span>
+</pre></div>
+
 
 <table>
 <thead>
@@ -249,7 +250,7 @@
 </tr>
 <tr>
 <td>style</td>
-<td>Name of style definition to be used to highlight the brackets.  See <code class="inlinehilite language-text">Configuring Bracket Styles</code> for more info.</td>
+<td>Name of style definition to be used to highlight the brackets.  See <code>Configuring Bracket Styles</code> for more info.</td>
 </tr>
 <tr>
 <td>scopes</td>
@@ -257,11 +258,11 @@
 </tr>
 <tr>
 <td>language_filter</td>
-<td>This works in conjunction with <code class="inlinehilite language-text">language_list</code>.  It specifies whether <code class="inlinehilite language-text">language_list</code> is a <code class="inlinehilite language-text">blacklist</code> or <code class="inlinehilite language-text">whitelist</code>.</td>
+<td>This works in conjunction with <code>language_list</code>.  It specifies whether <code>language_list</code> is a <code>blacklist</code> or <code>whitelist</code>.</td>
 </tr>
 <tr>
 <td>language_list</td>
-<td>An array of tmLanguage file names that should be avoided or included for highlighting.  Looks to <code class="inlinehilite language-text">language_filter</code> to determine if avoidance or inclusion is used.</td>
+<td>An array of tmLanguage file names that should be avoided or included for highlighting.  Looks to <code>language_filter</code> to determine if avoidance or inclusion is used.</td>
 </tr>
 <tr>
 <td>sub_bracket_search</td>
@@ -277,146 +278,153 @@
 </tr>
 </tbody>
 </table>
-<h3 id="bracket-rule-management">Bracket Rule Management</h3>
-<p>In the past, BracketHighlighter required a user to copy the entire bracket list to the user <code class="inlinehilite language-text">bh_core.sublime-settings</code> file.  This was a cumbersome requirement that also punished a user because if they did this, they wouldn&rsquo;t automatically get updates to the rules as all the rules were now overridden by the user&rsquo;s settings file.</p>
+<h3 id="bracket-rule-management"><a name="user-content-bracket-rule-management" href="#bracket-rule-management" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Bracket Rule Management</h3>
+<p>In the past, BracketHighlighter required a user to copy the entire bracket list to the user <code>bh_core.sublime-settings</code> file.  This was a cumbersome requirement that also punished a user because if they did this, they wouldn&rsquo;t automatically get updates to the rules as all the rules were now overridden by the user&rsquo;s settings file.</p>
 <p>BracketHighlighter now let&rsquo;s you add or modify existing rules without overriding the entire ruleset or even the entire target rule.  Let&rsquo;s say you have a custom language you want to have on your machine. Now, you can simply add it to one of the two settings arrays: &ldquo;user_scope_brackets&rdquo; and &ldquo;user_brackets&rdquo;:</p>
-<pre><code class="js">    &quot;user_scope_brackets&quot;: [],
-    &quot;user_brackets&quot;: [
-        {
-            &quot;name&quot;: &quot;mylang&quot;,
-            &quot;open&quot;: &quot;^\\s*\\b(if|subr|bytemap|enum|command|for|while|macro|do)\\b&quot;,
-            &quot;close&quot;: &quot;\\b(e(?:if|subr|bytemap|enum|command|for|while|macro)|until)\\b&quot;,
-            &quot;style&quot;: &quot;default&quot;,
-            &quot;scope_exclude&quot;: [&quot;string&quot;, &quot;comment&quot;],
-            &quot;plugin_library&quot;: &quot;User.bh_modules.mylangkeywords&quot;,
-            &quot;language_filter&quot;: &quot;whitelist&quot;,
-            &quot;language_list&quot;: [&quot;mylang&quot;],
-            &quot;enabled&quot;: true
-        }
-    ],
-</code></pre>
+<div class="codehilite"><pre>    <span class="s2">&quot;user_scope_brackets&quot;</span><span class="o">:</span> <span class="p">[],</span>
+    <span class="s2">&quot;user_brackets&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;mylang&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;open&quot;</span><span class="o">:</span> <span class="s2">&quot;^\\s*\\b(if|subr|bytemap|enum|command|for|while|macro|do)\\b&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;close&quot;</span><span class="o">:</span> <span class="s2">&quot;\\b(e(?:if|subr|bytemap|enum|command|for|while|macro)|until)\\b&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;scope_exclude&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;comment&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;plugin_library&quot;</span><span class="o">:</span> <span class="s2">&quot;User.bh_modules.mylangkeywords&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;language_filter&quot;</span><span class="o">:</span> <span class="s2">&quot;whitelist&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;language_list&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;mylang&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+</pre></div>
+
 
 <p>Let&rsquo;s say you want to modify an existing rule, maybe just tweak the language list, all you have to do is use the same name and the item you want to change. Only that attribute will be overridden:</p>
-<pre><code class="js">    &quot;user_brackets&quot;: [
-        // Angle
-        {
-            &quot;name&quot;: &quot;angle&quot;,
-            &quot;language_list&quot;: [
-                &quot;HTML&quot;, &quot;HTML 5&quot;, &quot;XML&quot;, &quot;PHP&quot;, &quot;HTML (Rails)&quot;,
-                &quot;HTML (Jinja Templates)&quot;, &quot;HTML (Twig)&quot;, &quot;HTML+CFML&quot;,
-                &quot;ColdFusion&quot;, &quot;ColdFusionCFC&quot;, &quot;laravel-blade&quot;,
-                &quot;Handlebars&quot;, &quot;AngularJS&quot;,
-                &quot;SomeNewLanguage&quot; // &lt;--- New language
-            ]
-        }
-    ],
-</code></pre>
+<div class="codehilite"><pre>    <span class="s2">&quot;user_brackets&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="c1">// Angle</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;angle&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;language_list&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="s2">&quot;HTML&quot;</span><span class="p">,</span> <span class="s2">&quot;HTML 5&quot;</span><span class="p">,</span> <span class="s2">&quot;XML&quot;</span><span class="p">,</span> <span class="s2">&quot;PHP&quot;</span><span class="p">,</span> <span class="s2">&quot;HTML (Rails)&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;HTML (Jinja Templates)&quot;</span><span class="p">,</span> <span class="s2">&quot;HTML (Twig)&quot;</span><span class="p">,</span> <span class="s2">&quot;HTML+CFML&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;ColdFusion&quot;</span><span class="p">,</span> <span class="s2">&quot;ColdFusionCFC&quot;</span><span class="p">,</span> <span class="s2">&quot;laravel-blade&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Handlebars&quot;</span><span class="p">,</span> <span class="s2">&quot;AngularJS&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;SomeNewLanguage&quot;</span> <span class="c1">// &lt;--- New language</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+</pre></div>
 
-<p>Let&rsquo;s say you want to insert a new rule between two rules. You can turn on debug mode and call the <code class="inlinehilite language-text">BracketHighlighter: (Debug) Filter Rules by Key</code> then select position to see the current rule order and their postion index.  To turn on Debug mode, just add <code class="inlinehilite language-text">&quot;debug_enable&quot;: true</code> to your user settings file.</p>
-<p>Example of <code class="inlinehilite language-text">BracketHighlighter: (Debug) Filter Rules by Key</code> output:</p>
-<pre><code class="js">[
-    [
-        {&quot;name&quot;: &quot;curly&quot;, &quot;position&quot;: 0},
-        {&quot;name&quot;: &quot;round&quot;, &quot;position&quot;: 1},
-        {&quot;name&quot;: &quot;square&quot;, &quot;position&quot;: 2},
-        {&quot;name&quot;: &quot;html&quot;, &quot;position&quot;: 3},
-        {&quot;name&quot;: &quot;cfml&quot;, &quot;position&quot;: 4},
-        {&quot;name&quot;: &quot;php_angle&quot;, &quot;position&quot;: 5},
-        {&quot;name&quot;: &quot;angle&quot;, &quot;position&quot;: 6},
-        {&quot;name&quot;: &quot;cssedit_groups&quot;, &quot;position&quot;: 7},
-        {&quot;name&quot;: &quot;ruby_embedded_html&quot;, &quot;position&quot;: 8},
-        {&quot;name&quot;: &quot;ruby&quot;, &quot;position&quot;: 9},
-        {&quot;name&quot;: &quot;c_compile_switch&quot;, &quot;position&quot;: 10},
-        {&quot;name&quot;: &quot;php_keywords&quot;, &quot;position&quot;: 11},
-        {&quot;name&quot;: &quot;erlang&quot;, &quot;position&quot;: 12},
-        {&quot;name&quot;: &quot;bash&quot;, &quot;position&quot;: 13},
-        {&quot;name&quot;: &quot;fish&quot;, &quot;position&quot;: 14},
-        {&quot;name&quot;: &quot;mylang&quot;, &quot;position&quot;: 15}
-    ],
-    [
-        {&quot;name&quot;: &quot;py_single_quote&quot;, &quot;position&quot;: 0},
-        {&quot;name&quot;: &quot;py_double_quote&quot;, &quot;position&quot;: 1},
-        {&quot;name&quot;: &quot;single_quote&quot;, &quot;position&quot;: 2},
-        {&quot;name&quot;: &quot;double_quote&quot;, &quot;position&quot;: 3},
-        {&quot;name&quot;: &quot;jsregex&quot;, &quot;position&quot;: 4},
-        {&quot;name&quot;: &quot;perlregex&quot;, &quot;position&quot;: 5},
-        {&quot;name&quot;: &quot;rubyregex&quot;, &quot;position&quot;: 6},
-        {&quot;name&quot;: &quot;mditalic&quot;, &quot;position&quot;: 7},
-        {&quot;name&quot;: &quot;mdbold&quot;, &quot;position&quot;: 8}
-    ]
-]
-</code></pre>
 
-<p>Then you can specify the position you want to insert at using the <code class="inlinehilite language-text">position</code> key:</p>
-<pre><code class="js">    &quot;user_scope_brackets&quot;: [],
-    &quot;user_brackets&quot;: [
-        {
-            &quot;name&quot;: &quot;mylang&quot;,
-            &quot;position&quot;: 4, // &lt;-- New position
-            &quot;open&quot;: &quot;^\\s*\\b(if|subr|bytemap|enum|command|for|while|macro|do)\\b&quot;,
-            &quot;close&quot;: &quot;\\b(e(?:if|subr|bytemap|enum|command|for|while|macro)|until)\\b&quot;,
-            &quot;style&quot;: &quot;default&quot;,
-            &quot;scope_exclude&quot;: [&quot;string&quot;, &quot;comment&quot;],
-            &quot;plugin_library&quot;: &quot;User.bh_modules.mylangkeywords&quot;,
-            &quot;language_filter&quot;: &quot;whitelist&quot;,
-            &quot;language_list&quot;: [&quot;mylang&quot;],
-            &quot;enabled&quot;: true
-        }
-    ],
-</code></pre>
+<p>Let&rsquo;s say you want to insert a new rule between two rules. You can turn on debug mode and call the <code>BracketHighlighter: (Debug) Filter Rules by Key</code> then select position to see the current rule order and their postion index.  To turn on Debug mode, just add <code>&quot;debug_enable&quot;: true</code> to your user settings file.</p>
+<p>Example of <code>BracketHighlighter: (Debug) Filter Rules by Key</code> output:</p>
+<div class="codehilite"><pre><span class="p">[</span>
+    <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;curly&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;round&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;square&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;html&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">3</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;cfml&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;php_angle&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">5</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;angle&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">6</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;cssedit_groups&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">7</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;ruby_embedded_html&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">8</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;ruby&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">9</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;c_compile_switch&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">10</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;php_keywords&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">11</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;erlang&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">12</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;bash&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">13</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;fish&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">14</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;mylang&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">15</span><span class="p">}</span>
+    <span class="p">],</span>
+    <span class="p">[</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;py_single_quote&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;py_double_quote&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;single_quote&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;double_quote&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">3</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;jsregex&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;perlregex&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">5</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;rubyregex&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">6</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;mditalic&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">7</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;mdbold&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">8</span><span class="p">}</span>
+    <span class="p">]</span>
+<span class="p">]</span>
+</pre></div>
+
+
+<p>Then you can specify the position you want to insert at using the <code>position</code> key:</p>
+<div class="codehilite"><pre>    <span class="s2">&quot;user_scope_brackets&quot;</span><span class="o">:</span> <span class="p">[],</span>
+    <span class="s2">&quot;user_brackets&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;mylang&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span> <span class="c1">// &lt;-- New position</span>
+            <span class="s2">&quot;open&quot;</span><span class="o">:</span> <span class="s2">&quot;^\\s*\\b(if|subr|bytemap|enum|command|for|while|macro|do)\\b&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;close&quot;</span><span class="o">:</span> <span class="s2">&quot;\\b(e(?:if|subr|bytemap|enum|command|for|while|macro)|until)\\b&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="s2">&quot;default&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;scope_exclude&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;comment&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;plugin_library&quot;</span><span class="o">:</span> <span class="s2">&quot;User.bh_modules.mylangkeywords&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;language_filter&quot;</span><span class="o">:</span> <span class="s2">&quot;whitelist&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;language_list&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;mylang&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+</pre></div>
+
 
 <p>And if you run the debug command again, you will see that the position has changed:</p>
-<pre><code class="js">        {&quot;name&quot;: &quot;curly&quot;, &quot;position&quot;: 0},
-        {&quot;name&quot;: &quot;round&quot;, &quot;position&quot;: 1},
-        {&quot;name&quot;: &quot;square&quot;, &quot;position&quot;: 2},
-        {&quot;name&quot;: &quot;html&quot;, &quot;position&quot;: 3},
-        {&quot;name&quot;: &quot;trex&quot;, &quot;position&quot;: 4}, // &lt;-- New position
-        {&quot;name&quot;: &quot;cfml&quot;, &quot;position&quot;: 5},
-        {&quot;name&quot;: &quot;php_angle&quot;, &quot;position&quot;: 6},
-</code></pre>
+<div class="codehilite"><pre>        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;curly&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;round&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;square&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;html&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">3</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;trex&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">4</span><span class="p">},</span> <span class="c1">// &lt;-- New position</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;cfml&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">5</span><span class="p">},</span>
+        <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;php_angle&quot;</span><span class="p">,</span> <span class="s2">&quot;position&quot;</span><span class="o">:</span> <span class="mi">6</span><span class="p">},</span>
+</pre></div>
+
 
 <p>This can be used to adjust the position of default rules from your user settings as well as shown by overrides above.</p>
 <p>So, unless you are forking BH to pull request a change to the default rules, you can now modify the rules all in these two settings without copying or touching the default rules:</p>
-<pre><code class="js">    &quot;user_scope_brackets&quot;: [],
-    &quot;user_brackets&quot;: [],
-</code></pre>
+<div class="codehilite"><pre>    <span class="s2">&quot;user_scope_brackets&quot;</span><span class="o">:</span> <span class="p">[],</span>
+    <span class="s2">&quot;user_brackets&quot;</span><span class="o">:</span> <span class="p">[],</span>
+</pre></div>
+
 
 <p>This will allow you to make changes, but still receive new updated rules.</p>
-<h2 id="configuring-highlight-style">Configuring Highlight Style</h2>
-<p>Each bracket definition (described in <code class="inlinehilite language-text">Configuring Scope Brackets</code> and <code class="inlinehilite language-text">Configuring Brackets</code>) has a <code class="inlinehilite language-text">style</code> setting that you give a style definition to.  Style definitions are defined under <code class="inlinehilite language-text">bracket_styles</code> in <code class="inlinehilite language-text">bh_core.sublime-settings</code>.</p>
-<p>There are two special style definitions whose names are reserved: <code class="inlinehilite language-text">default</code> and <code class="inlinehilite language-text">unmatched</code>, but you can configure them.  All other custom style definitions follow the same pattern (see <code class="inlinehilite language-text">curly</code> below and compare to the special style defintions; format is the same)  All custom styles follow this pattern.  See description below:</p>
-<pre><code class="javascript">        // &quot;default&quot; style defines attributes that
-        // will be used for any style that does not
-        // explicitly define that attribute.  So if
-        // a style does not define a color, it will
-        // use the color from the &quot;default&quot; style.
-        &quot;default&quot;: {
-            &quot;icon&quot;: &quot;dot&quot;,
-            &quot;color&quot;: &quot;brackethighlighter.default&quot;,
-            &quot;style&quot;: &quot;underline&quot;
-        },
+<h2 id="configuring-highlight-style"><a name="user-content-configuring-highlight-style" href="#configuring-highlight-style" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Configuring Highlight Style</h2>
+<p>Each bracket definition (described in <code>Configuring Scope Brackets</code> and <code>Configuring Brackets</code>) has a <code>style</code> setting that you give a style definition to.  Style definitions are defined under <code>bracket_styles</code> in <code>bh_core.sublime-settings</code>.</p>
+<p>There are two special style definitions whose names are reserved: <code>default</code> and <code>unmatched</code>, but you can configure them.  All other custom style definitions follow the same pattern (see <code>curly</code> below and compare to the special style defintions; format is the same)  All custom styles follow this pattern.  See description below:</p>
+<div class="codehilite"><pre>        <span class="c1">// &quot;default&quot; style defines attributes that</span>
+        <span class="c1">// will be used for any style that does not</span>
+        <span class="c1">// explicitly define that attribute.  So if</span>
+        <span class="c1">// a style does not define a color, it will</span>
+        <span class="c1">// use the color from the &quot;default&quot; style.</span>
+        <span class="s2">&quot;default&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;icon&quot;</span><span class="o">:</span> <span class="s2">&quot;dot&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;color&quot;</span><span class="o">:</span> <span class="s2">&quot;brackethighlighter.default&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="s2">&quot;underline&quot;</span>
+        <span class="p">},</span>
 
-        // This particular style is used to highlight
-        // unmatched bracket pairs.  It is a special
-        // style.
-        &quot;unmatched&quot;: {
-            &quot;icon&quot;: &quot;question&quot;,
-            // &quot;color&quot;: &quot;brackethighlighter.unmatched&quot;,
-            &quot;style&quot;: &quot;outline&quot;
-        },
-        // User defined region styles
-        &quot;curly&quot;: {
-            &quot;icon&quot;: &quot;curly_bracket&quot;
-            // &quot;color&quot;: &quot;brackethighlighter.curly&quot;,
-            // &quot;style&quot;: &quot;underline&quot;
-        },
-        &quot;tag&quot;: {
-            &quot;icon&quot;: &quot;tag&quot;,
-            // &quot;endpoints&quot;: true,
-            // &quot;color&quot;: &quot;brackethighlighter.tag&quot;,
-            &quot;style&quot;: &quot;outline&quot;
-        },
-</code></pre>
+        <span class="c1">// This particular style is used to highlight</span>
+        <span class="c1">// unmatched bracket pairs.  It is a special</span>
+        <span class="c1">// style.</span>
+        <span class="s2">&quot;unmatched&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;icon&quot;</span><span class="o">:</span> <span class="s2">&quot;question&quot;</span><span class="p">,</span>
+            <span class="c1">// &quot;color&quot;: &quot;brackethighlighter.unmatched&quot;,</span>
+            <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="s2">&quot;outline&quot;</span>
+        <span class="p">},</span>
+        <span class="c1">// User defined region styles</span>
+        <span class="s2">&quot;curly&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;icon&quot;</span><span class="o">:</span> <span class="s2">&quot;curly_bracket&quot;</span>
+            <span class="c1">// &quot;color&quot;: &quot;brackethighlighter.curly&quot;,</span>
+            <span class="c1">// &quot;style&quot;: &quot;underline&quot;</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;tag&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;icon&quot;</span><span class="o">:</span> <span class="s2">&quot;tag&quot;</span><span class="p">,</span>
+            <span class="c1">// &quot;endpoints&quot;: true,</span>
+            <span class="c1">// &quot;color&quot;: &quot;brackethighlighter.tag&quot;,</span>
+            <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="s2">&quot;outline&quot;</span>
+        <span class="p">},</span>
+</pre></div>
+
 
 <table>
 <thead>
@@ -428,7 +436,7 @@
 <tbody>
 <tr>
 <td>icon</td>
-<td>Icon to show in gutter. Available options are: <code class="inlinehilite language-text">angle</code>, <code class="inlinehilite language-text">round</code>, <code class="inlinehilite language-text">curly</code>, <code class="inlinehilite language-text">square</code>, <code class="inlinehilite language-text">tag</code>, <code class="inlinehilite language-text">star</code>, <code class="inlinehilite language-text">dot</code>, <code class="inlinehilite language-text">bookmark</code>, <code class="inlinehilite language-text">question</code>, <code class="inlinehilite language-text">quote</code>, <code class="inlinehilite language-text">double_quote</code>, <code class="inlinehilite language-text">single_quote</code>, <code class="inlinehilite language-text">single_quote_offset</code>, <code class="inlinehilite language-text">double_quote_offset</code>, <code class="inlinehilite language-text">none</code>.</td>
+<td>Icon to show in gutter. Available options are: <code>angle</code>, <code>round</code>, <code>curly</code>, <code>square</code>, <code>tag</code>, <code>star</code>, <code>dot</code>, <code>bookmark</code>, <code>question</code>, <code>quote</code>, <code>double_quote</code>, <code>single_quote</code>, <code>single_quote_offset</code>, <code>double_quote_offset</code>, <code>none</code>.</td>
 </tr>
 <tr>
 <td>color</td>
@@ -436,7 +444,7 @@
 </tr>
 <tr>
 <td>style</td>
-<td>Higlight style.  Available options are: <code class="inlinehilite language-text">solid</code>, <code class="inlinehilite language-text">outline</code>, <code class="inlinehilite language-text">underline</code>, <code class="inlinehilite language-text">none</code>.  ST3 has additional styles: <code class="inlinehilite language-text">thin_underline</code>, <code class="inlinehilite language-text">squiggly</code>, <code class="inlinehilite language-text">stippled</code>.</td>
+<td>Higlight style.  Available options are: <code>solid</code>, <code>outline</code>, <code>underline</code>, <code>none</code>.  ST3 has additional styles: <code>thin_underline</code>, <code>squiggly</code>, <code>stippled</code>.</td>
 </tr>
 <tr>
 <td>endpoint</td>
@@ -444,193 +452,204 @@
 </tr>
 </tbody>
 </table>
-<p>As shown in the example above, if an option is omitted, it will use the setting in <code class="inlinehilite language-text">default</code>.  So <code class="inlinehilite language-text">curly</code>, in this example, defines <code class="inlinehilite language-text">icon</code>, but will use <code class="inlinehilite language-text">default</code> for the <code class="inlinehilite language-text">color</code> and <code class="inlinehilite language-text">style</code>.</p>
-<p>To customize the color for <code class="inlinehilite language-text">curly</code> you can create your own custom scope.</p>
+<p>As shown in the example above, if an option is omitted, it will use the setting in <code>default</code>.  So <code>curly</code>, in this example, defines <code>icon</code>, but will use <code>default</code> for the <code>color</code> and <code>style</code>.</p>
+<p>To customize the color for <code>curly</code> you can create your own custom scope.</p>
 <p>Add this to your color scheme:<br />
-<pre><code class="xml">        &lt;dict&gt;
-            &lt;key&gt;name&lt;/key&gt;
-            &lt;string&gt;Bracket Curly&lt;/string&gt;
-            &lt;key&gt;scope&lt;/key&gt;
-            &lt;string&gt;brackethighlighter.curly&lt;/string&gt;
-            &lt;key&gt;settings&lt;/key&gt;
-            &lt;dict&gt;
-                &lt;key&gt;foreground&lt;/key&gt;
-                &lt;string&gt;#CC99CC&lt;/string&gt;
-            &lt;/dict&gt;
-        &lt;/dict&gt;
-</code></pre></p>
+<div class="codehilite"><pre>        <span class="nt">&lt;dict&gt;</span>
+            <span class="nt">&lt;key&gt;</span>name<span class="nt">&lt;/key&gt;</span>
+            <span class="nt">&lt;string&gt;</span>Bracket Curly<span class="nt">&lt;/string&gt;</span>
+            <span class="nt">&lt;key&gt;</span>scope<span class="nt">&lt;/key&gt;</span>
+            <span class="nt">&lt;string&gt;</span>brackethighlighter.curly<span class="nt">&lt;/string&gt;</span>
+            <span class="nt">&lt;key&gt;</span>settings<span class="nt">&lt;/key&gt;</span>
+            <span class="nt">&lt;dict&gt;</span>
+                <span class="nt">&lt;key&gt;</span>foreground<span class="nt">&lt;/key&gt;</span>
+                <span class="nt">&lt;string&gt;</span>#CC99CC<span class="nt">&lt;/string&gt;</span>
+            <span class="nt">&lt;/dict&gt;</span>
+        <span class="nt">&lt;/dict&gt;</span>
+</pre></div>
+</p>
 <p>And then use the scope:<br />
-<pre><code class="javascript">        &quot;curly&quot;: {
-            &quot;icon&quot;: &quot;curly_bracket&quot;
-            &quot;color&quot;: &quot;brackethighlighter.curly&quot;,
-            // &quot;style&quot;: &quot;underline&quot;
-        },
-</code></pre></p>
-<h3 id="my-personal-configurations">My personal configurations</h3>
-<p>If you are curious about my personal configuration, here it is. The color scheme I use is from my <a href="https://github.com/facelessuser/Aprosopo">Aprosopo theme</a>. </p>
-<p>Note: If a scope is not defined, it won&rsquo;t change the color. For instance, below I assign the hash rule for C/C++ preprocessors conditionals to <code class="inlinehilite language-text">brackethighlighter.c_define</code>, but I don&rsquo;t have <code class="inlinehilite language-text">brackethighlighter.c_define</code> in my theme <code class="inlinehilite language-text">&lt;dict&gt;</code>. So it will look like the default color, white.</p>
+<div class="codehilite"><pre>        <span class="s2">&quot;curly&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;icon&quot;</span><span class="o">:</span> <span class="s2">&quot;curly_bracket&quot;</span>
+            <span class="s2">&quot;color&quot;</span><span class="o">:</span> <span class="s2">&quot;brackethighlighter.curly&quot;</span><span class="p">,</span>
+            <span class="c1">// &quot;style&quot;: &quot;underline&quot;</span>
+        <span class="p">},</span>
+</pre></div>
+</p>
+<h3 id="my-personal-configurations"><a name="user-content-my-personal-configurations" href="#my-personal-configurations" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>My personal configurations</h3>
+<p>If you are curious about my personal configuration, here it is. The color scheme I use is from my <a href="https://github.com/facelessuser/Aprosopo">Aprosopo theme</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If a scope is not defined, it won&rsquo;t change the color. For instance, below I assign the hash rule for C/C++ preprocessors conditionals to <code>brackethighlighter.c_define</code>, but I don&rsquo;t have <code>brackethighlighter.c_define</code> in my theme <code>&lt;dict&gt;</code>. So it will look like the default color, white.</p>
+</div>
 <p><strong>My personal conf: bh_core.sublime-settings</strong></p>
-<pre><code class="javascript">// Define region highlight styles
-&quot;bracket_styles&quot;: {
-    // &quot;default&quot; and &quot;unmatched&quot; styles are special
-    // styles. If they are not defined here,
-    // they will be generated internally with
-    // internal defaults.
+<div class="codehilite"><pre><span class="c1">// Define region highlight styles</span>
+<span class="s2">&quot;bracket_styles&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="c1">// &quot;default&quot; and &quot;unmatched&quot; styles are special</span>
+    <span class="c1">// styles. If they are not defined here,</span>
+    <span class="c1">// they will be generated internally with</span>
+    <span class="c1">// internal defaults.</span>
 
-    // &quot;default&quot; style defines attributes that
-    // will be used for any style that does not
-    // explicitly define that attribute.  So if
-    // a style does not define a color, it will
-    // use the color from the &quot;default&quot; style.
-    &quot;default&quot;: {
-        &quot;icon&quot;: &quot;dot&quot;,
-        // BH1's original default color for reference
-        // &quot;color&quot;: &quot;entity.name.class&quot;,
-        &quot;color&quot;: &quot;brackethighlighter.default&quot;,
-        &quot;style&quot;: &quot;underline&quot;
-    },
+    <span class="c1">// &quot;default&quot; style defines attributes that</span>
+    <span class="c1">// will be used for any style that does not</span>
+    <span class="c1">// explicitly define that attribute.  So if</span>
+    <span class="c1">// a style does not define a color, it will</span>
+    <span class="c1">// use the color from the &quot;default&quot; style.</span>
+    <span class="s2">&quot;default&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;icon&quot;</span><span class="o">:</span> <span class="s2">&quot;dot&quot;</span><span class="p">,</span>
+        <span class="c1">// BH1&#39;s original default color for reference</span>
+        <span class="c1">// &quot;color&quot;: &quot;entity.name.class&quot;,</span>
+        <span class="s2">&quot;color&quot;</span><span class="o">:</span> <span class="s2">&quot;brackethighlighter.default&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="s2">&quot;underline&quot;</span>
+    <span class="p">},</span>
 
-    // This particular style is used to highlight
-    // unmatched bracekt pairs.  It is a special
-    // style.
-    &quot;unmatched&quot;: {
-        &quot;icon&quot;: &quot;question&quot;,
-        &quot;color&quot;: &quot;brackethighlighter.unmatched&quot;,
-        &quot;style&quot;: &quot;outline&quot;
-    },
-    // User defined region styles
-    &quot;curly&quot;: {
-        &quot;icon&quot;: &quot;curly_bracket&quot;,
-        &quot;color&quot;: &quot;brackethighlighter.curly&quot;
-        // &quot;style&quot;: &quot;underline&quot;
-    },
-    &quot;round&quot;: {
-        &quot;icon&quot;: &quot;round_bracket&quot;,
-        &quot;color&quot;: &quot;brackethighlighter.round&quot;
-        // &quot;style&quot;: &quot;underline&quot;
-    },
-    &quot;square&quot;: {
-        &quot;icon&quot;: &quot;square_bracket&quot;,
-        &quot;color&quot;: &quot;brackethighlighter.square&quot;
-        // &quot;style&quot;: &quot;underline&quot;
-    },
-    &quot;angle&quot;: {
-        &quot;icon&quot;: &quot;angle_bracket&quot;,
-        &quot;color&quot;: &quot;brackethighlighter.angle&quot;
-        // &quot;style&quot;: &quot;underline&quot;
-    },
-    &quot;tag&quot;: {
-        &quot;icon&quot;: &quot;tag&quot;,
-        &quot;color&quot;: &quot;brackethighlighter.tag&quot;,
-        // &quot;style&quot;: &quot;underline&quot;
-    },
-    &quot;c_define&quot;: {
-        &quot;icon&quot;: &quot;hash&quot;,
-        &quot;color&quot;: &quot;brackethighlighter.c_define&quot;
-        // &quot;style&quot;: &quot;underline&quot;
-    },
-    &quot;single_quote&quot;: {
-        &quot;icon&quot;: &quot;single_quote&quot;,
-        &quot;color&quot;: &quot;brackethighlighter.quote&quot;
-        // &quot;style&quot;: &quot;underline&quot;
-    },
-    &quot;double_quote&quot;: {
-        &quot;icon&quot;: &quot;double_quote&quot;,
-        &quot;color&quot;: &quot;brackethighlighter.quote&quot;
-        // &quot;style&quot;: &quot;underline&quot;
-    },
-    &quot;regex&quot;: {
-        &quot;icon&quot;: &quot;star&quot;,
-        &quot;color&quot;: &quot;brackethighlighter.quote&quot;
-        // &quot;style&quot;: &quot;underline&quot;
-    }
-}
-</code></pre>
+    <span class="c1">// This particular style is used to highlight</span>
+    <span class="c1">// unmatched bracekt pairs.  It is a special</span>
+    <span class="c1">// style.</span>
+    <span class="s2">&quot;unmatched&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;icon&quot;</span><span class="o">:</span> <span class="s2">&quot;question&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;color&quot;</span><span class="o">:</span> <span class="s2">&quot;brackethighlighter.unmatched&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;style&quot;</span><span class="o">:</span> <span class="s2">&quot;outline&quot;</span>
+    <span class="p">},</span>
+    <span class="c1">// User defined region styles</span>
+    <span class="s2">&quot;curly&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;icon&quot;</span><span class="o">:</span> <span class="s2">&quot;curly_bracket&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;color&quot;</span><span class="o">:</span> <span class="s2">&quot;brackethighlighter.curly&quot;</span>
+        <span class="c1">// &quot;style&quot;: &quot;underline&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;round&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;icon&quot;</span><span class="o">:</span> <span class="s2">&quot;round_bracket&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;color&quot;</span><span class="o">:</span> <span class="s2">&quot;brackethighlighter.round&quot;</span>
+        <span class="c1">// &quot;style&quot;: &quot;underline&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;square&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;icon&quot;</span><span class="o">:</span> <span class="s2">&quot;square_bracket&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;color&quot;</span><span class="o">:</span> <span class="s2">&quot;brackethighlighter.square&quot;</span>
+        <span class="c1">// &quot;style&quot;: &quot;underline&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;angle&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;icon&quot;</span><span class="o">:</span> <span class="s2">&quot;angle_bracket&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;color&quot;</span><span class="o">:</span> <span class="s2">&quot;brackethighlighter.angle&quot;</span>
+        <span class="c1">// &quot;style&quot;: &quot;underline&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;tag&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;icon&quot;</span><span class="o">:</span> <span class="s2">&quot;tag&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;color&quot;</span><span class="o">:</span> <span class="s2">&quot;brackethighlighter.tag&quot;</span><span class="p">,</span>
+        <span class="c1">// &quot;style&quot;: &quot;underline&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;c_define&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;icon&quot;</span><span class="o">:</span> <span class="s2">&quot;hash&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;color&quot;</span><span class="o">:</span> <span class="s2">&quot;brackethighlighter.c_define&quot;</span>
+        <span class="c1">// &quot;style&quot;: &quot;underline&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;single_quote&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;icon&quot;</span><span class="o">:</span> <span class="s2">&quot;single_quote&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;color&quot;</span><span class="o">:</span> <span class="s2">&quot;brackethighlighter.quote&quot;</span>
+        <span class="c1">// &quot;style&quot;: &quot;underline&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;double_quote&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;icon&quot;</span><span class="o">:</span> <span class="s2">&quot;double_quote&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;color&quot;</span><span class="o">:</span> <span class="s2">&quot;brackethighlighter.quote&quot;</span>
+        <span class="c1">// &quot;style&quot;: &quot;underline&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;regex&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;icon&quot;</span><span class="o">:</span> <span class="s2">&quot;star&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;color&quot;</span><span class="o">:</span> <span class="s2">&quot;brackethighlighter.quote&quot;</span>
+        <span class="c1">// &quot;style&quot;: &quot;underline&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
 
 <p><strong>My personal conf: [Default Theme].tmTheme</strong></p>
-<pre><code class="xml">&lt;dict&gt;
-    &lt;key&gt;name&lt;/key&gt;
-    &lt;string&gt;Bracket Tag&lt;/string&gt;
-    &lt;key&gt;scope&lt;/key&gt;
-    &lt;string&gt;brackethighlighter.tag&lt;/string&gt;
-    &lt;key&gt;settings&lt;/key&gt;
-    &lt;dict&gt;
-        &lt;key&gt;foreground&lt;/key&gt;
-        &lt;string&gt;#66CCCC&lt;/string&gt;
-    &lt;/dict&gt;
-&lt;/dict&gt;
-&lt;dict&gt;
-    &lt;key&gt;name&lt;/key&gt;
-    &lt;string&gt;Bracket Curly&lt;/string&gt;
-    &lt;key&gt;scope&lt;/key&gt;
-    &lt;string&gt;brackethighlighter.curly&lt;/string&gt;
-    &lt;key&gt;settings&lt;/key&gt;
-    &lt;dict&gt;
-        &lt;key&gt;foreground&lt;/key&gt;
-        &lt;string&gt;#CC99CC&lt;/string&gt;
-    &lt;/dict&gt;
-&lt;/dict&gt;
-&lt;dict&gt;
-    &lt;key&gt;name&lt;/key&gt;
-    &lt;string&gt;Bracket Round&lt;/string&gt;
-    &lt;key&gt;scope&lt;/key&gt;
-    &lt;string&gt;brackethighlighter.round&lt;/string&gt;
-    &lt;key&gt;settings&lt;/key&gt;
-    &lt;dict&gt;
-        &lt;key&gt;foreground&lt;/key&gt;
-        &lt;string&gt;#FFCC66&lt;/string&gt;
-    &lt;/dict&gt;
-&lt;/dict&gt;
-&lt;dict&gt;
-    &lt;key&gt;name&lt;/key&gt;
-    &lt;string&gt;Bracket Square&lt;/string&gt;
-    &lt;key&gt;scope&lt;/key&gt;
-    &lt;string&gt;brackethighlighter.square&lt;/string&gt;
-    &lt;key&gt;settings&lt;/key&gt;
-    &lt;dict&gt;
-        &lt;key&gt;foreground&lt;/key&gt;
-        &lt;string&gt;#6699CC&lt;/string&gt;
-    &lt;/dict&gt;
-&lt;/dict&gt;
-&lt;dict&gt;
-    &lt;key&gt;name&lt;/key&gt;
-    &lt;string&gt;Bracket Angle&lt;/string&gt;
-    &lt;key&gt;scope&lt;/key&gt;
-    &lt;string&gt;brackethighlighter.angle&lt;/string&gt;
-    &lt;key&gt;settings&lt;/key&gt;
-    &lt;dict&gt;
-        &lt;key&gt;foreground&lt;/key&gt;
-        &lt;string&gt;#F99157&lt;/string&gt;
-    &lt;/dict&gt;
-&lt;/dict&gt;
-&lt;dict&gt;
-    &lt;key&gt;name&lt;/key&gt;
-    &lt;string&gt;Bracket Quote&lt;/string&gt;
-    &lt;key&gt;scope&lt;/key&gt;
-    &lt;string&gt;brackethighlighter.quote&lt;/string&gt;
-    &lt;key&gt;settings&lt;/key&gt;
-    &lt;dict&gt;
-        &lt;key&gt;foreground&lt;/key&gt;
-        &lt;string&gt;#99CC99&lt;/string&gt;
-    &lt;/dict&gt;
-&lt;/dict&gt;
-&lt;dict&gt;
-    &lt;key&gt;name&lt;/key&gt;
-    &lt;string&gt;Bracket Unmatched&lt;/string&gt;
-    &lt;key&gt;scope&lt;/key&gt;
-    &lt;string&gt;brackethighlighter.unmatched&lt;/string&gt;
-    &lt;key&gt;settings&lt;/key&gt;
-    &lt;dict&gt;
-        &lt;key&gt;foreground&lt;/key&gt;
-        &lt;string&gt;#F2777A&lt;/string&gt;
-    &lt;/dict&gt;
-&lt;/dict&gt;
-</code></pre>
+<div class="codehilite"><pre><span class="nt">&lt;dict&gt;</span>
+    <span class="nt">&lt;key&gt;</span>name<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;string&gt;</span>Bracket Tag<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;key&gt;</span>scope<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;string&gt;</span>brackethighlighter.tag<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;key&gt;</span>settings<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;dict&gt;</span>
+        <span class="nt">&lt;key&gt;</span>foreground<span class="nt">&lt;/key&gt;</span>
+        <span class="nt">&lt;string&gt;</span>#66CCCC<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;/dict&gt;</span>
+<span class="nt">&lt;/dict&gt;</span>
+<span class="nt">&lt;dict&gt;</span>
+    <span class="nt">&lt;key&gt;</span>name<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;string&gt;</span>Bracket Curly<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;key&gt;</span>scope<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;string&gt;</span>brackethighlighter.curly<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;key&gt;</span>settings<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;dict&gt;</span>
+        <span class="nt">&lt;key&gt;</span>foreground<span class="nt">&lt;/key&gt;</span>
+        <span class="nt">&lt;string&gt;</span>#CC99CC<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;/dict&gt;</span>
+<span class="nt">&lt;/dict&gt;</span>
+<span class="nt">&lt;dict&gt;</span>
+    <span class="nt">&lt;key&gt;</span>name<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;string&gt;</span>Bracket Round<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;key&gt;</span>scope<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;string&gt;</span>brackethighlighter.round<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;key&gt;</span>settings<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;dict&gt;</span>
+        <span class="nt">&lt;key&gt;</span>foreground<span class="nt">&lt;/key&gt;</span>
+        <span class="nt">&lt;string&gt;</span>#FFCC66<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;/dict&gt;</span>
+<span class="nt">&lt;/dict&gt;</span>
+<span class="nt">&lt;dict&gt;</span>
+    <span class="nt">&lt;key&gt;</span>name<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;string&gt;</span>Bracket Square<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;key&gt;</span>scope<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;string&gt;</span>brackethighlighter.square<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;key&gt;</span>settings<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;dict&gt;</span>
+        <span class="nt">&lt;key&gt;</span>foreground<span class="nt">&lt;/key&gt;</span>
+        <span class="nt">&lt;string&gt;</span>#6699CC<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;/dict&gt;</span>
+<span class="nt">&lt;/dict&gt;</span>
+<span class="nt">&lt;dict&gt;</span>
+    <span class="nt">&lt;key&gt;</span>name<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;string&gt;</span>Bracket Angle<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;key&gt;</span>scope<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;string&gt;</span>brackethighlighter.angle<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;key&gt;</span>settings<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;dict&gt;</span>
+        <span class="nt">&lt;key&gt;</span>foreground<span class="nt">&lt;/key&gt;</span>
+        <span class="nt">&lt;string&gt;</span>#F99157<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;/dict&gt;</span>
+<span class="nt">&lt;/dict&gt;</span>
+<span class="nt">&lt;dict&gt;</span>
+    <span class="nt">&lt;key&gt;</span>name<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;string&gt;</span>Bracket Quote<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;key&gt;</span>scope<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;string&gt;</span>brackethighlighter.quote<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;key&gt;</span>settings<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;dict&gt;</span>
+        <span class="nt">&lt;key&gt;</span>foreground<span class="nt">&lt;/key&gt;</span>
+        <span class="nt">&lt;string&gt;</span>#99CC99<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;/dict&gt;</span>
+<span class="nt">&lt;/dict&gt;</span>
+<span class="nt">&lt;dict&gt;</span>
+    <span class="nt">&lt;key&gt;</span>name<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;string&gt;</span>Bracket Unmatched<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;key&gt;</span>scope<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;string&gt;</span>brackethighlighter.unmatched<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;key&gt;</span>settings<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;dict&gt;</span>
+        <span class="nt">&lt;key&gt;</span>foreground<span class="nt">&lt;/key&gt;</span>
+        <span class="nt">&lt;string&gt;</span>#F2777A<span class="nt">&lt;/string&gt;</span>
+    <span class="nt">&lt;/dict&gt;</span>
+<span class="nt">&lt;/dict&gt;</span>
+</pre></div>
 
-<h1 id="bracket-plugin-api">Bracket Plugin API</h1>
-<p>There are two kinds of plugins that can be written <code class="inlinehilite language-text">definition</code> plugins (plugins attached to bracket definitions via the <code class="inlinehilite language-text">plugin_library</code> option) or <code class="inlinehilite language-text">run instance</code> plugins (plugins that are that are fed in the BracketHighligher via the command parameter <code class="inlinehilite language-text">plugin</code>).</p>
-<p>Bracket plugins use <code class="inlinehilite language-text">BracketRegions</code>. <code class="inlinehilite language-text">BracketRegions</code> are simple objects containing a begin pt and end pt of a bracket.</p>
-<p>BracketRegion input parameters <code class="inlinehilite language-text">BracketRegion(begin_pt, end_pt)</code>:</p>
+
+<h1 id="bracket-plugin-api"><a name="user-content-bracket-plugin-api" href="#bracket-plugin-api" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Bracket Plugin API</h1>
+<p>There are two kinds of plugins that can be written <code>definition</code> plugins (plugins attached to bracket definitions via the <code>plugin_library</code> option) or <code>run instance</code> plugins (plugins that are that are fed in the BracketHighligher via the command parameter <code>plugin</code>).</p>
+<p>Bracket plugins use <code>BracketRegions</code>.</p>
+<dl>
+<dt>class BracketRegion(begin_pt, end_pt)</dt>
+<dd>
+<p><code>BracketRegions</code> are simple objects containing a begin pt and end pt of a bracket.</p>
+<p><strong>Parameters</strong>:</p>
 <table>
 <thead>
 <tr>
@@ -649,7 +668,7 @@
 </tr>
 </tbody>
 </table>
-<p>BracketRegion attributes:</p>
+<p><strong>Attributes</strong>:</p>
 <table>
 <thead>
 <tr>
@@ -668,34 +687,78 @@
 </tr>
 </tbody>
 </table>
-<p>BracketRegion methods:</p>
+<p><strong>Methods</strong>:</p>
+<dl>
+<dt>def size(self)</dt>
+<dd>Returns size of region</dd>
+<dt>def move(self, begin_pt, end_pt)</dt>
+<dd>
+<p>Returns a new BracketRegion object with the points moved to the specified postion.</p>
+<p><strong>Parmenters</strong>:</p>
 <table>
 <thead>
 <tr>
-<th>Method</th>
-<th>Descriptions</th>
+<th>Parameter</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>size</strong>()</td>
-<td>Returns size of region.</td>
+<td>begin_pt</td>
+<td>Starting point.</td>
 </tr>
 <tr>
-<td><strong>move</strong>(begin_pt,&nbsp;end_pt)</td>
-<td>Returns a new BracketRegion object with the points moved as specified by the parameters.</td>
-</tr>
-<tr>
-<td><strong>toregion</strong>()</td>
-<td>Returns a sublime Region() object.</td>
+<td>end_pt</td>
+<td>End Point.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="definition-plugins">&lsquo;Definition&rsquo; Plugins</h2>
-<p>These are plugins that are attached to the bracket definition and aid in processing the brackets.  These kinds of plugins have three methods you can provide: <code class="inlinehilite language-text">post_match</code>, <code class="inlinehilite language-text">compare</code>, and/or <code class="inlinehilite language-text">validate</code>.</p>
-<h3 id="validate">validate</h3>
-<p><code class="inlinehilite language-text">validate</code> before comparing it to its corresponding openning or closing side.  This is used to determine perfrom additional validation on a found bracket.  For example, lets say you have a bracket that is case senstive.  BH uses a case insenstive search.  With validate, you can ensure the orginally found bracket matches the desired case.</p>
-<p>The <code class="inlinehilite language-text">validate</code> method receives the following parameters:</p>
+<p><strong>Returns</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>BracketRegion</td>
+<td>BracketRegion with new starting and ending points</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>def to_region(self)</dt>
+<dd>
+<p>Converts BracketRegion to a SublimeRegion</p>
+<p><strong>Returns</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>Return</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SublimeRegion</td>
+<td>A Sublime Region.</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</dd>
+</dl>
+<h2 id="definition-plugins"><a name="user-content-definition-plugins" href="#definition-plugins" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>&lsquo;Definition&rsquo; Plugins</h2>
+<p>These are plugins that are attached to the bracket definition and aid in processing the brackets.  These kinds of plugins have three methods you can provide: <code>post_match</code>, <code>compare</code>, and/or <code>validate</code>.</p>
+<h3 id="validate"><a name="user-content-validate" href="#validate" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>validate</h3>
+<dl>
+<dt>def validate(name, bracket, bracket_size, bfr)</dt>
+<dd>
+<p><code>validate</code> before comparing it to its corresponding openning or closing side.  This is used to determine perfrom additional validation on a found bracket.  For example, lets say you have a bracket that is case senstive.  BH uses a case insenstive search.  With validate, you can ensure the orginally found bracket matches the desired case.</p>
+<p><strong>Parameters</strong>:</p>
 <table>
 <thead>
 <tr>
@@ -722,7 +785,7 @@
 </tr>
 </tbody>
 </table>
-<p>Returns:</p>
+<p><strong>Returns</strong>:</p>
 <table>
 <thead>
 <tr>
@@ -737,23 +800,29 @@
 </tr>
 </tbody>
 </table>
-<p>Example: Should match closing tag <code class="inlinehilite language-text">end</code> but not match <code class="inlinehilite language-text">End</code></p>
-<pre><code class="erlang">case Foo of
-    Guard1 -&gt; ok;
-    Guard2 -&gt; End
-end
-</code></pre>
+<p>Example: Should match closing tag <code>end</code> but not match <code>End</code></p>
+<div class="codehilite"><pre><span class="k">case</span> <span class="nv">Foo</span> <span class="k">of</span>
+    <span class="nv">Guard1</span> <span class="o">-&gt;</span> <span class="n">ok</span><span class="p">;</span>
+    <span class="nv">Guard2</span> <span class="o">-&gt;</span> <span class="nv">End</span>
+<span class="k">end</span>
+</pre></div>
+
 
 <p>Example (from erlangcase.py):</p>
-<pre><code class="python">def validate(name, bracket, bracket_side, bfr):
-    text = bfr[bracket.begin:bracket.end]
-    return text.lower() == text
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">bracket</span><span class="p">,</span> <span class="n">bracket_side</span><span class="p">,</span> <span class="n">bfr</span><span class="p">):</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">bfr</span><span class="p">[</span><span class="n">bracket</span><span class="o">.</span><span class="n">begin</span><span class="p">:</span><span class="n">bracket</span><span class="o">.</span><span class="n">end</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="n">text</span>
+</pre></div>
 
-</code></pre>
 
-<h3 id="compare">compare</h3>
-<p><code class="inlinehilite language-text">compare</code> is run when comparing the opening bracket with closing brackets.  This allows you to provide logic to accept or reject the pairing of an opening bracket with a closing bracket.  You should not change the text in the view during this operation.</p>
-<p>The <code class="inlinehilite language-text">compare</code> method receives the following paramters:</p>
+</dd>
+</dl>
+<h3 id="compare"><a name="user-content-compare" href="#compare" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>compare</h3>
+<dl>
+<dt>def compare(name, first, second, bfr)</dt>
+<dd>
+<p><code>compare</code> is run when comparing the opening bracket with closing brackets.  This allows you to provide logic to accept or reject the pairing of an opening bracket with a closing bracket.  You should not change the text in the view during this operation.</p>
+<p><strong>Paramters</strong>:</p>
 <table>
 <thead>
 <tr>
@@ -780,7 +849,7 @@ end
 </tr>
 </tbody>
 </table>
-<p>Returns:</p>
+<p><strong>Returns</strong>:</p>
 <table>
 <thead>
 <tr>
@@ -796,12 +865,18 @@ end
 </tbody>
 </table>
 <p>Example (from phphekywords.py):<br />
-<pre><code class="python">def compare(name, first, second, bfr):
-    return &quot;end&quot; + bfr[first.begin:first.end].lower() == bfr[second.begin:second.end].lower()
-</code></pre></p>
-<h3 id="post_match">post_match</h3>
-<p><code class="inlinehilite language-text">post_match</code> is run after the brackets have been matched.  You can do things like alter the highlighting region and change the bracket_style if needed. You should not change the text in the view during this operation.</p>
-<p>The <code class="inlinehilite language-text">post_match</code> method receives the following parameters:</p>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">compare</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span> <span class="n">bfr</span><span class="p">):</span>
+    <span class="k">return</span> <span class="s">&quot;end&quot;</span> <span class="o">+</span> <span class="n">bfr</span><span class="p">[</span><span class="n">first</span><span class="o">.</span><span class="n">begin</span><span class="p">:</span><span class="n">first</span><span class="o">.</span><span class="n">end</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="n">bfr</span><span class="p">[</span><span class="n">second</span><span class="o">.</span><span class="n">begin</span><span class="p">:</span><span class="n">second</span><span class="o">.</span><span class="n">end</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</pre></div>
+</p>
+</dd>
+</dl>
+<h3 id="post_match"><a name="user-content-post_match" href="#post_match" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>post_match</h3>
+<dl>
+<dt>def post_match(name, style, first, second, center, bfr, threshold)</dt>
+<dd>
+<p><code>post_match</code> is run after the brackets have been matched.  You can do things like alter the highlighting region and change the bracket_style if needed. You should not change the text in the view during this operation.</p>
+<p><strong>Parameters</strong>:</p>
 <table>
 <thead>
 <tr>
@@ -840,7 +915,7 @@ end
 </tr>
 </tbody>
 </table>
-<p>Returns:</p>
+<p><strong>Returns</strong>:</p>
 <table>
 <thead>
 <tr>
@@ -864,39 +939,46 @@ end
 </tbody>
 </table>
 <p>Example (from rubykeywords.py):<br />
-<pre><code class="python">import re
+<div class="codehilite"><pre><span class="kn">import</span> <span class="nn">re</span>
 
 
-def post_match(view, name, style, first, second, center, bfr, threshold):
-    if first is not None:
-        # Strip whitespace from the beginning of first bracket
-        open_bracket = bfr[first.begin:first.end]
-        if open_bracket != &quot;do&quot;:
-            m = re.match(r&quot;^(\s*\b)[\w\W]*&quot;, open_bracket)
-            if m:
-                first = first.move(first.begin + m.end(1), first.end)
-    return first, second, style
-</code></pre></p>
+<span class="k">def</span> <span class="nf">post_match</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">style</span><span class="p">,</span> <span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">bfr</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">first</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="c"># Strip whitespace from the beginning of first bracket</span>
+        <span class="n">open_bracket</span> <span class="o">=</span> <span class="n">bfr</span><span class="p">[</span><span class="n">first</span><span class="o">.</span><span class="n">begin</span><span class="p">:</span><span class="n">first</span><span class="o">.</span><span class="n">end</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">open_bracket</span> <span class="o">!=</span> <span class="s">&quot;do&quot;</span><span class="p">:</span>
+            <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s">r&quot;^(\s*\b)[\w\W]*&quot;</span><span class="p">,</span> <span class="n">open_bracket</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+                <span class="n">first</span> <span class="o">=</span> <span class="n">first</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">first</span><span class="o">.</span><span class="n">begin</span> <span class="o">+</span> <span class="n">m</span><span class="o">.</span><span class="n">end</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">first</span><span class="o">.</span><span class="n">end</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span> <span class="n">style</span>
+</pre></div>
+</p>
 <p>Example (snippet from tags.py)<br />
-<pre><code class="python">def post_match(view, name, style, first, second, center, bfr, threshold):
-    left, right = first, second
-    threshold = [0, len(bfr)] if threshold is None else threshold
-    tag_settings = sublime.load_settings(&quot;bh_core.sublime-settings&quot;)
-    tag_mode = get_tag_mode(view, tag_settings.get(&quot;tag_mode&quot;, {}))
-    tag_style = tag_settings.get(&quot;tag_style&quot;, &quot;angle&quot;)
-    bracket_style = style
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">post_match</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">style</span><span class="p">,</span> <span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">bfr</span><span class="p">,</span> <span class="n">threshold</span><span class="p">):</span>
+    <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">first</span><span class="p">,</span> <span class="n">second</span>
+    <span class="n">threshold</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">bfr</span><span class="p">)]</span> <span class="k">if</span> <span class="n">threshold</span> <span class="ow">is</span> <span class="bp">None</span> <span class="k">else</span> <span class="n">threshold</span>
+    <span class="n">tag_settings</span> <span class="o">=</span> <span class="n">sublime</span><span class="o">.</span><span class="n">load_settings</span><span class="p">(</span><span class="s">&quot;bh_core.sublime-settings&quot;</span><span class="p">)</span>
+    <span class="n">tag_mode</span> <span class="o">=</span> <span class="n">get_tag_mode</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">tag_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;tag_mode&quot;</span><span class="p">,</span> <span class="p">{}))</span>
+    <span class="n">tag_style</span> <span class="o">=</span> <span class="n">tag_settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;tag_style&quot;</span><span class="p">,</span> <span class="s">&quot;angle&quot;</span><span class="p">)</span>
+    <span class="n">bracket_style</span> <span class="o">=</span> <span class="n">style</span>
 
-    if first is not None and tag_mode is not None:
-        matcher = TagMatch(view, bfr, threshold, first, second, center, tag_mode)
-        left, right = matcher.match()
-        if not matcher.no_tag:
-            bracket_style = tag_style
+    <span class="k">if</span> <span class="n">first</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">tag_mode</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">matcher</span> <span class="o">=</span> <span class="n">TagMatch</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">bfr</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">,</span> <span class="n">center</span><span class="p">,</span> <span class="n">tag_mode</span><span class="p">)</span>
+        <span class="n">left</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">matcher</span><span class="o">.</span><span class="n">match</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">matcher</span><span class="o">.</span><span class="n">no_tag</span><span class="p">:</span>
+            <span class="n">bracket_style</span> <span class="o">=</span> <span class="n">tag_style</span>
 
-    return left, right, bracket_style
-</code></pre></p>
-<h3 id="highlighting">highlighting</h3>
-<p><code class="inlinehilite language-text">highlighting</code> is the last hook that gets run.  This is at a point when BH no longer cares about what the <em>actual</em> bracket region is, so it is safe to modify it for highlighting purposes.  The view really shouldn&rsquo;t be modified here.</p>
-<p>The <code class="inlinehilite language-text">highlighting</code> method receives the following parameters:</p>
+    <span class="k">return</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">bracket_style</span>
+</pre></div>
+</p>
+</dd>
+</dl>
+<h3 id="highlighting"><a name="user-content-highlighting" href="#highlighting" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>highlighting</h3>
+<dl>
+<dt>def highlighting(view, name, style, right)</dt>
+<dd>
+<p><code>highlighting</code> is the last hook that gets run.  This is at a point when BH no longer cares about what the <em>actual</em> bracket region is, so it is safe to modify it for highlighting purposes.  The view really shouldn&rsquo;t be modified here.</p>
+<p><strong>Parameters</strong>:</p>
 <table>
 <thead>
 <tr>
@@ -919,15 +1001,15 @@ def post_match(view, name, style, first, second, center, bfr, threshold):
 </tr>
 <tr>
 <td>left</td>
-<td>A bracket region for the opening bracket (could be <code class="inlinehilite language-text">None</code>).</td>
+<td>A bracket region for the opening bracket (could be <code>None</code>).</td>
 </tr>
 <tr>
 <td>right</td>
-<td>A bracket region for the closing bracket (could be <code class="inlinehilite language-text">None</code>).</td>
+<td>A bracket region for the closing bracket (could be <code>None</code>).</td>
 </tr>
 </tbody>
 </table>
-<p>Returns:</p>
+<p><strong>Returns</strong>:</p>
 <table>
 <thead>
 <tr>
@@ -947,41 +1029,45 @@ def post_match(view, name, style, first, second, center, bfr, threshold):
 </tbody>
 </table>
 <p>Example (snippet from tags.py)</p>
-<pre><code class="python">def highlighting(view, name, style, left, right):
-    &quot;&quot;&quot;
-    Highlight only the tag name.
-    &quot;&quot;&quot;
-    if style == &quot;tag&quot;:
-        tag_name = '[\w\:\.\-]+'
-        if left is not None:
-            region = view.find(tag_name, left.begin)
-            left = left.move(region.begin(), region.end())
-        if right is not None:
-            region = view.find(tag_name, right.begin)
-            right = right.move(region.begin(), region.end())
-    return left, right
-</code></pre>
+<div class="codehilite"><pre><span class="k">def</span> <span class="nf">highlighting</span><span class="p">(</span><span class="n">view</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">style</span><span class="p">,</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Highlight only the tag name.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">style</span> <span class="o">==</span> <span class="s">&quot;tag&quot;</span><span class="p">:</span>
+        <span class="n">tag_name</span> <span class="o">=</span> <span class="s">&#39;[\w\:\.\-]+&#39;</span>
+        <span class="k">if</span> <span class="n">left</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">region</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">tag_name</span><span class="p">,</span> <span class="n">left</span><span class="o">.</span><span class="n">begin</span><span class="p">)</span>
+            <span class="n">left</span> <span class="o">=</span> <span class="n">left</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">region</span><span class="o">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">region</span><span class="o">.</span><span class="n">end</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">right</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">region</span> <span class="o">=</span> <span class="n">view</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">tag_name</span><span class="p">,</span> <span class="n">right</span><span class="o">.</span><span class="n">begin</span><span class="p">)</span>
+            <span class="n">right</span> <span class="o">=</span> <span class="n">right</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="n">region</span><span class="o">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">region</span><span class="o">.</span><span class="n">end</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">left</span><span class="p">,</span> <span class="n">right</span>
+</pre></div>
 
-<h2 id="run-instance-plugins">&lsquo;Run Instance&rsquo; Plugins</h2>
-<p><code class="inlinehilite language-text">Run instance</code> plugins are fed into the command executing a BracketHighlighter match via the <code class="inlinehilite language-text">plugin</code> parameter.</p>
+
+</dd>
+</dl>
+<h2 id="run-instance-plugins"><a name="user-content-run-instance-plugins" href="#run-instance-plugins" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>&lsquo;Run Instance&rsquo; Plugins</h2>
+<p><code>Run instance</code> plugins are fed into the command executing a BracketHighlighter match via the <code>plugin</code> parameter.</p>
 <p>Example of run instance plugin getting called:<br />
-<pre><code class="javascript">// Go to left bracket
-    {
-        &quot;caption&quot;: &quot;BracketHighlighter: Jump to Left Bracket&quot;,
-        &quot;command&quot;: &quot;bh_key&quot;,
-        &quot;args&quot;:
-        {
-            &quot;lines&quot; : true,
-            &quot;plugin&quot;:
-            {
-                &quot;type&quot;: [&quot;__all__&quot;],
-                &quot;command&quot;: &quot;bh_modules.bracketselect&quot;,
-                &quot;args&quot;: {&quot;select&quot;: &quot;left&quot;}
-            }
-        }
-    },
-</code></pre></p>
-<p>The <code class="inlinehilite language-text">plugin</code> paramter is a dictionary that contains 3 parameters to define what plugin should get run, with what arguments, and on what bracket definition.</p>
+<div class="codehilite"><pre><span class="c1">// Go to left bracket</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;caption&quot;</span><span class="o">:</span> <span class="s2">&quot;BracketHighlighter: Jump to Left Bracket&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;command&quot;</span><span class="o">:</span> <span class="s2">&quot;bh_key&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;args&quot;</span><span class="o">:</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;lines&quot;</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;plugin&quot;</span><span class="o">:</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;__all__&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;command&quot;</span><span class="o">:</span> <span class="s2">&quot;bh_modules.bracketselect&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;args&quot;</span><span class="o">:</span> <span class="p">{</span><span class="s2">&quot;select&quot;</span><span class="o">:</span> <span class="s2">&quot;left&quot;</span><span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+</pre></div>
+</p>
+<p>The <code>plugin</code> paramter is a dictionary that contains 3 parameters to define what plugin should get run, with what arguments, and on what bracket definition.</p>
 <table>
 <thead>
 <tr>
@@ -992,11 +1078,11 @@ def post_match(view, name, style, first, second, center, bfr, threshold):
 <tbody>
 <tr>
 <td>type</td>
-<td>An array containing the bracket definition names that the plugin should be run on.  Use <code class="inlinehilite language-text">__all__</code> for all bracket definitions.</td>
+<td>An array containing the bracket definition names that the plugin should be run on.  Use <code>__all__</code> for all bracket definitions.</td>
 </tr>
 <tr>
 <td>command</td>
-<td>The plugin to run.  For internal plugins, they are referenced by <code class="inlinehilite language-text">bh_modules.&lt;plugin name&gt;</code>.  For custom plugins, you should use the folder path relative to <code class="inlinehilite language-text">Packages</code>.  So if I had a plugin called <code class="inlinehilite language-text">myplugin.py</code> in my <code class="inlinehilite language-text">User</code> folder, I would use <code class="inlinehilite language-text">User.myplugin</code>.</td>
+<td>The plugin to run.  For internal plugins, they are referenced by <code>bh_modules.&lt;plugin name&gt;</code>.  For custom plugins, you should use the folder path relative to <code>Packages</code>.  So if I had a plugin called <code>myplugin.py</code> in my <code>User</code> folder, I would use <code>User.myplugin</code>.</td>
 </tr>
 <tr>
 <td>args</td>
@@ -1004,8 +1090,11 @@ def post_match(view, name, style, first, second, center, bfr, threshold):
 </tr>
 </tbody>
 </table>
-<p>You create <code class="inlinehilite language-text">run instance</code> plugins by deriving a class from the <code class="inlinehilite language-text">BracketPluginCommand</code> class.  Then you provide a method called <code class="inlinehilite language-text">plugin</code> that returns the class.</p>
-<p>BracketPluginCommand attributes:</p>
+<p>You create <code>run instance</code> plugins by deriving a class from the <code>BracketPluginCommand</code> class.  Then you provide a method called <code>plugin</code> that returns the class.</p>
+<dl>
+<dt>class BracketPluginCommand()</dt>
+<dd>
+<p><strong>Attributes</strong>:</p>
 <table>
 <thead>
 <tr>
@@ -1032,39 +1121,52 @@ def post_match(view, name, style, first, second, center, bfr, threshold):
 </tr>
 </tbody>
 </table>
-<p>BracketPluginCommand methods:</p>
+<p><strong>Methods</strong>:</p>
+<dl>
+<dt>def run(edit, name, &lt;args&gt;)</dt>
+<dd>
+<p><strong>Parameters</strong>:</p>
 <table>
 <thead>
 <tr>
-<th>Method</th>
+<th>Parameter</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>run</strong>(edit,&nbsp;name,&nbsp;&lt;args&gt;)</td>
-<td>Runs the plugin. <code class="inlinehilite language-text">edit</code> is a sublime edit object. <code class="inlinehilite language-text">name</code> is the bracket definition being evaluated.</td>
+<td>edit</td>
+<td>The sublime edit object.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>The bracket definition being evaluated.</td>
 </tr>
 </tbody>
 </table>
+</dd>
+</dl>
 <p>Example (from foldbracket.py):<br />
-<pre><code class="python">import BracketHighlighter.bh_plugin as bh_plugin
-import sublime
+<div class="codehilite"><pre><span class="kn">import</span> <span class="nn">BracketHighlighter.bh_plugin</span> <span class="kn">as</span> <span class="nn">bh_plugin</span>
+<span class="kn">import</span> <span class="nn">sublime</span>
 
 
-class FoldBrackets(bh_plugin.BracketPluginCommand):
-    def run(self, edit, name):
-        content = sublime.Region(self.left.end, self.right.begin)
-        new_content = [content]
-        if content.size() &gt; 0:
-            if self.view.fold(content) == False:
-                new_content = self.view.unfold(content)
-        self.selection = new_content
+<span class="k">class</span> <span class="nc">FoldBrackets</span><span class="p">(</span><span class="n">bh_plugin</span><span class="o">.</span><span class="n">BracketPluginCommand</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">edit</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="n">sublime</span><span class="o">.</span><span class="n">Region</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">left</span><span class="o">.</span><span class="n">end</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span><span class="o">.</span><span class="n">begin</span><span class="p">)</span>
+        <span class="n">new_content</span> <span class="o">=</span> <span class="p">[</span><span class="n">content</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">content</span><span class="o">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">fold</span><span class="p">(</span><span class="n">content</span><span class="p">)</span> <span class="o">==</span> <span class="bp">False</span><span class="p">:</span>
+                <span class="n">new_content</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">unfold</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">selection</span> <span class="o">=</span> <span class="n">new_content</span>
 
 
-def plugin():
-    return FoldBrackets
-</code></pre></p>
+<span class="k">def</span> <span class="nf">plugin</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">FoldBrackets</span>
+</pre></div>
+</p>
+</dd>
+</dl>
             </div>
           </div>
           <footer>
@@ -1081,13 +1183,13 @@ def plugin():
 
   <div role="contentinfo">
     <p>
-    <!-- Copyright etc -->
+    
     </p>
   </div>
 
   Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-	  
+    
         </div>
       </div>
 
@@ -1107,7 +1209,7 @@ def plugin():
 
 <!--
 MkDocs version  : 0.12.1
-Docs Build Date : 2015-04-21 01:19:25.572209
+Docs Build Date : 2015-04-22 03:00:28.933637
 -->
 </body>
 </html>
