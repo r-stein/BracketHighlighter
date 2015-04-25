@@ -135,7 +135,7 @@
 <p class="doctitle-info">Tweaking BracketHighlighter.<br /></p>
 <hr />
 <h1 id="overview"><a name="user-content-overview" href="#overview" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Overview</h1>
-<p>BH is extremely flexible and can be customized and extended to fit a user&rsquo;s needs.  The first step is to create a <code>bh_core.sublime-settings</code> in your <code>User</code> folder.  This is where the bracket and sytle rules live.  By changing these settings, you can add support for new languages, or change the look of highlighting, and much more.</p>
+<p>BH is extremely flexible and can be customized and extended to fit a user&rsquo;s needs.  The first step is to create a <code>bh_core.sublime-settings</code> in your <code>User</code> folder.  This is where the bracket and style rules live.  By changing these settings, you can add support for new languages, or change the look of highlighting, and much more.</p>
 <h1 id="general-settings"><a name="user-content-general-settings" href="#general-settings" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>General Settings</h1>
 <p>Style and color will be discussed in greater depth in the <code>Configuring Highlight Style</code> section.  But there are a number of general setting you can adjust to change how things look or work.  The settings are commented to explain their functionality.</p>
 <p>These are the basic settings you can change:<br />
@@ -355,7 +355,7 @@
 </table>
 <h2 id="bracket-rule-management"><a name="user-content-bracket-rule-management" href="#bracket-rule-management" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Bracket Rule Management</h2>
 <p>In the past, BracketHighlighter required a user to copy the entire bracket list to the user <code>bh_core.sublime-settings</code> file.  This was a cumbersome requirement that also punished a user because if they did this, they wouldn&rsquo;t automatically get updates to the rules as all the rules were now overridden by the user&rsquo;s settings file.</p>
-<p>BracketHighlighter now let&rsquo;s you add or modify existing rules without overriding the entire ruleset or even the entire target rule.  Let&rsquo;s say you have a custom language you want to have on your machine. Now, you can simply add it to one of the two settings arrays: &ldquo;user_scope_brackets&rdquo; and &ldquo;user_brackets&rdquo;:</p>
+<p>BracketHighlighter now let&rsquo;s you add or modify existing rules without overriding the entire rule set or even the entire target rule.  Let&rsquo;s say you have a custom language you want to have on your machine. Now, you can simply add it to one of the two settings arrays: &ldquo;user_scope_brackets&rdquo; and &ldquo;user_brackets&rdquo;:</p>
 <div class="codehilite"><pre>    <span class="s2">&quot;user_scope_brackets&quot;</span><span class="o">:</span> <span class="p">[],</span>
     <span class="s2">&quot;user_brackets&quot;</span><span class="o">:</span> <span class="p">[</span>
         <span class="p">{</span>
@@ -390,7 +390,7 @@
 </pre></div>
 
 
-<p>Let&rsquo;s say you want to insert a new rule between two rules. You can turn on debug mode and call the <code>BracketHighlighter: (Debug) Filter Rules by Key</code> then select position to see the current rule order and their postion index.  To turn on Debug mode, just add <code>&quot;debug_enable&quot;: true</code> to your user settings file.</p>
+<p>Let&rsquo;s say you want to insert a new rule between two rules. You can turn on debug mode and call the <code>BracketHighlighter: (Debug) Filter Rules by Key</code> then select position to see the current rule order and their position index.  To turn on Debug mode, just add <code>&quot;debug_enable&quot;: true</code> to your user settings file.</p>
 <p>Example of <code>BracketHighlighter: (Debug) Filter Rules by Key</code> output:</p>
 <div class="codehilite"><pre><span class="p">[</span>
     <span class="p">[</span>
@@ -466,7 +466,7 @@
 <p>This will allow you to make changes, but still receive new updated rules.</p>
 <h1 id="configuring-highlight-style"><a name="user-content-configuring-highlight-style" href="#configuring-highlight-style" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Configuring Highlight Style</h1>
 <p>Each bracket definition (described in <code>Configuring Scope Brackets</code> and <code>Configuring Brackets</code>) has a <code>style</code> setting that you give a style definition to.  Style definitions are defined under <code>bracket_styles</code> in <code>bh_core.sublime-settings</code>.</p>
-<p>There are two special style definitions whose names are reserved: <code>default</code> and <code>unmatched</code>, but you can configure them.  All other custom style definitions follow the same pattern (see <code>curly</code> below and compare to the special style defintions; format is the same)  All custom styles follow this pattern.  See description below:</p>
+<p>There are two special style definitions whose names are reserved: <code>default</code> and <code>unmatched</code>, but you can configure them.  All other custom style definitions follow the same pattern (see <code>curly</code> below and compare to the special style definitions; format is the same)  All custom styles follow this pattern.  See description below:</p>
 <div class="codehilite"><pre>        <span class="c1">// &quot;default&quot; style defines attributes that</span>
         <span class="c1">// will be used for any style that does not</span>
         <span class="c1">// explicitly define that attribute.  So if</span>
@@ -519,7 +519,7 @@
 </tr>
 <tr>
 <td>style</td>
-<td>Higlight style.  Available options are: <code>solid</code>, <code>outline</code>, <code>underline</code>, <code>none</code>.  ST3 has additional styles: <code>thin_underline</code>, <code>squiggly</code>, <code>stippled</code>.</td>
+<td>Highlight style.  Available options are: <code>solid</code>, <code>outline</code>, <code>underline</code>, <code>none</code>.  ST3 has additional styles: <code>thin_underline</code>, <code>squiggly</code>, <code>stippled</code>.</td>
 </tr>
 <tr>
 <td>endpoint</td>
@@ -579,7 +579,7 @@
     <span class="p">},</span>
 
     <span class="c1">// This particular style is used to highlight</span>
-    <span class="c1">// unmatched bracekt pairs.  It is a special</span>
+    <span class="c1">// unmatched bracket pairs.  It is a special</span>
     <span class="c1">// style.</span>
     <span class="s2">&quot;unmatched&quot;</span><span class="o">:</span> <span class="p">{</span>
         <span class="s2">&quot;icon&quot;</span><span class="o">:</span> <span class="s2">&quot;question&quot;</span><span class="p">,</span>
@@ -768,7 +768,7 @@
 <dd>Returns size of region</dd>
 <dt>def move(self, begin_pt, end_pt)</dt>
 <dd>
-<p>Returns a new BracketRegion object with the points moved to the specified postion.</p>
+<p>Returns a new BracketRegion object with the points moved to the specified position.</p>
 <p><strong>Parmenters</strong>:</p>
 <table>
 <thead>
@@ -832,7 +832,7 @@
 <dl>
 <dt>def validate(name, bracket, bracket_size, bfr)</dt>
 <dd>
-<p><code>validate</code> before comparing it to its corresponding openning or closing side.  This is used to determine perfrom additional validation on a found bracket.  For example, lets say you have a bracket that is case senstive.  BH uses a case insenstive search.  With validate, you can ensure the orginally found bracket matches the desired case.</p>
+<p><code>validate</code> before comparing it to its corresponding opening or closing side.  This is used to determine perform additional validation on a found bracket.  For example, lets say you have a bracket that is case sensitive.  BH uses a case insensitive search.  With validate, you can ensure the originally found bracket matches the desired case.</p>
 <p><strong>Parameters</strong>:</p>
 <table>
 <thead>
@@ -1284,7 +1284,7 @@
 
 <!--
 MkDocs version  : 0.12.2
-Docs Build Date : 2015-04-25 02:57:20.833484
+Docs Build Date : 2015-04-25 03:08:41.987234
 -->
 </body>
 </html>
