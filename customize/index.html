@@ -139,10 +139,10 @@
             <div class="section">
               
                 <h1 class="doctitle" id="customization"><a name="user-content-customization" href="#customization" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Customization</h1>
-<p class="doctitle-info">Tweaking BracketHighlighter.<br /></p>
+<p>Tweaking BracketHighlighter.</p>
 <hr />
 <h1 id="overview"><a name="user-content-overview" href="#overview" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Overview</h1>
-<p>BH is extremely flexible and can be customized and extended to fit a user&rsquo;s needs.  The first step is to create a <code>bh_core.sublime-settings</code> in your <code>User</code> folder.  This is where the bracket and style rules live.  By changing these settings, you can add support for new languages, or change the look of highlighting, and much more.</p>
+<p><abbr title="BracketHighlighter">BH</abbr> is extremely flexible and can be customized and extended to fit a user&rsquo;s needs.  The first step is to create a <code>bh_core.sublime-settings</code> in your <code>User</code> folder.  This is where the bracket and style rules live.  By changing these settings, you can add support for new languages, or change the look of highlighting, and much more.</p>
 <h1 id="general-settings"><a name="user-content-general-settings" href="#general-settings" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>General Settings</h1>
 <p>Style and color will be discussed in greater depth in the <code>Configuring Highlight Style</code> section.  But there are a number of general setting you can adjust to change how things look or work.  The settings are commented to explain their functionality.</p>
 <p>These are the basic settings you can change:<br />
@@ -200,7 +200,7 @@
 </pre></div>
 </p>
 <h1 id="configuring-brackets"><a name="user-content-configuring-brackets" href="#configuring-brackets" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Configuring Brackets</h1>
-<p>BH has been written to allow users to define any brackets they would like to have highlighted.  There are two kinds of brackets you can define: <code>scope_brackets</code> (search file for scope regions and then use regex to test for opening and closing brackets) and <code>brackets</code> (use regex to find opening and closing brackets).  <code>bracket</code> type should usually be the preferred type.  <code>scope_brackets</code> are usually used for brackets whose opening and closing are the same and not distinguishable form one another by regex; scope brackets must be contained in a continuous scope region like string for quotes etc.</p>
+<p><abbr title="BracketHighlighter">BH</abbr> has been written to allow users to define any brackets they would like to have highlighted.  There are two kinds of brackets you can define: <code>scope_brackets</code> (search file for scope regions and then use regex to test for opening and closing brackets) and <code>brackets</code> (use regex to find opening and closing brackets).  <code>bracket</code> type should usually be the preferred type.  <code>scope_brackets</code> are usually used for brackets whose opening and closing are the same and not distinguishable form one another by regex; scope brackets must be contained in a continuous scope region like string for quotes etc.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Brackets can be modified or even added without copying the entire bracket rule lists to the user settings.  See <a href="#bracket-rule-management">Bracket Rule Management</a> for more info.</p>
@@ -464,7 +464,7 @@
 
 
 <p>This can be used to adjust the position of default rules from your user settings as well as shown by overrides above.</p>
-<p>So, unless you are forking BH to pull request a change to the default rules, you can now modify the rules all in these two settings without copying or touching the default rules:</p>
+<p>So, unless you are forking <abbr title="BracketHighlighter">BH</abbr> to pull request a change to the default rules, you can now modify the rules all in these two settings without copying or touching the default rules:</p>
 <div class="codehilite"><pre>    <span class="s2">&quot;user_scope_brackets&quot;</span><span class="o">:</span> <span class="p">[],</span>
     <span class="s2">&quot;user_brackets&quot;</span><span class="o">:</span> <span class="p">[],</span>
 </pre></div>
@@ -526,7 +526,7 @@
 </tr>
 <tr>
 <td>style</td>
-<td>Highlight style.  Available options are: <code>solid</code>, <code>outline</code>, <code>underline</code>, <code>none</code>.  ST3 has additional styles: <code>thin_underline</code>, <code>squiggly</code>, <code>stippled</code>.</td>
+<td>Highlight style.  Available options are: <code>solid</code>, <code>outline</code>, <code>underline</code>, <code>none</code>.  <abbr title="Sublime Text 3">ST3</abbr> has additional styles: <code>thin_underline</code>, <code>squiggly</code>, <code>stippled</code>.</td>
 </tr>
 <tr>
 <td>endpoint</td>
@@ -839,7 +839,7 @@
 <dl>
 <dt>def validate(name, bracket, bracket_size, bfr)</dt>
 <dd>
-<p><code>validate</code> before comparing it to its corresponding opening or closing side.  This is used to determine perform additional validation on a found bracket.  For example, lets say you have a bracket that is case sensitive.  BH uses a case insensitive search.  With validate, you can ensure the originally found bracket matches the desired case.</p>
+<p><code>validate</code> before comparing it to its corresponding opening or closing side.  This is used to determine perform additional validation on a found bracket.  For example, lets say you have a bracket that is case sensitive.  <abbr title="BracketHighlighter">BH</abbr> uses a case insensitive search.  With validate, you can ensure the originally found bracket matches the desired case.</p>
 <p><strong>Parameters</strong>:</p>
 <table>
 <thead>
@@ -1059,7 +1059,7 @@
 <dl>
 <dt>def highlighting(view, name, style, right)</dt>
 <dd>
-<p><code>highlighting</code> is the last hook that gets run.  This is at a point when BH no longer cares about what the <em>actual</em> bracket region is, so it is safe to modify it for highlighting purposes.  The view really shouldn&rsquo;t be modified here.</p>
+<p><code>highlighting</code> is the last hook that gets run.  This is at a point when <abbr title="BracketHighlighter">BH</abbr> no longer cares about what the <em>actual</em> bracket region is, so it is safe to modify it for highlighting purposes.  The view really shouldn&rsquo;t be modified here.</p>
 <p><strong>Parameters</strong>:</p>
 <table>
 <thead>
@@ -1294,7 +1294,7 @@
 
 <!--
 MkDocs version      : 0.13.0.dev
-Docs Build Date UTC : 2015-04-29 00:36:14.421194
+Docs Build Date UTC : 2015-05-07 02:30:34.708197
 -->
 </body>
 </html>

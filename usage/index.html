@@ -77,6 +77,8 @@
                         
                             <li><a class="toctree-l4" href="#bracket-select-plugin">Bracket Select Plugin</a></li>
                         
+                            <li><a class="toctree-l4" href="#swap-brackets-plugin">Swap Brackets Plugin</a></li>
+                        
                             <li><a class="toctree-l4" href="#bracket-remove-plugin">Bracket Remove Plugin</a></li>
                         
                             <li><a class="toctree-l4" href="#fold-bracket-plugin">Fold Bracket Plugin</a></li>
@@ -92,6 +94,13 @@
                             <li><a class="toctree-l4" href="#bracket-wrapping-plugin">Bracket Wrapping Plugin</a></li>
                         
                             <li><a class="toctree-l4" href="#bracket-swapping-plugin">Bracket Swapping Plugin</a></li>
+                        
+                    
+                        <li class="toctree-l3"><a href="#wrapping-and-swapping-commands">Wrapping and Swapping Commands</a></li>
+                        
+                            <li><a class="toctree-l4" href="#swapping-brackets">Swapping Brackets</a></li>
+                        
+                            <li><a class="toctree-l4" href="#wrapping-brackets">Wrapping Brackets</a></li>
                         
                     
                         <li class="toctree-l3"><a href="#shortcuts">Shortcuts</a></li>
@@ -149,21 +158,21 @@
             <div class="section">
               
                 <h1 class="doctitle" id="user-guide"><a name="user-content-user-guide" href="#user-guide" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>User Guide</h1>
-<p class="doctitle-info">How to use BracketHighlighter.<br /></p>
+<p>How to use BracketHighlighter.</p>
 <hr />
 <h1 id="general-use"><a name="user-content-general-use" href="#general-use" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>General Use</h1>
-<p>In general, BracketHighlighter (BH) will highlight brackets (or defined bracket like start and end blocks) surrounding the cursor.  By default, BH will put opening and closing icons in the gutter of the corresponding line containing open or closing bracket. BH, by default, will underline the closing and opening bracket as well.</p>
+<p>In general, BracketHighlighter (<abbr title="BracketHighlighter">BH</abbr>) will highlight brackets (or defined bracket like start and end blocks) surrounding the cursor.  By default, <abbr title="BracketHighlighter">BH</abbr> will put opening and closing icons in the gutter of the corresponding line containing open or closing bracket. <abbr title="BracketHighlighter">BH</abbr>, by default, will underline the closing and opening bracket as well.</p>
 <h1 id="built-in-supported-brackets"><a name="user-content-built-in-supported-brackets" href="#built-in-supported-brackets" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Built-in Supported brackets</h1>
-<p>Currently BH supports the following brackets out of the box:</p>
+<p>Currently <abbr title="BracketHighlighter">BH</abbr> supports the following brackets out of the box:</p>
 <ul>
 <li>round</li>
 <li>square</li>
 <li>curly</li>
 <li>angle</li>
 <li>single and double quotes</li>
-<li>python single and double quotes (unicode and raw)</li>
-<li>python triple single and double quotes (unicode and raw)</li>
-<li>Javascript regex</li>
+<li>python single and double quotes (Unicode and raw)</li>
+<li>python triple single and double quotes (Unicode and raw)</li>
+<li>JavaScript regex</li>
 <li>Perl regex</li>
 <li>Ruby regex</li>
 <li>Markdown italic</li>
@@ -176,17 +185,19 @@
 <li>HTML/ColdFusion/XML tags</li>
 <li>Bash conditional and looping constructs</li>
 </ul>
-<p>BH also supports highlighting basic sub brackets <code>(), [], {}</code> within supported regex and strings.</p>
+<p><abbr title="BracketHighlighter">BH</abbr> also supports highlighting basic sub brackets <code>(), [], {}</code> within supported regex and strings.</p>
 <h1 id="general-commands"><a name="user-content-general-commands" href="#general-commands" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>General Commands</h1>
-<p>BH has a couple of additional features built-in.</p>
+<p><abbr title="BracketHighlighter">BH</abbr> has a couple of additional features built-in.</p>
 <h2 id="toggle-global-enable"><a name="user-content-toggle-global-enable" href="#toggle-global-enable" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Toggle Global Enable</h2>
-<p>The <code>bh_toggle_enable</code> command enables and disables BH globally.</p>
+<p>The <code>bh_toggle_enable</code> command enables and disables <abbr title="BracketHighlighter">BH</abbr> globally.</p>
 <h2 id="toggle-string-bracket-escape-mode"><a name="user-content-toggle-string-bracket-escape-mode" href="#toggle-string-bracket-escape-mode" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Toggle String Bracket Escape Mode</h2>
-<p><code>bh_toggle_string_escape_mode</code> toggles BH&rsquo;s recognition mode of escaped sub brackets in strings and regex.  The modes are string escape mode and regex escape mode.</p>
+<p><code>bh_toggle_string_escape_mode</code> toggles <abbr title="BracketHighlighter">BH</abbr>&lsquo;s recognition mode of escaped sub brackets in strings and regex.  The modes are string escape mode and regex escape mode.</p>
 <h1 id="bracket-plugin-commands"><a name="user-content-bracket-plugin-commands" href="#bracket-plugin-commands" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Bracket Plugin Commands</h1>
-<p>Bh is also extendable via plugins and provides a number of built in Bracket Plugins that take advantage of BH&rsquo;s matching to provide additional features.  Most plugin features are available via the <code>Tools-&gt;Packages-&gt;BracketHighlighter</code> menu or the command palette.  To see how to configure shortcuts, see the <code>Example.sublime-settings</code> file.</p>
+<p><abbr title="BracketHighlighter">BH</abbr> is also extendable via plugins and provides a number of built in Bracket Plugins that take advantage of <abbr title="BracketHighlighter">BH</abbr>&rsquo;s matching to provide additional features.  Most plugin features are available via the <code>Tools-&gt;Packages-&gt;BracketHighlighter</code> menu or the command palette.  To see how to configure shortcuts, see the <code>Example.sublime-settings</code> file.</p>
 <h2 id="bracket-select-plugin"><a name="user-content-bracket-select-plugin" href="#bracket-select-plugin" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Bracket Select Plugin</h2>
 <p>This plugin changes the selection inside between the brackets.  It can select the content or move the bracket to the opening and closing bracket.  Behavior is slightly modified for tags.</p>
+<h2 id="swap-brackets-plugin"><a name="user-content-swap-brackets-plugin" href="#swap-brackets-plugin" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Swap Brackets Plugin</h2>
+<p>This plugin allows the current brackets to another type of bracket.  See <a href="#wrapping-and-swapping-commands">Wrapping and Swapping Commands</a> for more info.</p>
 <h2 id="bracket-remove-plugin"><a name="user-content-bracket-remove-plugin" href="#bracket-remove-plugin" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Bracket Remove Plugin</h2>
 <p>Removes the surrounding brackets.</p>
 <h2 id="fold-bracket-plugin"><a name="user-content-fold-bracket-plugin" href="#fold-bracket-plugin" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Fold Bracket Plugin</h2>
@@ -221,8 +232,163 @@
 <p>Wrap the current selection with supported bracket of your choice.  Wrapping definitions are configured in <code>bh_wrapping.sublime-settings</code>.</p>
 <h2 id="bracket-swapping-plugin"><a name="user-content-bracket-swapping-plugin" href="#bracket-swapping-plugin" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Bracket Swapping Plugin</h2>
 <p>Swap the current surrounding bracket with supported bracket of your choice.  Swapping definitions are configured in <code>bh_swapping.sublime-settings</code>.</p>
+<h1 id="wrapping-and-swapping-commands"><a name="user-content-wrapping-and-swapping-commands" href="#wrapping-and-swapping-commands" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Wrapping and Swapping Commands</h1>
+<p><abbr title="BracketHighlighter">BH</abbr> provides a way to wrap content with brackets or swap brackets.</p>
+<h2 id="swapping-brackets"><a name="user-content-swapping-brackets" href="#swapping-brackets" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Swapping Brackets</h2>
+<p>Bracket swapping support utilizes the <code>swapbrackets</code> bh_plugin to swap out the current highlighted brackets with another set of pre-defined brackets.  Allowed brackets are defined in the <code>bh_swapping.sublime-settings</code> file.  Swap rules are found under the key <code>swapping</code> where <code>swapping</code> is an array of language swap rules.</p>
+<div class="codehilite"><pre>    <span class="s2">&quot;swapping&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;language_list&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;C++&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;language_filter&quot;</span><span class="o">:</span> <span class="s2">&quot;whitelist&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;entries&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;C/C++: #if&quot;</span><span class="p">,</span> <span class="s2">&quot;brackets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;#if ${BH_SEL}&quot;</span><span class="p">,</span> <span class="s2">&quot;#endif&quot;</span><span class="p">]},</span>
+                <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;C/C++: #if, #else&quot;</span><span class="p">,</span> <span class="s2">&quot;brackets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;#if${BH_SEL}&quot;</span><span class="p">,</span> <span class="s2">&quot;#else\n${BH_TAB:/* CODE */}\n#endif&quot;</span><span class="p">]},</span>
+                <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;C/C++: #if, #elif&quot;</span><span class="p">,</span> <span class="s2">&quot;brackets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;#if${BH_SEL}&quot;</span><span class="p">,</span> <span class="s2">&quot;#elif ${BH_TAB:/* CONDITION */}\n${BH_TAB:/* CODE */}\n#endif&quot;</span><span class="p">]},</span>
+                <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;C/C++: #ifdef&quot;</span><span class="p">,</span> <span class="s2">&quot;brackets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;#ifdef${BH_SEL}&quot;</span><span class="p">,</span> <span class="s2">&quot;#endif&quot;</span><span class="p">]},</span>
+                <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;C/C++: #ifdef, #else&quot;</span><span class="p">,</span> <span class="s2">&quot;brackets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;#ifdef${BH_SEL}&quot;</span><span class="p">,</span> <span class="s2">&quot;#else\n${BH_TAB:/* CODE */}\n#endif&quot;</span><span class="p">]},</span>
+                <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;C/C++: #ifndef&quot;</span><span class="p">,</span> <span class="s2">&quot;brackets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;#ifndef${BH_SEL}&quot;</span><span class="p">,</span> <span class="s2">&quot;#endif&quot;</span><span class="p">]},</span>
+                <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;C/C++: #ifndef, #else&quot;</span><span class="p">,</span> <span class="s2">&quot;brackets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;#ifndef${BH_SEL}&quot;</span><span class="p">,</span> <span class="s2">&quot;#else\n${BH_TAB:/* CODE */}\n#endif&quot;</span><span class="p">]}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+</pre></div>
+
+
+<p>Each language rule contains the following attributes:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enabled</td>
+<td>bool</td>
+<td>Specifies if the rule is enabled.</td>
+</tr>
+<tr>
+<td>language_list</td>
+<td>[string]</td>
+<td>An array of languages.</td>
+</tr>
+<tr>
+<td>language_filter</td>
+<td>string</td>
+<td>A string that specifies if the <code>language_list</code> is either a <code>whitelist</code> or <code>blacklist</code>.</td>
+</tr>
+<tr>
+<td>entries</td>
+<td>[dict]</td>
+<td>An array of dictionaries, where each dictionary describes a type of bracket that can be swapped to.</td>
+</tr>
+</tbody>
+</table>
+<p>Within the language rules under <code>entries</code>, swap entries are defined.  Each entry represents a bracket you can swap to.</p>
+<table>
+<thead>
+<tr>
+<th>Entry</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>The name of the entry as it will be seen in the command palette.</td>
+</tr>
+<tr>
+<td>brackets</td>
+<td>[string]</td>
+<td>An array consisting of a string that represents the opening bracket and a string that represents the closing bracket.</td>
+</tr>
+</tbody>
+</table>
+<p>Within the <code>brackets</code>, you can specify the where the cursor(s) will appear by using <code>${BH_SEL}</code>  If you would like the selection to display text as a hint to what a user should enter in the selection, you can use <code>${BH_SEL:optional text}</code>.</p>
+<p>Within the <code>brackets</code>, you can also define tab stops that a user can tab through and enter text.  The tab stop syntax is <code>${BH_TAB}</code>.  You can also define optional text within a tab stop to give the user a hint of what should be entered in at the tab stop using the following syntax <code>${BH_TAB:optional text}</code>.</p>
+<h2 id="wrapping-brackets"><a name="user-content-wrapping-brackets" href="#wrapping-brackets" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Wrapping Brackets</h2>
+<p><abbr title="BracketHighlighter">BH</abbr> has a special command for wrapping selected text in pre-defined brackets.  Allowed brackets are defined in the <code>bh_wrapping.sublime-settings</code> file.  Wrap rules are found under the key <code>wrapping</code> where <code>wrapping</code> is an array of language wrap rules.</p>
+<div class="codehilite"><pre>    <span class="s2">&quot;wrapping&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;language_list&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;Plain text&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;language_filter&quot;</span><span class="o">:</span> <span class="s2">&quot;blacklist&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;entries&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;{} Curly&quot;</span><span class="p">,</span> <span class="s2">&quot;brackets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;{&quot;</span><span class="p">,</span> <span class="s2">&quot;}${BH_SEL}&quot;</span><span class="p">],</span> <span class="s2">&quot;insert_style&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;inline&quot;</span><span class="p">,</span> <span class="s2">&quot;block&quot;</span><span class="p">,</span> <span class="s2">&quot;indent_block&quot;</span><span class="p">]}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+</pre></div>
+
+
+<p>Each language rule contains the following attributes:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enabled</td>
+<td>bool</td>
+<td>Specifies if the rule is enabled.</td>
+</tr>
+<tr>
+<td>language_list</td>
+<td>[string]</td>
+<td>An array of languages.</td>
+</tr>
+<tr>
+<td>language_filter</td>
+<td>string</td>
+<td>A string that specifies if the <code>language_list</code> is either a <code>whitelist</code> or <code>blacklist</code>.</td>
+</tr>
+<tr>
+<td>entries</td>
+<td>[dict]</td>
+<td>An array of dictionaries, where each dictionary describes a type of bracket that can be used to wrap the selection.</td>
+</tr>
+</tbody>
+</table>
+<p>Within the language rules under <code>entries</code>, wrap entries are defined.  Each entry represents a bracket you can wrap the selection with.</p>
+<table>
+<thead>
+<tr>
+<th>Entry</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>The name of the entry as it will be seen in the command palette.</td>
+</tr>
+<tr>
+<td>brackets</td>
+<td>[string]</td>
+<td>An array consisting of a string that represents the opening bracket and a string that represents the closing bracket.</td>
+</tr>
+<tr>
+<td>insert_style</td>
+<td>[string]</td>
+<td>An array consisting of allowed insertion styles.  Allowed insertion styles are: <code>inline</code>, <code>block</code>, and <code>indent_block</code>.  Default is <code class="codehilite"><span class="p">[</span><span class="s1">&#39;inline&#39;</span><span class="p">]</span></code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Within the <code>brackets</code>, you can specify the where the cursor(s) will appear by using <code>${BH_SEL}</code>  If you would like the selection to display text as a hint to what a user should enter in the selection, you can use <code>${BH_SEL:optional text}</code>.</p>
+<p>Within the <code>brackets</code>, you can also define tab stops that a user can tab through and enter text.  The tab stop syntax is <code>${BH_TAB}</code>.  You can also define optional text within a tab stop to give the user a hint of what should be entered in at the tab stop using the following syntax <code>${BH_TAB:optional text}</code>.</p>
 <h1 id="shortcuts"><a name="user-content-shortcuts" href="#shortcuts" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Shortcuts</h1>
-<p>By default BH provides no shortcuts to avoid shortcut conflicts, but you can view the included <code>Example.sublime-keymaps</code> file to get an idea how to set up your own.</p>
+<p>By default <abbr title="BracketHighlighter">BH</abbr> provides no shortcuts to avoid shortcut conflicts, but you can view the included <code>Example.sublime-keymaps</code> file to get an idea how to set up your own.</p>
               
             </div>
           </div>
@@ -272,7 +438,7 @@
 
 <!--
 MkDocs version      : 0.13.0.dev
-Docs Build Date UTC : 2015-04-29 00:36:13.945012
+Docs Build Date UTC : 2015-05-07 02:30:34.254082
 -->
 </body>
 </html>
