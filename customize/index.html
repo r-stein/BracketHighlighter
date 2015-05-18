@@ -81,7 +81,29 @@
                 <li class="toctree-l3"><a href="#overview">Overview</a></li>
                 
             
-                <li class="toctree-l3"><a href="#general-settings">General Settings</a></li>
+                <li class="toctree-l3"><a href="#core-settings">Core Settings</a></li>
+                
+                    <li><a class="toctree-l4" href="#visual-settings">Visual Settings</a></li>
+                
+                    <li><a class="toctree-l4" href="#behavioral-settings">Behavioral Settings</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#tag-plugin-settings">Tag Plugin Settings</a></li>
+                
+                    <li><a class="toctree-l4" href="#tag_style">tag_style</a></li>
+                
+                    <li><a class="toctree-l4" href="#tag_scope_exclude">tag_scope_exclude</a></li>
+                
+                    <li><a class="toctree-l4" href="#tag_mode">tag_mode</a></li>
+                
+                    <li><a class="toctree-l4" href="#self_closing_tags">self_closing_tags</a></li>
+                
+                    <li><a class="toctree-l4" href="#single_tags">single_tags</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#swap-brackets-plugin-settings">Swap Brackets Plugin Settings</a></li>
+                
+                    <li><a class="toctree-l4" href="#wrap-brackets-plugin-settings">Wrap Brackets Plugin Settings</a></li>
                 
             
                 <li class="toctree-l3"><a href="#configuring-brackets">Configuring Brackets</a></li>
@@ -172,62 +194,342 @@
 <hr />
 <h1 id="overview"><a name="user-content-overview" href="#overview" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Overview</h1>
 <p><abbr title="BracketHighlighter">BH</abbr> is extremely flexible and can be customized and extended to fit a user&rsquo;s needs.  The first step is to create a <code>bh_core.sublime-settings</code> in your <code>User</code> folder.  This is where the bracket and style rules live.  By changing these settings, you can add support for new languages, or change the look of highlighting, and much more.</p>
-<h1 id="general-settings"><a name="user-content-general-settings" href="#general-settings" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>General Settings</h1>
-<p>Style and color will be discussed in greater depth in the <code>Configuring Highlight Style</code> section.  But there are a number of general setting you can adjust to change how things look or work.  The settings are commented to explain their functionality.</p>
-<p>These are the basic settings you can change:<br />
-<div class="codehilite"><pre>    <span class="c1">//Debug logging</span>
-    <span class="s2">&quot;debug_enable&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+<h1 id="core-settings"><a name="user-content-core-settings" href="#core-settings" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Core Settings</h1>
+<p>Style and color will be discussed in greater depth in the <a href="#configuring-highlight-style"><code>Configuring Highlight Style</code></a> section.  But there are a number of general setting you can adjust to change how things look or work.  These settings are found in <code>bh_core.sublime-settings</code>.</p>
+<h2 id="visual-settings"><a name="user-content-visual-settings" href="#visual-settings" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Visual Settings</h2>
+<p>These are the settings related to the visual appearance of <abbr title="BracketHighlighter">BH</abbr>.</p>
+<h3 id="show_in_minimap"><a name="user-content-show_in_minimap" href="#show_in_minimap" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>show_in_minimap</h3>
+<p>This will show highlighted brackets in the minimap.  This will work with all highlight styles accept <code>underline</code>; <code>thin_underline</code> has no issues.</p>
+<div class="codehilite"><pre>    <span class="c1">// Show brackets in the minimap.</span>
+    <span class="s2">&quot;show_in_minimap&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</pre></div>
 
-    <span class="c1">// When only either the left or right bracket can be found</span>
+
+<h3 id="show_unmatched"><a name="user-content-show_unmatched" href="#show_unmatched" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>show_unmatched</h3>
+<p>This setting is a boolean, and when possible, this will display a special highlight for brackets that cannot be matched.</p>
+<div class="codehilite"><pre>    <span class="c1">// When only either the left or right bracket can be found</span>
     <span class="c1">// this defines if the unmatched bracket should be shown.</span>
-    <span class="s2">&quot;show_unmatched&quot;</span> <span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="s2">&quot;show_unmatched&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</pre></div>
 
-    <span class="c1">// Do the opposite of &quot;show_unmatched&quot; for the languages listed below</span>
+
+<h3 id="show_unmatched_exceptions"><a name="user-content-show_unmatched_exceptions" href="#show_unmatched_exceptions" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>show_unmatched_exceptions</h3>
+<p>This is a list of languages in which the <code>show_unmatched</code> option will be reversed.</p>
+<div class="codehilite"><pre>    <span class="c1">// Do the opposite of &quot;show_unmatched&quot; for the languages listed below</span>
     <span class="s2">&quot;show_unmatched_exceptions&quot;</span><span class="o">:</span> <span class="p">[],</span>
+</pre></div>
 
-    <span class="c1">// Enable high visibility by default when sublime starts up</span>
-    <span class="c1">// If sublime is already running and this gets changed,</span>
-    <span class="c1">// you will not see any changes (restart required to see change)</span>
-    <span class="s2">&quot;high_visibility_enabled_by_default&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
 
-    <span class="c1">// Experimental: Creates a visible bar at the beginning of all lines between</span>
+<h3 id="content_highlight_bar"><a name="user-content-content_highlight_bar" href="#content_highlight_bar" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>content_highlight_bar</h3>
+<p>This is an experimental setting which can enable displaying a vertical bar from the line containing the opening bracket to the line with the closing bracket.  When <a href="#align_content_highlight_bar"><code>align_content_highlight_bar</code></a> set to <code>false</code>, the bar will be shown on the first column regardless of indent level of the brackets.  When <code>align_content_highlight_bar</code> is set to <code>true</code>, the bar will be aligned and the bracket indent level.</p>
+<div class="codehilite"><pre>    <span class="c1">// Experimental: Creates a visible bar at the beginning of all lines between</span>
     <span class="c1">// multiline bracket spans.</span>
     <span class="s2">&quot;content_highlight_bar&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</pre></div>
 
-    <span class="c1">// Experimental: Align the content highlight bar at the bracket indent level</span>
+
+<h3 id="align_content_highlight_bar"><a name="user-content-align_content_highlight_bar" href="#align_content_highlight_bar" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>align_content_highlight_bar</h3>
+<p>This setting is a boolean which will modify the behavior of <code>content_highlight_bar</code> and draw the vertical content bar at the indentation level of the highlighted bracket, but there are some limitations though:</p>
+<div class="codehilite"><pre>- Content bar cannot extend through a line an empty line unless the bar is on the first column.  This is a limitation of the Sublime API.
+
+- Content bar will not be shown on a line where non-whitespace characters cross the bar.
+</pre></div>
+
+
+<div class="codehilite"><pre>    <span class="c1">// Experimental: Align the content highlight bar at the bracket indent level</span>
     <span class="s2">&quot;align_content_highlight_bar&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</pre></div>
 
-    <span class="c1">// High visibility style and color for high visibility mode</span>
-    <span class="c1">// (solid|outline|underline)</span>
-    <span class="c1">// ST3 has additional options of (thin_underline|squiggly|stippled)</span>
+
+<h3 id="high_visibility_enabled_by_default"><a name="user-content-high_visibility_enabled_by_default" href="#high_visibility_enabled_by_default" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>high_visibility_enabled_by_default</h3>
+<p>This enables high visibility mode by default.  High visibility mode highlights not only the bracket but the content between as well, but it is disabled by default and must be toggled on.  This reverses the behavior and has it on by default and must be toggled off.</p>
+<div class="codehilite"><pre>    <span class="c1">// Enable high visibility by default when sublime starts up</span>
+    <span class="s2">&quot;high_visibility_enabled_by_default&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</pre></div>
+
+
+<h3 id="high_visibility_style"><a name="user-content-high_visibility_style" href="#high_visibility_style" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>high_visibility_style</h3>
+<p>This setting modifies the styling of high visibility mode.  The available options are <code>solid</code>, <code>outline</code>, <code>underline</code>, <code>thin_underline</code>, <code>squiggly</code>, and <code>stippled</code>.</p>
+<div class="codehilite"><pre>    <span class="c1">// High visibility style and color for high visibility mode</span>
     <span class="s2">&quot;high_visibility_style&quot;</span><span class="o">:</span> <span class="s2">&quot;outline&quot;</span><span class="p">,</span>
+</pre></div>
 
-    <span class="c1">// (scope|__default__|__bracket__)</span>
+
+<h3 id="high_visibility_color"><a name="user-content-high_visibility_color" href="#high_visibility_color" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>high_visibility_color</h3>
+<p>This modifies the color of the high visibility color.  There are three types of settings you can use:</p>
+<div class="codehilite"><pre>- `__default__` is a special reserved value which will use the color set in `bracket_styles` (see [Configuring Highlight Style](#configuring-highlight-style) for more info).
+
+- `__bracket__` is a special reserved value which will inherit the defined color of the highlighted bracket.
+
+- Any valid scope found in your color scheme.
+</pre></div>
+
+
+<div class="codehilite"><pre>    <span class="c1">// Color for high visibility mode</span>
     <span class="s2">&quot;high_visibility_color&quot;</span><span class="o">:</span> <span class="s2">&quot;__bracket__&quot;</span><span class="p">,</span>
+</pre></div>
 
-    <span class="c1">// Match brackets only when the cursor is touching the inside of the bracket</span>
+
+<h2 id="behavioral-settings"><a name="user-content-behavioral-settings" href="#behavioral-settings" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Behavioral Settings</h2>
+<p>These settings affect the matching behavior.</p>
+<h3 id="match_only_adjacent"><a name="user-content-match_only_adjacent" href="#match_only_adjacent" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>match_only_adjacent</h3>
+<p>This will will only match and highlight brackets when the cursor is adjacent to a bracket.  This is set with either <code>true</code> or <code>false</code>.</p>
+<div class="codehilite"><pre>    <span class="c1">// Match brackets only when the cursor is touching the inside of the bracket</span>
     <span class="s2">&quot;match_only_adjacent&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</pre></div>
 
-    <span class="c1">// Character threshold to search</span>
-    <span class="s2">&quot;search_threshold&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span>
 
-    <span class="c1">// Ignore threshold</span>
-    <span class="s2">&quot;ignore_threshold&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+<h3 id="bracket_outside_adjacent"><a name="user-content-bracket_outside_adjacent" href="#bracket_outside_adjacent" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>bracket_outside_adjacent</h3>
+<p>This is a boolean which augments the matching behavior and will trigger matching when the cursor is adjacent to a cursor on the outside (not between the brackets).</p>
+<div class="codehilite"><pre>    <span class="c1">// Outside adjacent bracket matching</span>
+    <span class="s2">&quot;bracket_outside_adjacent&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</pre></div>
 
-    <span class="c1">// Set mode for string escapes to ignore (regex|string)</span>
+
+<h3 id="bracket_string_escape_mode"><a name="user-content-bracket_string_escape_mode" href="#bracket_string_escape_mode" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>bracket_string_escape_mode</h3>
+<p>Is a setting that takes a string value.  When matching sub-brackets inside strings, this changes the matching behavior in regards to escaped brackets.  This takes two values <code>string</code> and <code>regex</code>.</p>
+<div class="codehilite"><pre>    <span class="c1">// Set mode for string escapes to ignore (regex|string)</span>
     <span class="s2">&quot;bracket_string_escape_mode&quot;</span><span class="o">:</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span>
+</pre></div>
 
-    <span class="c1">// Set max number of multi-select brackets that will be searched automatically</span>
+
+<h3 id="search_threshold"><a name="user-content-search_threshold" href="#search_threshold" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>search_threshold</h3>
+<p>This setting is numerical value which sets the search threshold.  The search threshold determines how many characters <abbr title="BracketHighlighter">BH</abbr> will search through to find matching brackets before giving up.  This setting only affects auto-matching and not on-demand calls from the command palette and menu. By default, this value is very conservative and can be increased.  Keep in mind that very large values may impact performance.</p>
+<div class="codehilite"><pre>    <span class="c1">// Character threshold to search</span>
+    <span class="s2">&quot;search_threshold&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span>
+</pre></div>
+
+
+<h3 id="ignore_threshold"><a name="user-content-ignore_threshold" href="#ignore_threshold" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>ignore_threshold</h3>
+<p>This boolean will cause <a href="#search_threshold"><code>search_threshold</code></a>&lsquo;s limit to be ignored.  It is not advised to use this as very large files may cause a noticeable performance hit, but has been made available due to a number of requests.</p>
+<div class="codehilite"><pre>    <span class="c1">// Ignore threshold</span>
+    <span class="s2">&quot;ignore_threshold&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</pre></div>
+
+
+<h3 id="auto_selection_threshold"><a name="user-content-auto_selection_threshold" href="#auto_selection_threshold" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>auto_selection_threshold</h3>
+<p>This setting is aimed at helping performance.  It is a numerical value which controls the maximum number of simultaneous auto-matched brackets that are allowed.  This setting will not be considered when running on-demand calls via the command palette or menu.</p>
+<div class="codehilite"><pre>    <span class="c1">// Set max number of multi-select brackets that will be searched automatically</span>
     <span class="s2">&quot;auto_selection_threshold&quot;</span> <span class="o">:</span> <span class="mi">10</span><span class="p">,</span>
+</pre></div>
 
-    <span class="c1">// Enable this to completely kill highlighting if &quot;auto_selection_threshold&quot;</span>
+
+<h3 id="kill_highlight_on_threshold"><a name="user-content-kill_highlight_on_threshold" href="#kill_highlight_on_threshold" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>kill_highlight_on_threshold</h3>
+<p>This is a boolean which can be enabled to completely kill highlighting when <a href="#auto-selection-threshold"><code>auto_selection_threshold</code></a>.  When disabled, <abbr title="BracketHighlighter">BH</abbr> will just highlight up to the threshold limit.</p>
+<div class="codehilite"><pre>    <span class="c1">// Enable this to completely kill highlighting if &quot;auto_selection_threshold&quot;</span>
     <span class="c1">// is exceeded.  Default is to highlight up to the &quot;auto_selection_threshold&quot;.</span>
     <span class="s2">&quot;kill_highlight_on_threshold&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</pre></div>
 
-    <span class="c1">// Disable gutter icons when doing multi-select</span>
+
+<h3 id="no_multi_select_icons"><a name="user-content-no_multi_select_icons" href="#no_multi_select_icons" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>no_multi_select_icons</h3>
+<p>This a boolean which disables gutter icons when doing multiple selections.</p>
+<div class="codehilite"><pre>    <span class="c1">// Disable gutter icons when doing multi-select</span>
     <span class="s2">&quot;no_multi_select_icons&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
 </pre></div>
-</p>
+
+
+<h1 id="tag-plugin-settings"><a name="user-content-tag-plugin-settings" href="#tag-plugin-settings" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Tag Plugin Settings</h1>
+<p>Tag settings found in <code>bh_core.sublime-settings</code>.</p>
+<h3 id="tag_style"><a name="user-content-tag_style" href="#tag_style" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>tag_style</h3>
+<p>This setting is the allows you to set the highlight style for the tag plugin.  The string value should correspond to a style entry in <code>bracket_styles</code> (see <a href="#configuring-highlight-style">Configuring Highlight Style</a> for more info).</p>
+<div class="codehilite"><pre>    <span class="c1">// Style to use for matched tags</span>
+    <span class="s2">&quot;tag_style&quot;</span><span class="o">:</span> <span class="s2">&quot;tag&quot;</span><span class="p">,</span>
+</pre></div>
+
+
+<h3 id="tag_scope_exclude"><a name="user-content-tag_scope_exclude" href="#tag_scope_exclude" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>tag_scope_exclude</h3>
+<p>This excludes certain scopes from being evaluated when searching for tags.</p>
+<div class="codehilite"><pre>    <span class="c1">// Scopes to exclude from tag searches</span>
+    <span class="s2">&quot;tag_scope_exclude&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;comment&quot;</span><span class="p">],</span>
+</pre></div>
+
+
+<h3 id="tag_mode"><a name="user-content-tag_mode" href="#tag_mode" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>tag_mode</h3>
+<p>This setting contains a dictionary of three modes: <code>xhtml</code>, <code>html</code>, <code>cfml</code>.  Each mode tweaks the tag matching for the respective type.  Each entry in the dictionary consists of a list of languages that should be evaluated as that type.</p>
+<div class="codehilite"><pre>    <span class="c1">// Determine which style of tag-matching to use in which syntax</span>
+    <span class="s2">&quot;tag_mode&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;xhtml&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;XML&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;html&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;HTML&quot;</span><span class="p">,</span> <span class="s2">&quot;HTML 5&quot;</span><span class="p">,</span> <span class="s2">&quot;PHP&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;cfml&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;HTML+CFML&quot;</span><span class="p">,</span> <span class="s2">&quot;ColdFusion&quot;</span><span class="p">,</span> <span class="s2">&quot;ColdFusionCFC&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+</pre></div>
+
+
+<h3 id="self_closing_tags"><a name="user-content-self_closing_tags" href="#self_closing_tags" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>self_closing_tags</h3>
+<p>These are tag names that will be evaluated as self closing.</p>
+<div class="codehilite"><pre>    <span class="c1">// Self closing HTML tags</span>
+    <span class="s2">&quot;self_closing_tags&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="s2">&quot;colgroup&quot;</span><span class="p">,</span> <span class="s2">&quot;dd&quot;</span><span class="p">,</span> <span class="s2">&quot;dt&quot;</span><span class="p">,</span> <span class="s2">&quot;li&quot;</span><span class="p">,</span> <span class="s2">&quot;options&quot;</span><span class="p">,</span> <span class="s2">&quot;p&quot;</span><span class="p">,</span> <span class="s2">&quot;td&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;tfoot&quot;</span><span class="p">,</span> <span class="s2">&quot;th&quot;</span><span class="p">,</span> <span class="s2">&quot;thead&quot;</span><span class="p">,</span> <span class="s2">&quot;tr&quot;</span>
+    <span class="p">],</span>
+</pre></div>
+
+
+<h3 id="single_tags"><a name="user-content-single_tags" href="#single_tags" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>single_tags</h3>
+<p>These are tag names that never have a closing tag.</p>
+<div class="codehilite"><pre>    <span class="c1">// Tags that never have a closing</span>
+    <span class="s2">&quot;single_tags&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="s2">&quot;area&quot;</span><span class="p">,</span> <span class="s2">&quot;base&quot;</span><span class="p">,</span> <span class="s2">&quot;basefont&quot;</span><span class="p">,</span> <span class="s2">&quot;br&quot;</span><span class="p">,</span> <span class="s2">&quot;col&quot;</span><span class="p">,</span> <span class="s2">&quot;embed&quot;</span><span class="p">,</span> <span class="s2">&quot;frame&quot;</span><span class="p">,</span> <span class="s2">&quot;hr&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;img&quot;</span><span class="p">,</span> <span class="s2">&quot;input&quot;</span><span class="p">,</span> <span class="s2">&quot;isindex&quot;</span><span class="p">,</span> <span class="s2">&quot;keygen&quot;</span><span class="p">,</span> <span class="s2">&quot;link&quot;</span><span class="p">,</span> <span class="s2">&quot;meta&quot;</span><span class="p">,</span> <span class="s2">&quot;param&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="s2">&quot;track&quot;</span><span class="p">,</span> <span class="s2">&quot;wbr&quot;</span>
+    <span class="p">]</span>
+</pre></div>
+
+
+<h1 id="swap-brackets-plugin-settings"><a name="user-content-swap-brackets-plugin-settings" href="#swap-brackets-plugin-settings" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Swap Brackets Plugin Settings</h1>
+<p>Swappable brackets for a given language can be defined in <code>bh_swapping.sublime-settings</code>.  Swap rules are found under the key <code>swapping</code> where <code>swapping</code> is an array of language swap rules.</p>
+<div class="codehilite"><pre>    <span class="s2">&quot;swapping&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;language_list&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;C++&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;language_filter&quot;</span><span class="o">:</span> <span class="s2">&quot;whitelist&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;entries&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;C/C++: #if&quot;</span><span class="p">,</span> <span class="s2">&quot;brackets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;#if ${BH_SEL}&quot;</span><span class="p">,</span> <span class="s2">&quot;#endif&quot;</span><span class="p">]},</span>
+                <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;C/C++: #if, #else&quot;</span><span class="p">,</span> <span class="s2">&quot;brackets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;#if${BH_SEL}&quot;</span><span class="p">,</span> <span class="s2">&quot;#else\n${BH_TAB:/* CODE */}\n#endif&quot;</span><span class="p">]},</span>
+                <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;C/C++: #if, #elif&quot;</span><span class="p">,</span> <span class="s2">&quot;brackets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;#if${BH_SEL}&quot;</span><span class="p">,</span> <span class="s2">&quot;#elif ${BH_TAB:/* CONDITION */}\n${BH_TAB:/* CODE */}\n#endif&quot;</span><span class="p">]},</span>
+                <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;C/C++: #ifdef&quot;</span><span class="p">,</span> <span class="s2">&quot;brackets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;#ifdef${BH_SEL}&quot;</span><span class="p">,</span> <span class="s2">&quot;#endif&quot;</span><span class="p">]},</span>
+                <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;C/C++: #ifdef, #else&quot;</span><span class="p">,</span> <span class="s2">&quot;brackets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;#ifdef${BH_SEL}&quot;</span><span class="p">,</span> <span class="s2">&quot;#else\n${BH_TAB:/* CODE */}\n#endif&quot;</span><span class="p">]},</span>
+                <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;C/C++: #ifndef&quot;</span><span class="p">,</span> <span class="s2">&quot;brackets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;#ifndef${BH_SEL}&quot;</span><span class="p">,</span> <span class="s2">&quot;#endif&quot;</span><span class="p">]},</span>
+                <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;C/C++: #ifndef, #else&quot;</span><span class="p">,</span> <span class="s2">&quot;brackets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;#ifndef${BH_SEL}&quot;</span><span class="p">,</span> <span class="s2">&quot;#else\n${BH_TAB:/* CODE */}\n#endif&quot;</span><span class="p">]}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+</pre></div>
+
+
+<p>Each language rule contains the following attributes:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enabled</td>
+<td>bool</td>
+<td>Specifies if the rule is enabled.</td>
+</tr>
+<tr>
+<td>language_list</td>
+<td>[string]</td>
+<td>An array of languages.</td>
+</tr>
+<tr>
+<td>language_filter</td>
+<td>string</td>
+<td>A string that specifies if the <code>language_list</code> is either a <code>whitelist</code> or <code>blacklist</code>.</td>
+</tr>
+<tr>
+<td>entries</td>
+<td>[dict]</td>
+<td>An array of dictionaries, where each dictionary describes a type of bracket that can be swapped to.</td>
+</tr>
+</tbody>
+</table>
+<p>Within the language rules under <code>entries</code>, swap entries are defined.  Each entry represents a bracket you can swap to.</p>
+<table>
+<thead>
+<tr>
+<th>Entry</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>The name of the entry as it will be seen in the command palette.</td>
+</tr>
+<tr>
+<td>brackets</td>
+<td>[string]</td>
+<td>An array consisting of a string that represents the opening bracket and a string that represents the closing bracket.</td>
+</tr>
+</tbody>
+</table>
+<p>Within the <code>brackets</code>, you can specify the where the cursor(s) will appear by using <code>${BH_SEL}</code>  If you would like the selection to display text as a hint to what a user should enter in the selection, you can use <code>${BH_SEL:optional text}</code>.</p>
+<p>Within the <code>brackets</code>, you can also define tab stops that a user can tab through and enter text.  The tab stop syntax is <code>${BH_TAB}</code>.  You can also define optional text within a tab stop to give the user a hint of what should be entered in at the tab stop using the following syntax <code>${BH_TAB:optional text}</code>.</p>
+<h2 id="wrap-brackets-plugin-settings"><a name="user-content-wrap-brackets-plugin-settings" href="#wrap-brackets-plugin-settings" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Wrap Brackets Plugin Settings</h2>
+<p>Wrapping brackets for a given language can be defined in <code>bh_wrapping.sublime-settings</code>.  Wrap rules are found under the key <code>wrapping</code> where <code>wrapping</code> is an array of language swap rules.</p>
+<div class="codehilite"><pre>    <span class="s2">&quot;wrapping&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="s2">&quot;language_list&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;Plain text&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;language_filter&quot;</span><span class="o">:</span> <span class="s2">&quot;blacklist&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;entries&quot;</span><span class="o">:</span> <span class="p">[</span>
+                <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;{} Curly&quot;</span><span class="p">,</span> <span class="s2">&quot;brackets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;{&quot;</span><span class="p">,</span> <span class="s2">&quot;}${BH_SEL}&quot;</span><span class="p">],</span> <span class="s2">&quot;insert_style&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;inline&quot;</span><span class="p">,</span> <span class="s2">&quot;block&quot;</span><span class="p">,</span> <span class="s2">&quot;indent_block&quot;</span><span class="p">]}</span>
+            <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
+</pre></div>
+
+
+<p>Each language rule contains the following attributes:</p>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enabled</td>
+<td>bool</td>
+<td>Specifies if the rule is enabled.</td>
+</tr>
+<tr>
+<td>language_list</td>
+<td>[string]</td>
+<td>An array of languages.</td>
+</tr>
+<tr>
+<td>language_filter</td>
+<td>string</td>
+<td>A string that specifies if the <code>language_list</code> is either a <code>whitelist</code> or <code>blacklist</code>.</td>
+</tr>
+<tr>
+<td>entries</td>
+<td>[dict]</td>
+<td>An array of dictionaries, where each dictionary describes a type of bracket that can be used to wrap the selection.</td>
+</tr>
+</tbody>
+</table>
+<p>Within the language rules under <code>entries</code>, wrap entries are defined.  Each entry represents a bracket you can wrap the selection with.</p>
+<table>
+<thead>
+<tr>
+<th>Entry</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>The name of the entry as it will be seen in the command palette.</td>
+</tr>
+<tr>
+<td>brackets</td>
+<td>[string]</td>
+<td>An array consisting of a string that represents the opening bracket and a string that represents the closing bracket.</td>
+</tr>
+<tr>
+<td>insert_style</td>
+<td>[string]</td>
+<td>An array consisting of allowed insertion styles.  Allowed insertion styles are: <code>inline</code>, <code>block</code>, and <code>indent_block</code>.  Default is <code class="codehilite"><span class="p">[</span><span class="s1">&#39;inline&#39;</span><span class="p">]</span></code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Within the <code>brackets</code>, you can specify the where the cursor(s) will appear by using <code>${BH_SEL}</code>  If you would like the selection to display text as a hint to what a user should enter in the selection, you can use <code>${BH_SEL:optional text}</code>.</p>
+<p>Within the <code>brackets</code>, you can also define tab stops that a user can tab through and enter text.  The tab stop syntax is <code>${BH_TAB}</code>.  You can also define optional text within a tab stop to give the user a hint of what should be entered in at the tab stop using the following syntax <code>${BH_TAB:optional text}</code>.</p>
 <h1 id="configuring-brackets"><a name="user-content-configuring-brackets" href="#configuring-brackets" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Configuring Brackets</h1>
 <p><abbr title="BracketHighlighter">BH</abbr> has been written to allow users to define any brackets they would like to have highlighted.  There are two kinds of brackets you can define: <code>scope_brackets</code> (search file for scope regions and then use regex to test for opening and closing brackets) and <code>brackets</code> (use regex to find opening and closing brackets).  <code>bracket</code> type should usually be the preferred type.  <code>scope_brackets</code> are usually used for brackets whose opening and closing are the same and not distinguishable form one another by regex; scope brackets must be contained in a continuous scope region like string for quotes etc.</p>
 <div class="admonition tip">

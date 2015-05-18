@@ -90,6 +90,8 @@
                 
                     <li><a class="toctree-l4" href="#swap-brackets-plugin">Swap Brackets Plugin</a></li>
                 
+                    <li><a class="toctree-l4" href="#wrap-brackets-plugin">Wrap Brackets Plugin</a></li>
+                
                     <li><a class="toctree-l4" href="#bracket-remove-plugin">Bracket Remove Plugin</a></li>
                 
                     <li><a class="toctree-l4" href="#fold-bracket-plugin">Fold Bracket Plugin</a></li>
@@ -102,16 +104,7 @@
                 
                     <li><a class="toctree-l4" href="#tag-name-select-plugin">Tag Name Select Plugin</a></li>
                 
-                    <li><a class="toctree-l4" href="#bracket-wrapping-plugin">Bracket Wrapping Plugin</a></li>
-                
                     <li><a class="toctree-l4" href="#bracket-swapping-plugin">Bracket Swapping Plugin</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#wrapping-and-swapping-commands">Wrapping and Swapping Commands</a></li>
-                
-                    <li><a class="toctree-l4" href="#swapping-brackets">Swapping Brackets</a></li>
-                
-                    <li><a class="toctree-l4" href="#wrapping-brackets">Wrapping Brackets</a></li>
                 
             
                 <li class="toctree-l3"><a href="#shortcuts">Shortcuts</a></li>
@@ -226,196 +219,23 @@
 <h2 id="bracket-select-plugin"><a name="user-content-bracket-select-plugin" href="#bracket-select-plugin" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Bracket Select Plugin</h2>
 <p>This plugin changes the selection inside between the brackets.  It can select the content or move the bracket to the opening and closing bracket.  Behavior is slightly modified for tags.</p>
 <h2 id="swap-brackets-plugin"><a name="user-content-swap-brackets-plugin" href="#swap-brackets-plugin" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Swap Brackets Plugin</h2>
-<p>This plugin allows the current brackets to another type of bracket.  See <a href="#wrapping-and-swapping-commands">Wrapping and Swapping Commands</a> for more info.</p>
+<p>This plugin allows the swapping of the current brackets to another type of bracket.  When selected, it will displayed the bracket options that allowed for the current language.  Allowed brackets are defined in <code>bh_swapping.sublime-settings</code>.</p>
+<h2 id="wrap-brackets-plugin"><a name="user-content-wrap-brackets-plugin" href="#wrap-brackets-plugin" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Wrap Brackets Plugin</h2>
+<p>This plugin allows the wrapping of selected text with a bracket pair.  When selected, it will displayed the bracket options that allowed for the current language.  Allowed brackets are defined in <code>bh_wrapping.sublime-settings</code>.</p>
 <h2 id="bracket-remove-plugin"><a name="user-content-bracket-remove-plugin" href="#bracket-remove-plugin" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Bracket Remove Plugin</h2>
 <p>Removes the surrounding brackets.</p>
 <h2 id="fold-bracket-plugin"><a name="user-content-fold-bracket-plugin" href="#fold-bracket-plugin" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Fold Bracket Plugin</h2>
 <p>Folds the content of the current surrounding brackets.</p>
 <h2 id="swap-quotes-plugin"><a name="user-content-swap-quotes-plugin" href="#swap-quotes-plugin" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Swap Quotes Plugin</h2>
-<p>Swap the quotes style of surrounding quotes from double to single or vice versa.  It also handles escaping and unescaping of sub quotes.</p>
+<p>Swap the quotes style of surrounding quotes from double to single or vice versa.  It also handles escaping and un-escaping of sub quotes.</p>
 <h2 id="tag-plugin"><a name="user-content-tag-plugin" href="#tag-plugin" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Tag Plugin</h2>
-<p>Plugin used to help highlight tags.</p>
-<p>Additional tag settings found in <code>bh_core.sublime-settings</code>:</p>
-<div class="codehilite"><pre>    <span class="cm">/* Plugin settings */</span>
-
-    <span class="c1">// Style to use for matched tags</span>
-    <span class="s2">&quot;tag_style&quot;</span><span class="o">:</span> <span class="s2">&quot;tag&quot;</span><span class="p">,</span>
-
-    <span class="c1">// Scopes to exclude from tag searches</span>
-    <span class="s2">&quot;tag_scope_exclude&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="s2">&quot;comment&quot;</span><span class="p">],</span>
-
-    <span class="c1">// Determine which style of tag-matching to use in which syntax</span>
-    <span class="s2">&quot;tag_mode&quot;</span><span class="o">:</span> <span class="p">{</span>
-        <span class="s2">&quot;xhtml&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;XML&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;html&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;HTML&quot;</span><span class="p">,</span> <span class="s2">&quot;HTML 5&quot;</span><span class="p">,</span> <span class="s2">&quot;PHP&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;cfml&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;HTML+CFML&quot;</span><span class="p">,</span> <span class="s2">&quot;ColdFusion&quot;</span><span class="p">,</span> <span class="s2">&quot;ColdFusionCFC&quot;</span><span class="p">]</span>
-    <span class="p">}</span>
-</pre></div>
-
-
+<p>Plugin used to help highlight XML/HTML tags.</p>
 <h2 id="tag-attribute-select-plugin"><a name="user-content-tag-attribute-select-plugin" href="#tag-attribute-select-plugin" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Tag Attribute Select Plugin</h2>
 <p>Cycle through selecting tag attributes of tags.</p>
 <h2 id="tag-name-select-plugin"><a name="user-content-tag-name-select-plugin" href="#tag-name-select-plugin" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Tag Name Select Plugin</h2>
 <p>Select the opening and closing tag name of current tag.</p>
-<h2 id="bracket-wrapping-plugin"><a name="user-content-bracket-wrapping-plugin" href="#bracket-wrapping-plugin" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Bracket Wrapping Plugin</h2>
-<p>Wrap the current selection with supported bracket of your choice.  Wrapping definitions are configured in <code>bh_wrapping.sublime-settings</code>.</p>
 <h2 id="bracket-swapping-plugin"><a name="user-content-bracket-swapping-plugin" href="#bracket-swapping-plugin" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Bracket Swapping Plugin</h2>
 <p>Swap the current surrounding bracket with supported bracket of your choice.  Swapping definitions are configured in <code>bh_swapping.sublime-settings</code>.</p>
-<h1 id="wrapping-and-swapping-commands"><a name="user-content-wrapping-and-swapping-commands" href="#wrapping-and-swapping-commands" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Wrapping and Swapping Commands</h1>
-<p><abbr title="BracketHighlighter">BH</abbr> provides a way to wrap content with brackets or swap brackets.</p>
-<h2 id="swapping-brackets"><a name="user-content-swapping-brackets" href="#swapping-brackets" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Swapping Brackets</h2>
-<p>Bracket swapping support utilizes the <code>swapbrackets</code> bh_plugin to swap out the current highlighted brackets with another set of pre-defined brackets.  Allowed brackets are defined in the <code>bh_swapping.sublime-settings</code> file.  Swap rules are found under the key <code>swapping</code> where <code>swapping</code> is an array of language swap rules.</p>
-<div class="codehilite"><pre>    <span class="s2">&quot;swapping&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-            <span class="s2">&quot;language_list&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;C++&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;language_filter&quot;</span><span class="o">:</span> <span class="s2">&quot;whitelist&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;entries&quot;</span><span class="o">:</span> <span class="p">[</span>
-                <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;C/C++: #if&quot;</span><span class="p">,</span> <span class="s2">&quot;brackets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;#if ${BH_SEL}&quot;</span><span class="p">,</span> <span class="s2">&quot;#endif&quot;</span><span class="p">]},</span>
-                <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;C/C++: #if, #else&quot;</span><span class="p">,</span> <span class="s2">&quot;brackets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;#if${BH_SEL}&quot;</span><span class="p">,</span> <span class="s2">&quot;#else\n${BH_TAB:/* CODE */}\n#endif&quot;</span><span class="p">]},</span>
-                <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;C/C++: #if, #elif&quot;</span><span class="p">,</span> <span class="s2">&quot;brackets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;#if${BH_SEL}&quot;</span><span class="p">,</span> <span class="s2">&quot;#elif ${BH_TAB:/* CONDITION */}\n${BH_TAB:/* CODE */}\n#endif&quot;</span><span class="p">]},</span>
-                <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;C/C++: #ifdef&quot;</span><span class="p">,</span> <span class="s2">&quot;brackets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;#ifdef${BH_SEL}&quot;</span><span class="p">,</span> <span class="s2">&quot;#endif&quot;</span><span class="p">]},</span>
-                <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;C/C++: #ifdef, #else&quot;</span><span class="p">,</span> <span class="s2">&quot;brackets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;#ifdef${BH_SEL}&quot;</span><span class="p">,</span> <span class="s2">&quot;#else\n${BH_TAB:/* CODE */}\n#endif&quot;</span><span class="p">]},</span>
-                <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;C/C++: #ifndef&quot;</span><span class="p">,</span> <span class="s2">&quot;brackets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;#ifndef${BH_SEL}&quot;</span><span class="p">,</span> <span class="s2">&quot;#endif&quot;</span><span class="p">]},</span>
-                <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;C/C++: #ifndef, #else&quot;</span><span class="p">,</span> <span class="s2">&quot;brackets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;#ifndef${BH_SEL}&quot;</span><span class="p">,</span> <span class="s2">&quot;#else\n${BH_TAB:/* CODE */}\n#endif&quot;</span><span class="p">]}</span>
-            <span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-</pre></div>
-
-
-<p>Each language rule contains the following attributes:</p>
-<table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>enabled</td>
-<td>bool</td>
-<td>Specifies if the rule is enabled.</td>
-</tr>
-<tr>
-<td>language_list</td>
-<td>[string]</td>
-<td>An array of languages.</td>
-</tr>
-<tr>
-<td>language_filter</td>
-<td>string</td>
-<td>A string that specifies if the <code>language_list</code> is either a <code>whitelist</code> or <code>blacklist</code>.</td>
-</tr>
-<tr>
-<td>entries</td>
-<td>[dict]</td>
-<td>An array of dictionaries, where each dictionary describes a type of bracket that can be swapped to.</td>
-</tr>
-</tbody>
-</table>
-<p>Within the language rules under <code>entries</code>, swap entries are defined.  Each entry represents a bracket you can swap to.</p>
-<table>
-<thead>
-<tr>
-<th>Entry</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name</td>
-<td>string</td>
-<td>The name of the entry as it will be seen in the command palette.</td>
-</tr>
-<tr>
-<td>brackets</td>
-<td>[string]</td>
-<td>An array consisting of a string that represents the opening bracket and a string that represents the closing bracket.</td>
-</tr>
-</tbody>
-</table>
-<p>Within the <code>brackets</code>, you can specify the where the cursor(s) will appear by using <code>${BH_SEL}</code>  If you would like the selection to display text as a hint to what a user should enter in the selection, you can use <code>${BH_SEL:optional text}</code>.</p>
-<p>Within the <code>brackets</code>, you can also define tab stops that a user can tab through and enter text.  The tab stop syntax is <code>${BH_TAB}</code>.  You can also define optional text within a tab stop to give the user a hint of what should be entered in at the tab stop using the following syntax <code>${BH_TAB:optional text}</code>.</p>
-<h2 id="wrapping-brackets"><a name="user-content-wrapping-brackets" href="#wrapping-brackets" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Wrapping Brackets</h2>
-<p><abbr title="BracketHighlighter">BH</abbr> has a special command for wrapping selected text in pre-defined brackets.  Allowed brackets are defined in the <code>bh_wrapping.sublime-settings</code> file.  Wrap rules are found under the key <code>wrapping</code> where <code>wrapping</code> is an array of language wrap rules.</p>
-<div class="codehilite"><pre>    <span class="s2">&quot;wrapping&quot;</span><span class="o">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;enabled&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
-            <span class="s2">&quot;language_list&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;Plain text&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;language_filter&quot;</span><span class="o">:</span> <span class="s2">&quot;blacklist&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;entries&quot;</span><span class="o">:</span> <span class="p">[</span>
-                <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;{} Curly&quot;</span><span class="p">,</span> <span class="s2">&quot;brackets&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;{&quot;</span><span class="p">,</span> <span class="s2">&quot;}${BH_SEL}&quot;</span><span class="p">],</span> <span class="s2">&quot;insert_style&quot;</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;inline&quot;</span><span class="p">,</span> <span class="s2">&quot;block&quot;</span><span class="p">,</span> <span class="s2">&quot;indent_block&quot;</span><span class="p">]}</span>
-            <span class="p">]</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-</pre></div>
-
-
-<p>Each language rule contains the following attributes:</p>
-<table>
-<thead>
-<tr>
-<th>Attribute</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>enabled</td>
-<td>bool</td>
-<td>Specifies if the rule is enabled.</td>
-</tr>
-<tr>
-<td>language_list</td>
-<td>[string]</td>
-<td>An array of languages.</td>
-</tr>
-<tr>
-<td>language_filter</td>
-<td>string</td>
-<td>A string that specifies if the <code>language_list</code> is either a <code>whitelist</code> or <code>blacklist</code>.</td>
-</tr>
-<tr>
-<td>entries</td>
-<td>[dict]</td>
-<td>An array of dictionaries, where each dictionary describes a type of bracket that can be used to wrap the selection.</td>
-</tr>
-</tbody>
-</table>
-<p>Within the language rules under <code>entries</code>, wrap entries are defined.  Each entry represents a bracket you can wrap the selection with.</p>
-<table>
-<thead>
-<tr>
-<th>Entry</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name</td>
-<td>string</td>
-<td>The name of the entry as it will be seen in the command palette.</td>
-</tr>
-<tr>
-<td>brackets</td>
-<td>[string]</td>
-<td>An array consisting of a string that represents the opening bracket and a string that represents the closing bracket.</td>
-</tr>
-<tr>
-<td>insert_style</td>
-<td>[string]</td>
-<td>An array consisting of allowed insertion styles.  Allowed insertion styles are: <code>inline</code>, <code>block</code>, and <code>indent_block</code>.  Default is <code class="codehilite"><span class="p">[</span><span class="s1">&#39;inline&#39;</span><span class="p">]</span></code>.</td>
-</tr>
-</tbody>
-</table>
-<p>Within the <code>brackets</code>, you can specify the where the cursor(s) will appear by using <code>${BH_SEL}</code>  If you would like the selection to display text as a hint to what a user should enter in the selection, you can use <code>${BH_SEL:optional text}</code>.</p>
-<p>Within the <code>brackets</code>, you can also define tab stops that a user can tab through and enter text.  The tab stop syntax is <code>${BH_TAB}</code>.  You can also define optional text within a tab stop to give the user a hint of what should be entered in at the tab stop using the following syntax <code>${BH_TAB:optional text}</code>.</p>
 <h1 id="shortcuts"><a name="user-content-shortcuts" href="#shortcuts" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Shortcuts</h1>
 <p>By default <abbr title="BracketHighlighter">BH</abbr> provides no shortcuts to avoid shortcut conflicts, but you can view the included <code>Example.sublime-keymaps</code> file to get an idea how to set up your own.</p>
               
