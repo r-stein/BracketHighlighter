@@ -77,54 +77,25 @@
             
                 <li class="toctree-l3"><a href="#customization">Customization</a></li>
                 
-            
-                <li class="toctree-l3"><a href="#overview">Overview</a></li>
+                    <li><a class="toctree-l4" href="#overview">Overview</a></li>
                 
-            
-                <li class="toctree-l3"><a href="#core-settings">Core Settings</a></li>
+                    <li><a class="toctree-l4" href="#core-settings">Core Settings</a></li>
                 
                     <li><a class="toctree-l4" href="#visual-settings">Visual Settings</a></li>
                 
                     <li><a class="toctree-l4" href="#behavioral-settings">Behavioral Settings</a></li>
                 
-            
-                <li class="toctree-l3"><a href="#tag-plugin-settings">Tag Plugin Settings</a></li>
+                    <li><a class="toctree-l4" href="#tag-plugin-settings">Tag Plugin Settings</a></li>
                 
-                    <li><a class="toctree-l4" href="#tag_style">tag_style</a></li>
-                
-                    <li><a class="toctree-l4" href="#tag_scope_exclude">tag_scope_exclude</a></li>
-                
-                    <li><a class="toctree-l4" href="#tag_mode">tag_mode</a></li>
-                
-                    <li><a class="toctree-l4" href="#self_closing_tags">self_closing_tags</a></li>
-                
-                    <li><a class="toctree-l4" href="#single_tags">single_tags</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#swap-brackets-plugin-settings">Swap Brackets Plugin Settings</a></li>
+                    <li><a class="toctree-l4" href="#swap-brackets-plugin-settings">Swap Brackets Plugin Settings</a></li>
                 
                     <li><a class="toctree-l4" href="#wrap-brackets-plugin-settings">Wrap Brackets Plugin Settings</a></li>
                 
-            
-                <li class="toctree-l3"><a href="#configuring-brackets">Configuring Brackets</a></li>
+                    <li><a class="toctree-l4" href="#configuring-brackets">Configuring Brackets</a></li>
                 
-                    <li><a class="toctree-l4" href="#configuring-brackets-rules">Configuring Brackets Rules</a></li>
+                    <li><a class="toctree-l4" href="#configuring-highlight-style">Configuring Highlight Style</a></li>
                 
-                    <li><a class="toctree-l4" href="#configuring-scope-brackets-rules">Configuring Scope Brackets Rules</a></li>
-                
-                    <li><a class="toctree-l4" href="#bracket-rule-management">Bracket Rule Management</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#configuring-highlight-style">Configuring Highlight Style</a></li>
-                
-                    <li><a class="toctree-l4" href="#my-personal-configurations">My personal configurations</a></li>
-                
-            
-                <li class="toctree-l3"><a href="#bracket-plugin-api">Bracket Plugin API</a></li>
-                
-                    <li><a class="toctree-l4" href="#definition-plugins">'Definition' Plugins</a></li>
-                
-                    <li><a class="toctree-l4" href="#run-instance-plugins">'Run Instance' Plugins</a></li>
+                    <li><a class="toctree-l4" href="#bracket-plugin-api">Bracket Plugin API</a></li>
                 
             
             </ul>
@@ -192,9 +163,9 @@
                 <h1 class="doctitle" id="customization"><a name="user-content-customization" href="#customization" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Customization</h1>
 <p>Tweaking BracketHighlighter.</p>
 <hr />
-<h1 id="overview"><a name="user-content-overview" href="#overview" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Overview</h1>
+<h2 id="overview"><a name="user-content-overview" href="#overview" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Overview</h2>
 <p><abbr title="BracketHighlighter">BH</abbr> is extremely flexible and can be customized and extended to fit a user&rsquo;s needs.  The first step is to create a <code>bh_core.sublime-settings</code> in your <code>User</code> folder.  This is where the bracket and style rules live.  By changing these settings, you can add support for new languages, or change the look of highlighting, and much more.</p>
-<h1 id="core-settings"><a name="user-content-core-settings" href="#core-settings" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Core Settings</h1>
+<h2 id="core-settings"><a name="user-content-core-settings" href="#core-settings" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Core Settings</h2>
 <p>Style and color will be discussed in greater depth in the <a href="#configuring-highlight-style"><code>Configuring Highlight Style</code></a> section.  But there are a number of general setting you can adjust to change how things look or work.  These settings are found in <code>bh_core.sublime-settings</code>.</p>
 <h2 id="visual-settings"><a name="user-content-visual-settings" href="#visual-settings" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Visual Settings</h2>
 <p>These are the settings related to the visual appearance of <abbr title="BracketHighlighter">BH</abbr>.</p>
@@ -329,7 +300,7 @@
 </pre></div>
 
 
-<h1 id="tag-plugin-settings"><a name="user-content-tag-plugin-settings" href="#tag-plugin-settings" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Tag Plugin Settings</h1>
+<h2 id="tag-plugin-settings"><a name="user-content-tag-plugin-settings" href="#tag-plugin-settings" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Tag Plugin Settings</h2>
 <p>Tag settings found in <code>bh_core.sublime-settings</code>.</p>
 <h3 id="tag_style"><a name="user-content-tag_style" href="#tag_style" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>tag_style</h3>
 <p>This setting is the allows you to set the highlight style for the tag plugin.  The string value should correspond to a style entry in <code>bracket_styles</code> (see <a href="#configuring-highlight-style">Configuring Highlight Style</a> for more info).</p>
@@ -377,7 +348,7 @@
 </pre></div>
 
 
-<h1 id="swap-brackets-plugin-settings"><a name="user-content-swap-brackets-plugin-settings" href="#swap-brackets-plugin-settings" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Swap Brackets Plugin Settings</h1>
+<h2 id="swap-brackets-plugin-settings"><a name="user-content-swap-brackets-plugin-settings" href="#swap-brackets-plugin-settings" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Swap Brackets Plugin Settings</h2>
 <p>Swappable brackets for a given language can be defined in <code>bh_swapping.sublime-settings</code>.  Swap rules are found under the key <code>swapping</code> where <code>swapping</code> is an array of language swap rules.</p>
 <div class="codehilite"><pre>    <span class="s2">&quot;swapping&quot;</span><span class="o">:</span> <span class="p">[</span>
         <span class="p">{</span>
@@ -530,13 +501,13 @@
 </table>
 <p>Within the <code>brackets</code>, you can specify the where the cursor(s) will appear by using <code>${BH_SEL}</code>  If you would like the selection to display text as a hint to what a user should enter in the selection, you can use <code>${BH_SEL:optional text}</code>.</p>
 <p>Within the <code>brackets</code>, you can also define tab stops that a user can tab through and enter text.  The tab stop syntax is <code>${BH_TAB}</code>.  You can also define optional text within a tab stop to give the user a hint of what should be entered in at the tab stop using the following syntax <code>${BH_TAB:optional text}</code>.</p>
-<h1 id="configuring-brackets"><a name="user-content-configuring-brackets" href="#configuring-brackets" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Configuring Brackets</h1>
+<h2 id="configuring-brackets"><a name="user-content-configuring-brackets" href="#configuring-brackets" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Configuring Brackets</h2>
 <p><abbr title="BracketHighlighter">BH</abbr> has been written to allow users to define any brackets they would like to have highlighted.  There are two kinds of brackets you can define: <code>scope_brackets</code> (search file for scope regions and then use regex to test for opening and closing brackets) and <code>brackets</code> (use regex to find opening and closing brackets).  <code>bracket</code> type should usually be the preferred type.  <code>scope_brackets</code> are usually used for brackets whose opening and closing are the same and not distinguishable form one another by regex; scope brackets must be contained in a continuous scope region like string for quotes etc.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Brackets can be modified or even added without copying the entire bracket rule lists to the user settings.  See <a href="#bracket-rule-management">Bracket Rule Management</a> for more info.</p>
 </div>
-<h2 id="configuring-brackets-rules"><a name="user-content-configuring-brackets-rules" href="#configuring-brackets-rules" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Configuring Brackets Rules</h2>
+<h3 id="configuring-brackets-rules"><a name="user-content-configuring-brackets-rules" href="#configuring-brackets-rules" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Configuring Brackets Rules</h3>
 <p>Brackets are defined under <code>brackets</code> in <code>bh_core.sublime-settings</code>.</p>
 <p>Angle and Curly bracket will be used as an example (not all options may be shown in these examples):</p>
 <div class="codehilite"><pre>        <span class="p">{</span>
@@ -624,7 +595,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="configuring-scope-brackets-rules"><a name="user-content-configuring-scope-brackets-rules" href="#configuring-scope-brackets-rules" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Configuring Scope Brackets Rules</h2>
+<h3 id="configuring-scope-brackets-rules"><a name="user-content-configuring-scope-brackets-rules" href="#configuring-scope-brackets-rules" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Configuring Scope Brackets Rules</h3>
 <p>Scope Brackets are defined under <code>scope_brackets</code> in <code>bh_core.sublime-settings</code>.</p>
 <p>Python Single Quote bracket will be used as an example (not all options are shown in this example):</p>
 <div class="codehilite"><pre>        <span class="p">{</span>
@@ -691,7 +662,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="bracket-rule-management"><a name="user-content-bracket-rule-management" href="#bracket-rule-management" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Bracket Rule Management</h2>
+<h3 id="bracket-rule-management"><a name="user-content-bracket-rule-management" href="#bracket-rule-management" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Bracket Rule Management</h3>
 <p>In the past, BracketHighlighter required a user to copy the entire bracket list to the user <code>bh_core.sublime-settings</code> file.  This was a cumbersome requirement that also punished a user because if they did this, they wouldn&rsquo;t automatically get updates to the rules as all the rules were now overridden by the user&rsquo;s settings file.</p>
 <p>BracketHighlighter now let&rsquo;s you add or modify existing rules without overriding the entire rule set or even the entire target rule.  Let&rsquo;s say you have a custom language you want to have on your machine. Now, you can simply add it to one of the two settings arrays: &ldquo;user_scope_brackets&rdquo; and &ldquo;user_brackets&rdquo;:</p>
 <div class="codehilite"><pre>    <span class="s2">&quot;user_scope_brackets&quot;</span><span class="o">:</span> <span class="p">[],</span>
@@ -802,7 +773,7 @@
 
 
 <p>This will allow you to make changes, but still receive new updated rules.</p>
-<h1 id="configuring-highlight-style"><a name="user-content-configuring-highlight-style" href="#configuring-highlight-style" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Configuring Highlight Style</h1>
+<h2 id="configuring-highlight-style"><a name="user-content-configuring-highlight-style" href="#configuring-highlight-style" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Configuring Highlight Style</h2>
 <p>Each bracket definition (described in <code>Configuring Scope Brackets</code> and <code>Configuring Brackets</code>) has a <code>style</code> setting that you give a style definition to.  Style definitions are defined under <code>bracket_styles</code> in <code>bh_core.sublime-settings</code>.</p>
 <p>There are two special style definitions whose names are reserved: <code>default</code> and <code>unmatched</code>, but you can configure them.  All other custom style definitions follow the same pattern (see <code>curly</code> below and compare to the special style definitions; format is the same)  All custom styles follow this pattern.  See description below:</p>
 <div class="codehilite"><pre>        <span class="c1">// &quot;default&quot; style defines attributes that</span>
@@ -889,7 +860,7 @@
         <span class="p">},</span>
 </pre></div>
 </p>
-<h2 id="my-personal-configurations"><a name="user-content-my-personal-configurations" href="#my-personal-configurations" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>My personal configurations</h2>
+<h3 id="my-personal-configurations"><a name="user-content-my-personal-configurations" href="#my-personal-configurations" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>My personal configurations</h3>
 <p>If you are curious about my personal configuration, here it is. The color scheme I use is from my <a href="https://github.com/facelessuser/Aprosopo">Aprosopo theme</a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1055,7 +1026,7 @@
 </pre></div>
 
 
-<h1 id="bracket-plugin-api"><a name="user-content-bracket-plugin-api" href="#bracket-plugin-api" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Bracket Plugin API</h1>
+<h2 id="bracket-plugin-api"><a name="user-content-bracket-plugin-api" href="#bracket-plugin-api" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Bracket Plugin API</h2>
 <p>There are two kinds of plugins that can be written <code>definition</code> plugins (plugins attached to bracket definitions via the <code>plugin_library</code> option) or <code>run instance</code> plugins (plugins that are that are fed in the BracketHighligher via the command parameter <code>plugin</code>).</p>
 <p>Bracket plugins use <code>BracketRegions</code>.</p>
 <dl>
@@ -1164,9 +1135,9 @@
 </dl>
 </dd>
 </dl>
-<h2 id="definition-plugins"><a name="user-content-definition-plugins" href="#definition-plugins" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>&lsquo;Definition&rsquo; Plugins</h2>
+<h3 id="definition-plugins"><a name="user-content-definition-plugins" href="#definition-plugins" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>&lsquo;Definition&rsquo; Plugins</h3>
 <p>These are plugins that are attached to the bracket definition and aid in processing the brackets.  These kinds of plugins have three methods you can provide: <code>post_match</code>, <code>compare</code>, and/or <code>validate</code>.</p>
-<h3 id="validate"><a name="user-content-validate" href="#validate" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>validate</h3>
+<h4 id="validate"><a name="user-content-validate" href="#validate" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>validate</h4>
 <dl>
 <dt>def validate(name, bracket, bracket_size, bfr)</dt>
 <dd>
@@ -1230,7 +1201,7 @@
 
 </dd>
 </dl>
-<h3 id="compare"><a name="user-content-compare" href="#compare" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>compare</h3>
+<h4 id="compare"><a name="user-content-compare" href="#compare" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>compare</h4>
 <dl>
 <dt>def compare(name, first, second, bfr)</dt>
 <dd>
@@ -1284,7 +1255,7 @@
 </p>
 </dd>
 </dl>
-<h3 id="post_match"><a name="user-content-post_match" href="#post_match" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>post_match</h3>
+<h4 id="post_match"><a name="user-content-post_match" href="#post_match" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>post_match</h4>
 <dl>
 <dt>def post_match(name, style, first, second, center, bfr, threshold)</dt>
 <dd>
@@ -1386,7 +1357,7 @@
 </p>
 </dd>
 </dl>
-<h3 id="highlighting"><a name="user-content-highlighting" href="#highlighting" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>highlighting</h3>
+<h4 id="highlighting"><a name="user-content-highlighting" href="#highlighting" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>highlighting</h4>
 <dl>
 <dt>def highlighting(view, name, style, right)</dt>
 <dd>
@@ -1460,7 +1431,7 @@
 
 </dd>
 </dl>
-<h2 id="run-instance-plugins"><a name="user-content-run-instance-plugins" href="#run-instance-plugins" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>&lsquo;Run Instance&rsquo; Plugins</h2>
+<h3 id="run-instance-plugins"><a name="user-content-run-instance-plugins" href="#run-instance-plugins" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>&lsquo;Run Instance&rsquo; Plugins</h3>
 <p><code>Run instance</code> plugins are fed into the command executing a BracketHighlighter match via the <code>plugin</code> parameter.</p>
 <p>Example of run instance plugin getting called:<br />
 <div class="codehilite"><pre><span class="c1">// Go to left bracket</span>
