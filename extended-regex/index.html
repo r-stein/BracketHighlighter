@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Extended Regex Guide - BracketHighlighter Documentation</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_custom.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> BracketHighlighter Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">About BracketHighlighter</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../installation/">Installation</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <ul class="subnav">
+    <li><span>User Guide</span></li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../usage/">Usage</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 ">
+        <a class="" href="../customize/">Customizing</a>
+        
+    </li>
+
+        
+            
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Extended Regex Guide</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#extended-regex-guide">Extended Regex Guide</a></li>
+                
+                    <li><a class="toctree-l4" href="#overview">Overview</a></li>
+                
+            
+            </ul>
+        
+    </li>
+
+        
+    </ul>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../contributing/">Contributing &amp; Support</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../license/">License</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">BracketHighlighter Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+        
+          <li>User Guide &raquo;</li>
+        
+      
+    
+    <li>Extended Regex Guide</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/facelessuser/BracketHighlighter" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 class="doctitle" id="extended-regex-guide"><a name="user-content-extended-regex-guide" href="#extended-regex-guide" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Extended Regex Guide</h1>
+<p>An introduction to backrefs.</p>
+<h2 id="overview"><a name="user-content-overview" href="#overview" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Overview</h2>
+<p>BH uses Python&rsquo;s re regex engine, but it also adds some additional back references to aid in the creation of bracket patterns.  This is done with a custom wrapper called backrefs that was originally written for <a href="https://github.com/facelessuser/RegReplace">RegReplace</a>.</p>
+<p>Backrefs was written to add various additional backrefs that are known to some regex engines, but not to Python&rsquo;s re.  Backrefs adds: <code>\p</code>, <code>\P</code>, <code>\u</code>, <code>\U</code>, <code>\l</code>, <code>\L</code>, <code>\Q</code> or <code>\E</code> (though <code>\u</code> and <code>\U</code> are replaced with <code>\c</code> and <code>\C</code>).</p>
+<h3 id="search-back-references"><a name="user-content-search-back-references" href="#search-back-references" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Search Back References</h3>
+<table>
+<thead>
+<tr>
+<th>Back&nbsp;References</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\c</code></td>
+<td>Uppercase character class.  ASCII or Unicode when re Unicode flag is used.  Can be used in character classes <code>[]</code>.</td>
+</tr>
+<tr>
+<td><code>\l</code></td>
+<td>Lowercase character class.  ASCII or Unicode when re Unicode flag is used.  Can be used in character classes <code>[]</code>.</td>
+</tr>
+<tr>
+<td><code>\C</code></td>
+<td>Inverse uppercase character class.  ASCII or Unicode when re Unicode flag is used.  Can be used in character classes <code>[]</code>.</td>
+</tr>
+<tr>
+<td><code>\L</code></td>
+<td>Inverse lowercase character class.  ASCII or Unicode when re Unicode flag is used.  Can be used in character classes <code>[]</code>.</td>
+</tr>
+<tr>
+<td><code>\Q...\E</code></td>
+<td>Quotes (escapes) text for regex.  <code>\E</code> signifies the end of the quoting. Will be ignored in character classes <code>[]</code>.</td>
+</tr>
+<tr>
+<td><code>\p{UnicodeProperty}</code></td>
+<td>Unicode property character class. Search string must be a Unicode string. Can be used in character classes <code>[]</code>. See <a href="#unicode-properties">Unicode Properties</a> for more info.</td>
+</tr>
+<tr>
+<td><code>\P{UnicodeProperty}</code></td>
+<td>Inverse Unicode property character class. Search string must be a Unicode string. Can be used in character classes <code>[]</code>. See <a href="#unicode-properties">Unicode Properties</a> for more info.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="replace-back-references"><a name="user-content-replace-back-references" href="#replace-back-references" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Replace Back References</h3>
+<p>None of the replace back references can be used in character classes <code>[]</code>.  Since bracket rules are only for search, replace back references will only apply if using the backrefs module in a bh_plugin.</p>
+<table>
+<thead>
+<tr>
+<th>Back&nbsp;References</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>\c</code></td>
+<td>Uppercase the next character.</td>
+</tr>
+<tr>
+<td><code>\l</code></td>
+<td>Lowercase the next character.</td>
+</tr>
+<tr>
+<td><code>\C...\E</code></td>
+<td>Apply uppercase to all characters until either the end of the string or the end marker <code>\E</code> is found.</td>
+</tr>
+<tr>
+<td><code>\L...\E</code></td>
+<td>Apply lowercase to all characters until either the end of the string or the end marker <code>\E</code> is found.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Complex configurations of casing should work fine.</p>
+<ul>
+<li><code>\L\cTEST\E</code> &rarr; <code>Test</code></li>
+<li><code>\c\LTEST\E</code> &rarr; <code>Test</code></li>
+<li><code>\L\cTEST \cTEST\E</code> &rarr; <code>Test Test</code></li>
+</ul>
+</div>
+<h3 id="unicode-properties"><a name="user-content-unicode-properties" href="#unicode-properties" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Unicode Properties</h3>
+<p>Unicode properties can be used with the format: <code>\p{UnicodeProperty}</code>.  The inverse can also be used to specify everything not in a Unicode property: <code>\P{UnicodeProperty}</code>.  They are only used in the search patterns. You can use either the verbose format or the terse format, but only one property may specified between the curly braces.  If you want to use multiple properties, you can place them in a character class: <code>[\p{UnicodeProperty}\p{OtherUnicodeProperty}]</code>.  See the table below to see all the Unicode properties that can be used.</p>
+<table>
+<thead>
+<tr>
+<th>Verbose&nbsp;Property&nbsp;Form</th>
+<th>Terse&nbsp;Property&nbsp;Form</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Other</td>
+<td>C</td>
+</tr>
+<tr>
+<td>Control</td>
+<td>Cc</td>
+</tr>
+<tr>
+<td>Format</td>
+<td>Cf</td>
+</tr>
+<tr>
+<td>Surrogate</td>
+<td>Cs</td>
+</tr>
+<tr>
+<td>Private_Use</td>
+<td>Co</td>
+</tr>
+<tr>
+<td>Unassigned</td>
+<td>Cn</td>
+</tr>
+<tr>
+<td>Letter</td>
+<td>L</td>
+</tr>
+<tr>
+<td>Uppercase_Letter</td>
+<td>Lu</td>
+</tr>
+<tr>
+<td>Lowercase_Letter</td>
+<td>Ll</td>
+</tr>
+<tr>
+<td>Titlecase_Letter</td>
+<td>Lt</td>
+</tr>
+<tr>
+<td>Modifier_Letter</td>
+<td>Lm</td>
+</tr>
+<tr>
+<td>Other_Letter</td>
+<td>Lo</td>
+</tr>
+<tr>
+<td>Mark</td>
+<td>M</td>
+</tr>
+<tr>
+<td>Nonspacing_Mark</td>
+<td>Mc</td>
+</tr>
+<tr>
+<td>Spacing_Mark</td>
+<td>Me</td>
+</tr>
+<tr>
+<td>Enclosing_Mark</td>
+<td>Md</td>
+</tr>
+<tr>
+<td>Number</td>
+<td>N</td>
+</tr>
+<tr>
+<td>Decimal_Number</td>
+<td>Nd</td>
+</tr>
+<tr>
+<td>Letter_Number</td>
+<td>Nl</td>
+</tr>
+<tr>
+<td>Other_Number</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Punctuation</td>
+<td>P</td>
+</tr>
+<tr>
+<td>Connector_Punctuation</td>
+<td>Pc</td>
+</tr>
+<tr>
+<td>Dash_Punctuation</td>
+<td>Pd</td>
+</tr>
+<tr>
+<td>Open_Punctuation</td>
+<td>Ps</td>
+</tr>
+<tr>
+<td>Close_Punctuation</td>
+<td>Pe</td>
+</tr>
+<tr>
+<td>Initial_Punctuation</td>
+<td>Pi</td>
+</tr>
+<tr>
+<td>Final_Punctuation</td>
+<td>Pf</td>
+</tr>
+<tr>
+<td>Other_Punctuation</td>
+<td>Po</td>
+</tr>
+<tr>
+<td>Symbol</td>
+<td>S</td>
+</tr>
+<tr>
+<td>Math_Symbol</td>
+<td>Sm</td>
+</tr>
+<tr>
+<td>Currency_Symbol</td>
+<td>Sc</td>
+</tr>
+<tr>
+<td>Modifier_Symbol</td>
+<td>Sk</td>
+</tr>
+<tr>
+<td>Other_Symbol</td>
+<td>So</td>
+</tr>
+<tr>
+<td>Separator</td>
+<td>Z</td>
+</tr>
+<tr>
+<td>Space_Separator</td>
+<td>Zs</td>
+</tr>
+<tr>
+<td>Line_Separator</td>
+<td>Zl</td>
+</tr>
+<tr>
+<td>Paragraph_Separator</td>
+<td>Z</td>
+</tr>
+</tbody>
+</table>
+<h3 id="using-backrefs-in-brackethighlighter-plugins"><a name="user-content-using-backrefs-in-brackethighlighter-plugins" href="#using-backrefs-in-brackethighlighter-plugins" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Using Backrefs in BracketHighlighter Plugins</h3>
+<p>You can import backrefs into a <code>bh_plugin</code>:</p>
+<div class="codehilite"><pre><span class="kn">import</span> <span class="nn">BracketHighlighter.backrefs</span> <span class="kn">as</span> <span class="nn">bre</span>
+</pre></div>
+
+
+<p>Backrefs does provide a wrapper for all of re&rsquo;s normal functions such as <code>match</code>, <code>sub</code>, etc., but is recommended to pre-compile your search patterns <strong>and</strong> your replace patterns for the best performance; especially if you plan on reusing the same pattern multiple times.  As re does cache a certain amount of the non-compiled calls you will be spared from some of the performance hit, but backrefs does not cache the pre-processing of search and replace patterns.</p>
+<p>To use pre-compiled functions, you compile the search pattern with <code>compile_search</code>.  If you want to take advantage of replace backrefs, you need to compile the replace pattern as well.  Notice the compiled pattern is fed into the replace pattern; you can feed the replace compiler the string representation of the search pattern as well, but the compiled pattern will be faster and is the recommended way.</p>
+<div class="codehilite"><pre><span class="n">pattern</span> <span class="o">=</span> <span class="n">bre</span><span class="o">.</span><span class="n">compile_search</span><span class="p">(</span><span class="s">r&#39;somepattern&#39;</span><span class="p">,</span> <span class="n">flags</span><span class="p">)</span>
+<span class="n">replace</span> <span class="o">=</span> <span class="n">bre</span><span class="o">.</span><span class="n">compile_replace</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="s">r&#39;\1 some replace pattern&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Then you can use the complied search pattern and replace</p>
+<div class="codehilite"><pre><span class="n">text</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">replace</span><span class="p">,</span> <span class="s">r&#39;sometext&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>or</p>
+<div class="codehilite"><pre><span class="n">m</span> <span class="o">=</span> <span class="n">pattern</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s">r&#39;sometext&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">replace</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>  <span class="c"># similar to m.expand(template)</span>
+</pre></div>
+
+
+<p>To use the non-compiled search/replace functions, you call them just them as you would in re; the names are the same.  Methods like <code>sub</code> and <code>subn</code> will compile the replace pattern on the fly if given a string.</p>
+<div class="codehilite"><pre><span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">bre</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="s">r&#39;somepattern&#39;</span><span class="p">,</span> <span class="s">&#39;some text&#39;</span><span class="p">,</span> <span class="n">bre</span><span class="o">.</span><span class="n">UNICODE</span> <span class="o">|</span> <span class="n">bre</span><span class="o">.</span><span class="n">DOTALL</span><span class="p">):</span>
+    <span class="c"># do something</span>
+</pre></div>
+
+
+<p>If you want to replace without compiling, you can use the <code>expand</code> method.</p>
+<div class="codehilite"><pre><span class="n">m</span> <span class="o">=</span> <span class="n">bre</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s">r&#39;sometext&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">bre</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="s">r&#39;replace pattern&#39;</span><span class="p">)</span>
+</pre></div>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../contributing/" class="btn btn-neutral float-right" title="Contributing &amp; Support"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../customize/" class="btn btn-neutral" title="Customizing"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    
+    </p>
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../customize/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../contributing/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
