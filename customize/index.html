@@ -269,6 +269,15 @@
 </pre></div>
 
 
+<h3 id="ignore_outside_adjacent_in_plugin"><a name="user-content-ignore_outside_adjacent_in_plugin" href="#ignore_outside_adjacent_in_plugin" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>ignore_outside_adjacent_in_plugin</h3>
+<p>Ignores the <a href="#bracket_outside_adjacent">bracket_outside_adjacent</a> setting when running a plugin <strong>if</strong> the plugin sets <code>no_outside_adj</code> to <code>null</code> (<code>null</code> for JSON or <code>None</code> in Python).</p>
+<div class="codehilite"><pre>    <span class="c1">// When &quot;bracket_outside_adjacet&quot; is set, and a plugin command explicitly sets</span>
+    <span class="c1">// &quot;no_outside_adj&quot; &quot;None&quot; instead of &quot;true&quot; or the default &quot;false&quot;,</span>
+    <span class="c1">// this value will be used.</span>
+    <span class="s2">&quot;ignore_outside_adjacent_in_plugin&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</pre></div>
+
+
 <h3 id="bracket_string_escape_mode"><a name="user-content-bracket_string_escape_mode" href="#bracket_string_escape_mode" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>bracket_string_escape_mode</h3>
 <p>Depending on the setting, <abbr title="BracketHighlighter">BH</abbr> will either match sub-brackets inside strings with traditional string escape logic, or will match sub-brackets in strings with regex escape logic.  Takes a string value of either <code>regex</code> or <code>string</code>.</p>
 <div class="codehilite"><pre>    <span class="c1">// Set mode for string escapes to ignore (regex|string)</span>
@@ -1442,7 +1451,8 @@
 </dd>
 </dl>
 <h3 id="run-instance-plugins"><a name="user-content-run-instance-plugins" href="#run-instance-plugins" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>&lsquo;Run Instance&rsquo; Plugins</h3>
-<p><code>Run instance</code> plugins are fed into the BracketHighlighter command via the <code>plugin</code> parameter.  They are executed after a match is made.</p>
+<p><code>Run instance</code> plugins are manually invoked bracket matching with an attached plugin.<br />
+The plugin itself is executed after a match is made.  When defining a manually invoked <abbr title="BracketHighlighter">BH</abbr> command, either <code>bh_key</code> or <code>bh_async_key</code> should be used (key referring to key binding, but is also used for the menu and command palette).  It may be misleading as to what <code>bh_async_key</code> means, but it is mainly a workaround to launch <abbr title="BracketHighlighter">BH</abbr> keys from the command palette.  The command is kicked off asynchronously to ensure the palette closes before executing, but the <abbr title="BracketHighlighter">BH</abbr> command itself is still synchronous.</p>
 <p>Example of run instance plugin getting called:<br />
 <div class="codehilite"><pre><span class="c1">// Go to left bracket</span>
     <span class="p">{</span>
@@ -1461,7 +1471,30 @@
     <span class="p">},</span>
 </pre></div>
 </p>
-<p>The <code>plugin</code> paramter is a dictionary that contains 3 arguments that define which plugin should get run, under which circumstance it is run, and with what parameters it is run with.</p>
+<p>The <code>args</code> parameter is a dictionary.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lines</td>
+<td>Show the number of lines between the matched brackets in the status bar.</td>
+</tr>
+<tr>
+<td>no_outside_adj</td>
+<td>This is a parameter used to tell the plugin to ignore the <code>bracket_outside_adjacent</code> setting.  This is by default used for the <code>bracketselect</code> commands to ignore outside adjacent matching so it can do expanding selections or jump to parents brackets.  The default is <code>false</code> when not defined, but it can be set to <code>true</code> or <code>null</code> in JSON (it would be <code>None</code> if defined directly in Python code).  When <code>null</code>, the value will be read from <code>ignore_outside_adjacent_in_plugin</code> setting in the <code>bh_core.sublime-settings</code> file for convenient altering of the behavior.</td>
+</tr>
+<tr>
+<td>plugin</td>
+<td>Configuration for the plugin to be used.</td>
+</tr>
+</tbody>
+</table>
+<p>The <code>plugin</code> parameter is a dictionary that contains 3 arguments that define which plugin should get run, under which circumstance it is run, and with what parameters it is run with.</p>
 <table>
 <thead>
 <tr>
@@ -1512,6 +1545,14 @@
 <tr>
 <td>selection</td>
 <td>An array containing the selection that triggered the match (can be changed).</td>
+</tr>
+<tr>
+<td>refresh_match</td>
+<td>A plugin can set this to true if the plugin has moved the cursor in such a way that the current highlighted match is no longer valid.  This will cause <abbr title="BracketHighlighter">BH</abbr> to setup another match when idle. An example of this is in the <code>bracketselect</code> bh_plugin; the cursor can be moved outside the matching brackets requiring a refresh to match the parent when the command is complete.</td>
+</tr>
+<tr>
+<td>nobracket</td>
+<td>This was added mainly for sub-bracket matching (a bracket inside other brackets like round brackets in quotes/strings).  This is set to true if the plugin has caused both left and right brackets to be returned as <code>None</code> and it is not desired to fall back and match the parent.</td>
 </tr>
 </tbody>
 </table>
