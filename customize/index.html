@@ -269,12 +269,32 @@
 </pre></div>
 
 
+<h3 id="block_cursor_mode-experimental"><a name="user-content-block_cursor_mode-experimental" href="#block_cursor_mode-experimental" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>block_cursor_mode (EXPERIMENTAL)</h3>
+<p>Modifies the bracket matching mode for block cursor.  The bracket matching mode is one that makes a little more sense to some people in regards to the visual representation of block cursors.  So if you are someone that uses block cursors and find that toggling <a href="#bracket_outside_adjacent">bracket_outside_adjacent</a> still doesn&rsquo;t quite match brackets how you would like, you can give this setting a try.</p>
+<p>When this setting is enabled, <a href="#bracket_outside_adjacent">bracket_outside_adjacent</a> will be ignored.</p>
+<div class="codehilite"><pre>    <span class="c1">// EXPERIMENTAL: Special matching mode for block cursor.</span>
+    <span class="c1">// Essentially, this provides a matching mode that makes a little more</span>
+    <span class="c1">// sense to some in regards to the visual representation of block cursors.</span>
+    <span class="c1">// This will ignore &quot;bracket_outside_adjacent&quot;.</span>
+    <span class="s2">&quot;block_cursor_mode&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+</pre></div>
+
+
 <h3 id="ignore_outside_adjacent_in_plugin"><a name="user-content-ignore_outside_adjacent_in_plugin" href="#ignore_outside_adjacent_in_plugin" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>ignore_outside_adjacent_in_plugin</h3>
 <p>Ignores the <a href="#bracket_outside_adjacent">bracket_outside_adjacent</a> setting when running a plugin <strong>if</strong> the plugin sets <code>no_outside_adj</code> to <code>null</code> (<code>null</code> for JSON or <code>None</code> in Python).</p>
 <div class="codehilite"><pre>    <span class="c1">// When &quot;bracket_outside_adjacet&quot; is set, and a plugin command explicitly sets</span>
     <span class="c1">// &quot;no_outside_adj&quot; &quot;None&quot; instead of &quot;true&quot; or the default &quot;false&quot;,</span>
     <span class="c1">// this value will be used.</span>
     <span class="s2">&quot;ignore_outside_adjacent_in_plugin&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</pre></div>
+
+
+<h3 id="ignore_block_mode_in_plugin-experimental"><a name="user-content-ignore_block_mode_in_plugin-experimental" href="#ignore_block_mode_in_plugin-experimental" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>ignore_block_mode_in_plugin (EXPERIMENTAL)</h3>
+<p>Ignores the <a href="#block_cursor_mode-experimental">block_cursor_mode</a> setting when running a plugin <strong>if</strong> the plugin sets <code>no_block_mode</code> to <code>null</code> (<code>null</code> for JSON or <code>None</code> in Python).</p>
+<div class="codehilite"><pre>    <span class="c1">// When &quot;block_cursor_mode&quot; is set, and a plugin command explicitly sets</span>
+    <span class="c1">// &quot;no_block_mode&quot; to &quot;None&quot; instead of &quot;true&quot; or the default &quot;false&quot;,</span>
+    <span class="c1">// this value will be used.</span>
+    <span class="s2">&quot;ignore_block_mode_in_plugin&quot;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
 </pre></div>
 
 
@@ -322,7 +342,7 @@
 
 
 <h2 id="tag-plugin-settings"><a name="user-content-tag-plugin-settings" href="#tag-plugin-settings" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Tag Plugin Settings</h2>
-<p>Tag settings found in <code>bh_core.sublime-settings</code>.</p>
+<p>Tag settings found in <code>bh_tag.sublime-settings</code>.</p>
 <h3 id="tag_style"><a name="user-content-tag_style" href="#tag_style" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>tag_style</h3>
 <p>Sets the highlight style for the tag plugin.  The string value should correspond to a style entry in <code>bracket_styles</code>.  See <a href="#configuring-highlight-style">Configuring Highlight Style</a> for more info.</p>
 <div class="codehilite"><pre>    <span class="c1">// Style to use for matched tags</span>
@@ -413,7 +433,7 @@
 <tr>
 <td>language_filter</td>
 <td>string</td>
-<td>A string that specifies if the <code>language_list</code> is either a <code>whitelist</code> or <code>blacklist</code>.</td>
+<td>A string that specifies if the <code>language_list</code>is either a <code>whitelist</code>or <code>blacklist</code></td>
 </tr>
 <tr>
 <td>entries</td>
@@ -483,7 +503,7 @@
 <tr>
 <td>language_filter</td>
 <td>string</td>
-<td>A string that specifies if the <code>language_list</code> is either a <code>whitelist</code> or <code>blacklist</code>.</td>
+<td>A string that specifies if the <code>language_list</code>is either a <code>whitelist</code>or <code>blacklist</code></td>
 </tr>
 <tr>
 <td>entries</td>
@@ -515,7 +535,7 @@
 <tr>
 <td>insert_style</td>
 <td>[string]</td>
-<td>An array consisting of allowed insertion styles.  Allowed insertion styles are: <code>inline</code>, <code>block</code>, and <code>indent_block</code>.  Default is <code class="codehilite"><span class="p">[</span><span class="s1">&#39;inline&#39;</span><span class="p">]</span></code>.</td>
+<td>An array consisting of allowed insertion styles.  Allowed insertion styles are: <code>inline</code> <code>block</code> and <code>indent_block</code>  Default is <code class="codehilite"><span class="p">[</span><span class="s1">&#39;inline&#39;</span><span class="p">]</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -579,7 +599,7 @@
 </tr>
 <tr>
 <td>style</td>
-<td>Name of style definition to be used to highlight the brackets.  See <code>Configuring Bracket Styles</code> for more info.</td>
+<td>Name of style definition to be used to highlight the brackets.  See <code>Configuring Bracket Styles</code>for more info.</td>
 </tr>
 <tr>
 <td>scope_exclude</td>
@@ -587,11 +607,11 @@
 </tr>
 <tr>
 <td>language_filter</td>
-<td>This works in conjunction with <code>language_list</code>.  It specifies whether <code>language_list</code> is a <code>blacklist</code> or <code>whitelist</code>.</td>
+<td>This works in conjunction with <code>language_list</code>  It specifies whether <code>language_list</code>is a <code>blacklist</code>or <code>whitelist</code></td>
 </tr>
 <tr>
 <td>language_list</td>
-<td>An array of tmLanguage file names that should be avoided or included for highlighting.  Looks to <code>language_filter</code> to determine if avoidance or inclusion is used.</td>
+<td>An array of tmLanguage file names that should be avoided or included for highlighting.  Looks to <code>language_filter</code>to determine if avoidance or inclusion is used.</td>
 </tr>
 <tr>
 <td>enabled</td>
@@ -599,7 +619,7 @@
 </tr>
 <tr>
 <td>scope_exclude_exceptions&nbsp;(optional)</td>
-<td>Used to ignore excluding of sub scopes such as in the curly example above where <code>string</code> is excluded, but not <code>string.other.math.block.environment.latex</code>.</td>
+<td>Used to ignore excluding of sub scopes such as in the curly example above where <code>string</code>is excluded, but not <code>string.other.math.block.environment.latex</code></td>
 </tr>
 <tr>
 <td>plugin_library&nbsp;(optional)</td>
@@ -607,7 +627,7 @@
 </tr>
 <tr>
 <td>find_in_sub_search&nbsp;(optional)</td>
-<td>This rule should be included when doing sub bracket matching in <code>scope_brackets</code> (like finding round brackets between quotes etc.).  The setting must be as string and can be either (true</td>
+<td>This rule should be included when doing sub bracket matching in <code>scope_brackets</code>(like finding round brackets between quotes etc.).  The setting must be as string and can be either (true</td>
 </tr>
 <tr>
 <td>ignore_string_escape&nbsp;(optional)</td>
@@ -654,7 +674,7 @@
 </tr>
 <tr>
 <td>style</td>
-<td>Name of style definition to be used to highlight the brackets.  See <code>Configuring Bracket Styles</code> for more info.</td>
+<td>Name of style definition to be used to highlight the brackets.  See <code>Configuring Bracket Styles</code>for more info.</td>
 </tr>
 <tr>
 <td>scopes</td>
@@ -662,11 +682,11 @@
 </tr>
 <tr>
 <td>language_filter</td>
-<td>This works in conjunction with <code>language_list</code>.  It specifies whether <code>language_list</code> is a <code>blacklist</code> or <code>whitelist</code>.</td>
+<td>This works in conjunction with <code>language_list</code>  It specifies whether <code>language_list</code>is a <code>blacklist</code>or <code>whitelist</code></td>
 </tr>
 <tr>
 <td>language_list</td>
-<td>An array of tmLanguage file names that should be avoided or included for highlighting.  Looks to <code>language_filter</code> to determine if avoidance or inclusion is used.</td>
+<td>An array of tmLanguage file names that should be avoided or included for highlighting.  Looks to <code>language_filter</code>to determine if avoidance or inclusion is used.</td>
 </tr>
 <tr>
 <td>sub_bracket_search</td>
@@ -839,7 +859,7 @@
 <tbody>
 <tr>
 <td>icon</td>
-<td>Icon to show in gutter. Available options are: <code>angle</code>, <code>round</code>, <code>curly</code>, <code>square</code>, <code>tag</code>, <code>star</code>, <code>dot</code>, <code>bookmark</code>, <code>question</code>, <code>quote</code>, <code>double_quote</code>, <code>single_quote</code>, <code>single_quote_offset</code>, <code>double_quote_offset</code>, <code>none</code>.</td>
+<td>Icon to show in gutter. Available options are: <code>angle</code> <code>round</code> <code>curly</code> <code>square</code> <code>tag</code> <code>star</code> <code>dot</code> <code>bookmark</code> <code>question</code> <code>quote</code> <code>double_quote</code> <code>single_quote</code> <code>single_quote_offset</code> <code>double_quote_offset</code> <code>none</code></td>
 </tr>
 <tr>
 <td>color</td>
@@ -847,7 +867,7 @@
 </tr>
 <tr>
 <td>style</td>
-<td>Highlight style.  Available options are: <code>solid</code>, <code>outline</code>, <code>underline</code>, <code>none</code>.  <abbr title="Sublime Text 3">ST3</abbr> has additional styles: <code>thin_underline</code>, <code>squiggly</code>, <code>stippled</code>.</td>
+<td>Highlight style.  Available options are: <code>solid</code> <code>outline</code> <code>underline</code> <code>none</code>  <abbr title="Sublime Text 3">ST3</abbr> has additional styles: <code>thin_underline</code> <code>squiggly</code> <code>stippled</code></td>
 </tr>
 <tr>
 <td>endpoint</td>
@@ -1404,11 +1424,11 @@
 </tr>
 <tr>
 <td>left</td>
-<td>A bracket region for the opening bracket (could be <code>None</code>).</td>
+<td>A bracket region for the opening bracket (could be <code>None</code>.</td>
 </tr>
 <tr>
 <td>right</td>
-<td>A bracket region for the closing bracket (could be <code>None</code>).</td>
+<td>A bracket region for the closing bracket (could be <code>None</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -1486,7 +1506,7 @@ The plugin itself is executed after a match is made.  When defining a manually i
 </tr>
 <tr>
 <td>no_outside_adj</td>
-<td>This is a parameter used to tell the plugin to ignore the <code>bracket_outside_adjacent</code> setting.  This is by default used for the <code>bracketselect</code> commands to ignore outside adjacent matching so it can do expanding selections or jump to parents brackets.  The default is <code>false</code> when not defined, but it can be set to <code>true</code> or <code>null</code> in JSON (it would be <code>None</code> if defined directly in Python code).  When <code>null</code>, the value will be read from <code>ignore_outside_adjacent_in_plugin</code> setting in the <code>bh_core.sublime-settings</code> file for convenient altering of the behavior.</td>
+<td>This is a parameter used to tell the plugin to ignore the <code>bracket_outside_adjacent</code>setting.  This is by default used for the <code>bracketselect</code>commands to ignore outside adjacent matching so it can do expanding selections or jump to parents brackets.  The default is <code>false</code>when not defined, but it can be set to <code>true</code>or <code>null</code>in JSON (it would be <code>None</code>if defined directly in Python code).  When <code>null</code> the value will be read from <code>ignore_outside_adjacent_in_plugin</code>setting in the <code>bh_core.sublime-settings</code>file for convenient altering of the behavior.</td>
 </tr>
 <tr>
 <td>plugin</td>
@@ -1505,11 +1525,11 @@ The plugin itself is executed after a match is made.  When defining a manually i
 <tbody>
 <tr>
 <td>type</td>
-<td>An array containing the bracket definition names that the plugin should be run on.  Use <code>__all__</code> for all bracket definitions.</td>
+<td>An array containing the bracket definition names that the plugin should be run on.  Use <code>__all__</code>for all bracket definitions.</td>
 </tr>
 <tr>
 <td>command</td>
-<td>The plugin to run.  For internal plugins, they are referenced by <code>bh_modules.&lt;plugin name&gt;</code>.  For custom plugins, you should use the folder path relative to <code>Packages</code>.  So if I had a plugin called <code>myplugin.py</code> in my <code>User</code> folder, I would use <code>User.myplugin</code>.</td>
+<td>The plugin to run.  For internal plugins, they are referenced by <code>bh_modules.&lt;plugin name&gt;</code>  For custom plugins, you should use the folder path relative to <code>Packages</code>  So if I had a plugin called <code>myplugin.py</code>in my <code>User</code>folder, I would use <code>User.myplugin</code></td>
 </tr>
 <tr>
 <td>args</td>
@@ -1548,11 +1568,11 @@ The plugin itself is executed after a match is made.  When defining a manually i
 </tr>
 <tr>
 <td>refresh_match</td>
-<td>A plugin can set this to true if the plugin has moved the cursor in such a way that the current highlighted match is no longer valid.  This will cause <abbr title="BracketHighlighter">BH</abbr> to setup another match when idle. An example of this is in the <code>bracketselect</code> bh_plugin; the cursor can be moved outside the matching brackets requiring a refresh to match the parent when the command is complete.</td>
+<td>A plugin can set this to true if the plugin has moved the cursor in such a way that the current highlighted match is no longer valid.  This will cause <abbr title="BracketHighlighter">BH</abbr> to setup another match when idle. An example of this is in the <code>bracketselect</code>bh_plugin; the cursor can be moved outside the matching brackets requiring a refresh to match the parent when the command is complete.</td>
 </tr>
 <tr>
 <td>nobracket</td>
-<td>This was added mainly for sub-bracket matching (a bracket inside other brackets like round brackets in quotes/strings).  This is set to true if the plugin has caused both left and right brackets to be returned as <code>None</code> and it is not desired to fall back and match the parent.</td>
+<td>This was added mainly for sub-bracket matching (a bracket inside other brackets like round brackets in quotes/strings).  This is set to true if the plugin has caused both left and right brackets to be returned as <code>None</code>and it is not desired to fall back and match the parent.</td>
 </tr>
 </tbody>
 </table>
