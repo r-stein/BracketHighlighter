@@ -13,7 +13,7 @@ DEFAULT_TAGS = ["cfml", "html", "angle"]
 class SelectBracket(bh_plugin.BracketPluginCommand):
     """Select Bracket plugin."""
 
-    def run(self, edit, name, select='', tags=None, always_include_brackets=False, alternate=False):
+    def run(self, edit, name, select='', tags=None, always_include_brackets=False, jump_over_bracket=False, alternate=False):
         """
         Select the content between brackets.
 
@@ -27,20 +27,23 @@ class SelectBracket(bh_plugin.BracketPluginCommand):
         first, last = self.left.end, self.right.begin
 
         if select == 'left':
-            first, last = self.select_left(name, first, last, alternate)
+            first, last = self.select_left(name, first, last, jump_over_bracket, alternate)
         elif select == 'right':
-            first, last = self.select_right(name, first, last, alternate)
+            first, last = self.select_right(name, first, last, jump_over_bracket, alternate)
         elif first == self.current_left and last == self.current_right or always_include_brackets:
             first, last = self.select_expand(first, last)
 
         self.selection = [sublime.Region(first, last)]
 
-    def select_left(self, name, first, last, alternate):
+    def select_left(self, name, first, last, jump_over_bracket, alternate):
         """Select the left bracket."""
 
         if name in self.tags and self.left.size() > 1:
             first, last = self.left.begin + 1, self.left.begin + 1
-            if first == self.current_left and last == self.current_right:
+            if jump_over_bracket:
+                self.refresh_match = True
+                first, last = self.left.begin, self.left.begin
+            elif first == self.current_left and last == self.current_right:
                 self.refresh_match = True
                 if alternate:
                     first, last = self.right.begin + 1, self.right.begin + 1
@@ -48,7 +51,10 @@ class SelectBracket(bh_plugin.BracketPluginCommand):
                     first, last = self.left.begin, self.left.begin
         else:
             first, last = self.left.end, self.left.end
-            if first == self.current_left and last == self.current_right:
+            if jump_over_bracket:
+                self.refresh_match = True
+                first, last = self.left.begin, self.left.begin
+            elif first == self.current_left and last == self.current_right:
                 self.refresh_match = True
                 if alternate:
                     first, last = self.right.begin, self.right.begin
@@ -56,13 +62,16 @@ class SelectBracket(bh_plugin.BracketPluginCommand):
                     first, last = self.left.begin, self.left.begin
         return first, last
 
-    def select_right(self, name, first, last, alternate):
+    def select_right(self, name, first, last, jump_over_bracket, alternate):
         """Select the right bracket."""
 
         if self.left.end != self.right.end:
             if name in self.tags and self.left.size() > 1:
                 first, last = self.right.begin + 1, self.right.begin + 1
-                if first == self.current_left and last == self.current_right:
+                if jump_over_bracket:
+                    self.refresh_match = True
+                    first, last = self.right.end, self.right.end
+                elif first == self.current_left and last == self.current_right:
                     self.refresh_match = True
                     if alternate:
                         first, last = self.left.begin + 1, self.left.begin + 1
@@ -70,7 +79,10 @@ class SelectBracket(bh_plugin.BracketPluginCommand):
                         first, last = self.right.end, self.right.end
             else:
                 first, last = self.right.begin, self.right.begin
-                if first == self.current_left and last == self.current_right:
+                if jump_over_bracket:
+                    self.refresh_match = True
+                    first, last = self.right.end, self.right.end
+                elif first == self.current_left and last == self.current_right:
                     self.refresh_match = True
                     if alternate:
                         first, last = self.left.end, self.left.end
